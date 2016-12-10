@@ -9,6 +9,7 @@ public class Comment {
 	private Date publishTime;
 	private int userID;
 	private int bookID;
+	private int commentApprove;
 	public int getCommentID() {
 		return commentID;
 	}
@@ -44,5 +45,11 @@ public class Comment {
 	}
 	public void setBookID(int bookID) {
 		this.bookID = bookID;
+	}
+	public int getCommentApprove() {
+		return commentApprove;
+	}
+	public void setCommentApprove(int commentApprove) {
+		this.commentApprove = commentApprove;
 	}
 }

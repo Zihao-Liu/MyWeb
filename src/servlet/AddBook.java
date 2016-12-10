@@ -47,7 +47,6 @@ public class AddBook extends HttpServlet {
 				return;
 			}else{
 				request.setAttribute("error", "Í¼ÊéÒÑ´æÔÚ");
-				
 				dispatcher = request.getRequestDispatcher("/addBook.jsp");
 			}
 		}

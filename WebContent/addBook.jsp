@@ -6,6 +6,7 @@
 <title>ĞÂÔöÍ¼Êé</title>
 </head>
 <body>
+<%@include file = "header.jsp" %> 
 	<font color="red">${requestScope.error }</font>
 	<br><br>
 	<form action="AddBook" method="post">

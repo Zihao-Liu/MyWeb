@@ -11,4 +11,5 @@ public interface UserDao {
 	public User findUserByID(int userID);
 	public List<User> findAllUser();
 	public void updateUser(User user);
+	public void modifyUserApprove(int userID,int action);
 }

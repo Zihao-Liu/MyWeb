@@ -30,6 +30,7 @@ public class UserDaoImpl implements UserDao{
 				user.setUserName(rs.getString(2));
 				user.setUserSex(rs.getString(3));
 				user.setPassword(rs.getString(4));
+				user.setUserApprove(rs.getInt(5));
 			}
 		}catch(SQLException e){
 				e.printStackTrace();
@@ -79,6 +80,7 @@ public class UserDaoImpl implements UserDao{
 				user.setUserID(rs.getInt(1));
 				user.setUserName(rs.getString(2));
 				user.setUserSex(rs.getString(3));
+				user.setUserApprove(rs.getInt(5));
 				users.add(user);
 			}
 		}catch(SQLException e){
@@ -109,8 +111,9 @@ public class UserDaoImpl implements UserDao{
 			while(rs.next()){
 				user.setUserID(rs.getInt(1));
 				user.setUserName(rs.getString(2));
-				user.setUserSex(rs.getString(4));
-				user.setPassword(rs.getString(5));
+				user.setUserSex(rs.getString(3));
+				user.setPassword(rs.getString(4));
+				user.setUserApprove(rs.getInt(5));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -120,5 +123,25 @@ public class UserDaoImpl implements UserDao{
 			DBConnection.close(conn);
 		}
 		return user;
+	}
+	@Override
+	public void modifyUserApprove(int userID, int action) {
+		Connection conn = DBConnection.getConnection();
+		String sql;
+		if(action == 1)
+			sql="update tb_user set userApprove = userApprove +1 where userID = ?";
+		else
+			sql="update tb_user set userApprove = userApprove -1 where userID = ?";
+		PreparedStatement pstmt = null;
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userID);
+			pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
 	}
 }
