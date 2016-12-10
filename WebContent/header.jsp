@@ -1,0 +1,14 @@
+<%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
+	<div id="topexplain">Áõ×ÓºÀ</div>
+	<div id="search">
+		<form action="" method="post">
+			<input name="searchText" type="text">
+			<input value="ËÑË÷" type="submit">
+		</form>
+	</div>
+	<div id="menu">
+		<ul>
+			<li id = "index"><a href = "./index.jsp">Ê×Ò³</a></li>
+			<li id = "book"><a href="">Í¼Êé</a></li>
+		</ul>
+	</div>
