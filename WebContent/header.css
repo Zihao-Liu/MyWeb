@@ -1,0 +1,37 @@
+body{margin:0px;
+	border:0px;
+	padding:0px;
+	font-size:medium;
+	width:1350px;}
+#topnavigation{
+	height:50px;
+	background-color: rgb(158,122,122);
+	}
+#topnavigation a:link{color:white; text-decoration:none}
+#topnavigation a:visited{color:white; text-decoration:none}
+#topnavigation a:hover{color:white; text-decoration:underline}
+
+
+#logo{
+	color:white;
+	font-size:200%;
+	margin-left:200px;
+	padding-top:8px;
+	float:left;
+	}
+	
+#menu{margin-left:350px;padding-top:2px;}
+#searchbar{float:left;padding-top:14px;}
+#searchtext{width:150px;}
+#menu li{padding-left:5px;list-style:none; display:inline;}
+
+
+#user{
+	float:right;
+	margin-right:200px;
+	padding-top:18px;
+}
+#user label{color:white;}
+#user input{width:50px;}
+#username{width:100px;}
+#password{width:100px;}

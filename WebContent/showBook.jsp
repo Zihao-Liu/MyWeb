@@ -16,6 +16,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link href="header.css" type="text/css" rel="stylesheet" media="all" />
 <title>图书信息</title>
 </head>
 <body>

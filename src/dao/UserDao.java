@@ -10,6 +10,7 @@ public interface UserDao {
 	public User findUser(String userName);
 	public User findUserByID(int userID);
 	public List<User> findAllUser();
+	public List<User> findAllUserOrderByApprove();
 	public void updateUser(User user);
 	public void modifyUserApprove(int userID,int action);
 }
