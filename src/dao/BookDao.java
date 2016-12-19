@@ -11,5 +11,7 @@ public interface BookDao {
 	public Book findBookByAuthor(String bookAuthor);
 	public Book findBookByID(int bookID);
 	public List<Book> findAllBook();
+	public List<Book> findAllBookByTime();
+	public List<Book> findAllBookByApprove();
 	public void updateBook(Book book);
 }

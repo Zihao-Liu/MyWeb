@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class BookDaoImpl implements BookDao {
 	@Override
 	public void addBook(Book book) {
 		Connection conn = DBConnection.getConnection();
-		String sql = "insert into tb_book (bookName,bookAuthor,bookType,bookInfo) values(?,?,?,?)";
+		String sql = "insert into tb_book (bookName,bookAuthor,bookType,bookInfo,bookAddTime) values(?,?,?,?,?)";
 		PreparedStatement pstmt = null;
 		try{
 			pstmt = conn.prepareStatement(sql);
@@ -25,6 +26,7 @@ public class BookDaoImpl implements BookDao {
 			pstmt.setString(2, book.getBookAurthor());
 			pstmt.setString(3, book.getBookType());
 			pstmt.setString(4, book.getBookInfo());
+			pstmt.setTimestamp(5, new Timestamp(book.getBookAddTime().getTime()));
 			pstmt.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -58,6 +60,8 @@ public class BookDaoImpl implements BookDao {
 				book.setBookAurthor(rs.getString(3));
 				book.setBookType(rs.getString(4));
 				book.setBookInfo(rs.getString(5));
+				book.setBookAddTime(rs.getDate(6));
+				book.setBookCoverPath(rs.getString(7));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -87,6 +91,8 @@ public class BookDaoImpl implements BookDao {
 				book.setBookAurthor(rs.getString(3));
 				book.setBookType(rs.getString(4));
 				book.setBookInfo(rs.getString(5));
+				book.setBookAddTime(rs.getDate(6));
+				book.setBookCoverPath(rs.getString(7));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -116,6 +122,8 @@ public class BookDaoImpl implements BookDao {
 				book.setBookAurthor(rs.getString(3));
 				book.setBookType(rs.getString(4));
 				book.setBookInfo(rs.getString(5));
+				book.setBookAddTime(rs.getDate(6));
+				book.setBookCoverPath(rs.getString(7));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -145,6 +153,8 @@ public class BookDaoImpl implements BookDao {
 				book.setBookAurthor(rs.getString(3));
 				book.setBookType(rs.getString(4));
 				book.setBookInfo(rs.getString(5));
+				book.setBookAddTime(rs.getDate(6));
+				book.setBookCoverPath(rs.getString(7));
 				books.add(book);
 			}
 		}catch(SQLException e){
@@ -161,6 +171,43 @@ public class BookDaoImpl implements BookDao {
 	public void updateBook(Book book) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<Book> findAllBookByTime() {
+		Connection conn = DBConnection.getConnection();
+		String findbysql = "select * from tb_book order by bookAddTime Desc";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Book> books = new ArrayList<Book>();
+		try{
+			pstmt = conn.prepareStatement(findbysql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Book book = new Book();
+				book.setBookID(rs.getInt(1));
+				book.setBookName(rs.getString(2));
+				book.setBookAurthor(rs.getString(3));
+				book.setBookType(rs.getString(4));
+				book.setBookInfo(rs.getString(5));
+				book.setBookAddTime(rs.getDate(6));
+				book.setBookCoverPath(rs.getString(7));
+				books.add(book);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(rs);
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+		return books;
+	}
+
+	@Override
+	public List<Book> findAllBookByApprove() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

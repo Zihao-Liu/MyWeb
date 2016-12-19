@@ -146,4 +146,36 @@ public class CommentDaoImpl implements CommentDao{
 		return comment;
 	}
 
+	@Override
+	public List<Comment> findCommentOrderByApprove() {
+		Connection conn = DBConnection.getConnection();
+		String sql = "select * from tb_comment order by commentApprove DESC";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Comment> comments = new ArrayList<Comment>();
+		try{
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Comment comment = new Comment();
+				comment.setCommentID(rs.getInt(1));
+				comment.setCommentID(rs.getInt(1));
+				comment.setCommentTitle(rs.getString(2));
+				comment.setCommentContent(rs.getString(3));
+				comment.setPublishTime(rs.getDate(4));
+				comment.setUserID(rs.getInt(5));
+				comment.setBookID(rs.getInt(6));
+				comment.setCommentApprove(rs.getInt(7));
+				comments.add(comment);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(rs);
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+		return comments;
+	}
+
 }

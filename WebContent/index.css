@@ -1,0 +1,21 @@
+.content{width:1350px;}
+.sidebar{
+	float:right;
+	margin-right:200px;
+	}
+.content a:link{color:rgb(51, 153, 255); text-decoration:none;}
+.content a:visited{background-color:rgb(243, 255, 204);color:rgb(51, 153, 255); text-decoration:none;}
+.content a:hover{background-color:rgb(243, 255, 204);color:rgb(51, 153, 255); text-decoration:none;}
+.sort{border-bottom-style:solid;}
+.rank{border-bottom-style:solid;}
+.sort li{display:inline;list-style:none;padding-right:20px;}
+.rank li{list-style:decimal;}
+
+.main{margin-left:200px;}
+.recommendbytime{height:300px;width:500px;}
+.recommendbytime ul{margin-left:-50px;}
+.recommendbytime li{list-style:none; padding-left:20px;padding-top:20px;float:left;}
+
+.recommendbyhot{height:300px;width:500px;}
+.recommendbyhot ul{margin-left:-50px;}
+.recommendbyhot li{list-style:none; padding-left:20px;padding-top:20px;float:left;}

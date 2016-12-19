@@ -1,5 +1,7 @@
 package bean;
 
+import java.util.Date;
+
 public class Book {
 	private int bookID;
 	private String bookName;
@@ -7,6 +9,7 @@ public class Book {
 	private String bookType;
 	private String bookInfo;
 	private String bookCoverPath;
+	private Date bookAddTime;
 	public int getBookID() {
 		return bookID;
 	}
@@ -42,5 +45,11 @@ public class Book {
 	}
 	public void setBookCoverPath(String bookCoverPath) {
 		this.bookCoverPath = bookCoverPath;
+	}
+	public Date getBookAddTime() {
+		return bookAddTime;
+	}
+	public void setBookAddTime(Date bookAddTime) {
+		this.bookAddTime = bookAddTime;
 	}
 }
