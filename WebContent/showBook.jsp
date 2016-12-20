@@ -1,3 +1,5 @@
+<%@page import="factory.ReadDaoFactory"%>
+<%@page import="dao.ReadDao"%>
 <%@page import="factory.ApproveDaoFactory"%>
 <%@page import="factory.UserDaoFactory"%>
 <%@page import="factory.CommentDaoFactory"%>
@@ -17,81 +19,110 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <link href="header.css" type="text/css" rel="stylesheet" media="all" />
+<link href="showbook.css" type="text/css" rel="stylesheet" media="all" />
 <title>图书信息</title>
 </head>
 <body>
 <%@include file = "header.jsp" %> 
-	<h1>${book.bookName}</h1>
-	<h1>${book.bookAurthor}</h1>
-	<h1>${book.bookType}</h1>
-	<h1>${book.bookInfo}</h1>
-	<br><br>
-	
-	
-	<h2>评论区</h2>
-	 
-	<c:forEach items="${requestScope.commentList}" var="comment">
-		<div>
-			${comment.commentTitle }
-			<br>
-			
-			${comment.commentContent}
-			<div align="right">回复人用户名：${comment.userID} 
-	  			回复时间：${comment.publishTime}
-	  			<font color="red">${requestScope.error1 }</font>
-	  			<%--when approveDao.find(commentID,UserID)!=null 取消赞同--%> 
-	  			<a href="ModifyApproveNum?commentID=${comment.commentID}&action=1">赞同</a>
-	  			${comment.commentApprove}
-	  			<a href="ModifyApproveNum?commentID=${comment.commentID}&action=0">反对</a>
-	  				
-	  		</div>
-	  		<hr/>
+	<div class = "bookInfo">
+		<h2>${book.bookName}</h2>
+		<div class="Infodisplay" >
+			<img src="${book.bookCoverPath }">
+			<ul>
+				<li>作者:${book.bookAurthor}</li>
+				<li>分类:${book.bookType}</li>
+				<li>阅读人数:${book.bookRead }</li>
+				<li>评分:${book.bookScore }</li>
+			</ul>
 		</div>
-	</c:forEach>
-	
-	<%--<%
-		ApproveDao approveDao = ApproveDaoFactory.getApproveDaoInstance();
-		CommentDao commentDao = CommentDaoFactory.getCommentDaoInstance();
-		List<Comment> comments = (List<Comment>)request.getAttribute("commentList");
-		User user = (User)session.getAttribute("user");
-		if (user == null){
-			user = new User();
-			user.setUserID(0);
-		}
-		for(Comment comment:comments){
-	%>
-	<%=	comment.getCommentTitle() %>
-	<br>
-	<%=comment.getCommentContent() %>
-	<br>
-	<%	if(approveDao.findApprove(comment.getCommentID(), user.getUserID())==null){%>
-			<a href="ModifyApproveNum?commentID=<%=comment.getCommentID() %>&action=1">赞同</a>
-			<%=comment.getCommentApprove() %> 
-			<a href="ModifyApproveNum?commentID=<%=comment.getCommentID() %>&action=0">反对</a>
-	<%	}else{
-			if("赞成".equals(approveDao.findApprove(comment.getCommentID(), user.getUserID()).getApproveAction())){	
-			%>
-			<a href="ModifyApproveNum?commentID=<%=comment.getCommentID() %>&action=-1">取消赞同</a>
-			<%=comment.getCommentApprove() %> 
-			<%}else{ %>
-			<a href="ModifyApproveNum?commentID=<%=comment.getCommentID() %>&action=-2">取消反对</a>
-			<%=comment.getCommentApprove() %> 
-	 <%}} }%>
-	--%>
-	
-	
-	<div class="commentBox">
-		<font color="red">${requestScope.error }</font>
-		<form action="AddComment" method="post">
-			<p>标题:<input name = "commenttitle" type = "text"></p>
-			<p>内容</p>
-			<p>
-				<FCK:editor instanceName="commentcontent" basePath="/fckeditor" toolbarSet="myToolbar" height="400" width="750"></FCK:editor>
-			</p>
-			<input type="hidden" name="bookID" value="${book.bookID}"/> 
-			<p><input value = "提交" type = "submit"></p>
+		
+		
+		<%
+			Book book = (Book)request.getAttribute("book");
+			User user = (User)session.getAttribute("user");
+			if(user==null){
+		%>
+		<form action="ModifyReadNum" method="post" class="read">
+			<label><input name="score" type="radio" value="1" />1分</label>
+			<label><input name="score" type="radio" value="2" />2分</label>
+			<label><input name="score" type="radio" value="3" />3分</label>
+			<label><input name="score" type="radio" value="4" />4分</label>
+			<label><input name="score" type="radio" value="5" checked="checked" />5分</label>
+			<input type="submit" value="读过"/>
+			<input type="hidden" value ="${book.bookID}" name = "bookID"/>
 		</form>
+	<%}else{
+			ReadDao readDao = ReadDaoFactory.getReadDAoInstance();
+			int bookID = book.getBookID();
+			int userID = user.getUserID();
+			if(readDao.findread(bookID, userID)==null){
+	%>
+		<form action="ModifyReadNum" method="post" class="read">
+			<label><input name="score" type="radio" value="1" />1分</label>
+			<label><input name="score" type="radio" value="2" />2分</label>
+			<label><input name="score" type="radio" value="3" />3分</label>
+			<label><input name="score" type="radio" value="4" />4分</label>
+			<label><input name="score" type="radio" value="5" checked="checked" />5分</label>
+			<input type="submit" value="读过"/>
+			<input type="hidden" value ="${book.bookID}" name = "bookID"/>
+		</form>
+	<%} else{%>
+	<label>您的评分:<%=readDao.findread(bookID, userID).getScore() %></label>
+	<%} }%>
+		<h2>内容简介:</h2>
+		<p class="brief">${book.bookInfo}</p>
+	</div>
+	<font color="red">${requestScope.error }</font>
 	
+	
+	<div class="comment">
+		<h2>热门评论</h2>
+		<c:forEach items="${requestScope.commentList1}" var="comment">
+			<div class="commentInfo">
+				${comment.commentTitle }:
+				${comment.commentContent}
+				<div class="commentuserInfo">
+					回复人:${comment.userID} 
+			  		时间:${comment.publishTime}
+			  		<font color="red">${requestScope.error1 }</font>
+			  		<a href="ModifyApproveNum?commentID=${comment.commentID}&action=1">赞同</a>
+			  		${comment.commentApprove}
+			  		<a href="ModifyApproveNum?commentID=${comment.commentID}&action=0">反对</a>
+			  	</div>
+		  	</div>
+		</c:forEach>
+		
+		<h2>最新评论</h2>
+		<c:forEach items="${requestScope.commentList2}" var="comment">
+			<div class="commentInfo">
+				${comment.commentTitle }:
+				${comment.commentContent}
+			</div>
+			<div class="commentuserInfo">
+				回复人:${comment.userID} 
+		  		时间:${comment.publishTime}
+		  		<font color="red">${requestScope.error1 }</font>
+		  		<a href="ModifyApproveNum?commentID=${comment.commentID}&action=1">赞同</a>
+		  		${comment.commentApprove}
+		  		<a href="ModifyApproveNum?commentID=${comment.commentID}&action=0">反对</a>
+		  	</div>
+		</c:forEach>
+		
+		
+		
+		
+		<div class="commentBox">
+			<form action="AddComment" method="post">
+				<p>标题:<input name = "commenttitle" type = "text"></p>
+				<p>内容:</p>
+				<p>
+					<FCK:editor instanceName="commentcontent" basePath="/fckeditor" toolbarSet="myToolbar" height="400" width="750"></FCK:editor>
+				</p>
+				<input type="hidden" name="bookID" value="${book.bookID}"/> 
+				<p><input value = "提交" type = "submit"></p>
+			</form>
+		
+		</div>
 	</div>
 </body>
 </html>

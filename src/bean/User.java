@@ -6,6 +6,7 @@ public class User {
 	private String userSex;
 	private String password;
 	private int userApprove;
+	private int userRead;
 	public int getUserID() {
 		return userID;
 	}
@@ -35,5 +36,11 @@ public class User {
 	}
 	public void setUserApprove(int userApprove) {
 		this.userApprove = userApprove;
+	}
+	public int getUserRead() {
+		return userRead;
+	}
+	public void setUserRead(int userRead) {
+		this.userRead = userRead;
 	}
 }

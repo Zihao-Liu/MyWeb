@@ -31,9 +31,10 @@ public class ShowBook extends HttpServlet {
 		Book book = bookDao.findBookByID(bookID);
 		request.setAttribute("book", book);
 		CommentDao commentDao = CommentDaoFactory.getCommentDaoInstance();
-		List<Comment> comments = commentDao.findCommentByBookID(bookID);
-		request.setAttribute("commentList", comments);
-		
+		List<Comment> comments1 = commentDao.findCommentByBookIDOrderByApprove(bookID);
+		request.setAttribute("commentList1", comments1);
+		List<Comment> comments2 = commentDao.findCommentByBookIDOrderByPublishTime(bookID);
+		request.setAttribute("commentList2", comments2);
 		
 		dispatcher = servletContext.getRequestDispatcher("/showBook.jsp");
 		dispatcher.forward(request, response);
