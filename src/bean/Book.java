@@ -10,6 +10,8 @@ public class Book {
 	private String bookInfo;
 	private String bookCoverPath;
 	private Date bookAddTime;
+	private int bookRead;
+	private float bookScore;
 	public int getBookID() {
 		return bookID;
 	}
@@ -51,5 +53,17 @@ public class Book {
 	}
 	public void setBookAddTime(Date bookAddTime) {
 		this.bookAddTime = bookAddTime;
+	}
+	public int getBookRead() {
+		return bookRead;
+	}
+	public void setBookRead(int bookRead) {
+		this.bookRead = bookRead;
+	}
+	public float getBookScore() {
+		return bookScore;
+	}
+	public void setBookScore(float bookScore) {
+		this.bookScore = bookScore;
 	}
 }

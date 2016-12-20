@@ -11,6 +11,8 @@ public interface UserDao {
 	public User findUserByID(int userID);
 	public List<User> findAllUser();
 	public List<User> findAllUserOrderByApprove();
+	public List<User> findAlluserOrderByRead();
 	public void updateUser(User user);
 	public void modifyUserApprove(int userID,int action);
+	public void modifyUserRead(int userID);
 }

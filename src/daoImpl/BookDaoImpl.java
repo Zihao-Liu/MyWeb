@@ -62,6 +62,8 @@ public class BookDaoImpl implements BookDao {
 				book.setBookInfo(rs.getString(5));
 				book.setBookAddTime(rs.getDate(6));
 				book.setBookCoverPath(rs.getString(7));
+				book.setBookRead(rs.getInt(8));
+				book.setBookScore(rs.getFloat(9));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -93,6 +95,8 @@ public class BookDaoImpl implements BookDao {
 				book.setBookInfo(rs.getString(5));
 				book.setBookAddTime(rs.getDate(6));
 				book.setBookCoverPath(rs.getString(7));
+				book.setBookRead(rs.getInt(8));
+				book.setBookScore(rs.getFloat(9));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -124,6 +128,8 @@ public class BookDaoImpl implements BookDao {
 				book.setBookInfo(rs.getString(5));
 				book.setBookAddTime(rs.getDate(6));
 				book.setBookCoverPath(rs.getString(7));
+				book.setBookRead(rs.getInt(8));
+				book.setBookScore(rs.getFloat(9));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -155,6 +161,8 @@ public class BookDaoImpl implements BookDao {
 				book.setBookInfo(rs.getString(5));
 				book.setBookAddTime(rs.getDate(6));
 				book.setBookCoverPath(rs.getString(7));
+				book.setBookRead(rs.getInt(8));
+				book.setBookScore(rs.getFloat(9));
 				books.add(book);
 			}
 		}catch(SQLException e){
@@ -174,7 +182,7 @@ public class BookDaoImpl implements BookDao {
 	}
 
 	@Override
-	public List<Book> findAllBookByTime() {
+	public List<Book> findAllBookOrderByTime() {
 		Connection conn = DBConnection.getConnection();
 		String findbysql = "select * from tb_book order by bookAddTime Desc";
 		PreparedStatement pstmt = null;
@@ -192,6 +200,8 @@ public class BookDaoImpl implements BookDao {
 				book.setBookInfo(rs.getString(5));
 				book.setBookAddTime(rs.getDate(6));
 				book.setBookCoverPath(rs.getString(7));
+				book.setBookRead(rs.getInt(8));
+				book.setBookScore(rs.getFloat(9));
 				books.add(book);
 			}
 		}catch(SQLException e){
@@ -205,9 +215,88 @@ public class BookDaoImpl implements BookDao {
 	}
 
 	@Override
-	public List<Book> findAllBookByApprove() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Book> findAllBookOrderByRead() {
+		Connection conn = DBConnection.getConnection();
+		String findbysql = "select * from tb_book order by bookRead Desc";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Book> books = new ArrayList<Book>();
+		try{
+			pstmt = conn.prepareStatement(findbysql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Book book = new Book();
+				book.setBookID(rs.getInt(1));
+				book.setBookName(rs.getString(2));
+				book.setBookAurthor(rs.getString(3));
+				book.setBookType(rs.getString(4));
+				book.setBookInfo(rs.getString(5));
+				book.setBookAddTime(rs.getDate(6));
+				book.setBookCoverPath(rs.getString(7));
+				book.setBookRead(rs.getInt(8));
+				book.setBookScore(rs.getFloat(9));
+				books.add(book);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(rs);
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+		return books;
+	}
+
+	@Override
+	public List<Book> findAllBookOrderByScore() {
+		Connection conn = DBConnection.getConnection();
+		String findbysql = "select * from tb_book order by bookScore Desc";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Book> books = new ArrayList<Book>();
+		try{
+			pstmt = conn.prepareStatement(findbysql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Book book = new Book();
+				book.setBookID(rs.getInt(1));
+				book.setBookName(rs.getString(2));
+				book.setBookAurthor(rs.getString(3));
+				book.setBookType(rs.getString(4));
+				book.setBookInfo(rs.getString(5));
+				book.setBookAddTime(rs.getDate(6));
+				book.setBookCoverPath(rs.getString(7));
+				book.setBookRead(rs.getInt(8));
+				book.setBookScore(rs.getFloat(9));
+				books.add(book);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(rs);
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+		return books;
+	}
+
+	@Override
+	public void modifyBookRead(int bookID,float bookScore) {
+		Connection conn = DBConnection.getConnection();
+		String sql="update tb_book set bookRead = bookRead+1,bookScore = ((bookScore*(bookRead-1))+?)/bookRead  where bookID = ?";
+		PreparedStatement  pstmt = null;
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setFloat(1,bookScore);
+			pstmt.setInt(2, bookID);
+			pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+		
 	}
 
 	

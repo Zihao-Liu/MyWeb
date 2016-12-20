@@ -34,7 +34,7 @@ public class ModifyApproveNum extends HttpServlet {
 		User user = (User)request.getSession().getAttribute("user");//获得当前登录用户
 		if(user == null){
 			request.setAttribute("error", "请先登录");
-			dispatcher = servletContext.getRequestDispatcher("/index.jsp");
+			dispatcher = servletContext.getRequestDispatcher("//showBook.jsp");
 		}
 		else{
 			int action = Integer.parseInt(request.getParameter("action"));//获得点赞还是反对
@@ -72,8 +72,10 @@ public class ModifyApproveNum extends HttpServlet {
 			BookDao bookDao = BookDaoFactory.getBookDaoInstance();
 			Book book = bookDao.findBookByID(bookID);
 			request.setAttribute("book", book);
-			List<Comment> comments = commentDao.findCommentByBookID(bookID);
-			request.setAttribute("commentList", comments);
+			List<Comment> comments1 = commentDao.findCommentByBookIDOrderByApprove(bookID);
+			request.setAttribute("commentList1", comments1);
+			List<Comment> comments2 = commentDao.findCommentByBookIDOrderByPublishTime(bookID);
+			request.setAttribute("commentList2", comments2);
 			dispatcher = servletContext.getRequestDispatcher("/showBook.jsp");
 		}
 		dispatcher.forward(request, response);
