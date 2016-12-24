@@ -57,6 +57,22 @@
     <servlet-name>ModifyReadNum</servlet-name>
     <url-pattern>/ModifyReadNum</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>PersonalInfo</servlet-name>
+    <servlet-class>servlet.PersonalInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PersonalInfo</servlet-name>
+    <url-pattern>/PersonalInfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LogOff</servlet-name>
+    <servlet-class>servlet.LogOff</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogOff</servlet-name>
+    <url-pattern>/LogOff</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

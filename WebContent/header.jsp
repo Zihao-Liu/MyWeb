@@ -22,7 +22,11 @@
 					<font color="red">${requestScope.error }</font>
 				</c:when>
 				<c:otherwise>
-					<a href="">用户名：${user.userName}</a>
+					<select>
+  						<option value ="username">用户名：${user.userName}</option>
+  						<option value ="personalinfo" onclick = "window.location.href='PersonalInfo';">个人主页</option>
+  						<option value="logoff" onclick = "window.location.href='LogOff';">退出</option>
+					</select>
 				</c:otherwise>
 			</c:choose>
 		</div>
