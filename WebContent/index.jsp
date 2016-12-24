@@ -44,12 +44,16 @@
 					<%
 						UserDao userDao = UserDaoFactory.getUserDaoInstance();
 						List<User> users = userDao.findAlluserOrderByRead();
+						int i =0;
 						for(User user:users){
 					%>
 							<li class = "userApprove">
 								<div><a href = ""><%=user.getUserName() %></a>:<%=user.getUserRead() %>本</div>
 							</li>
-					<%} %>
+					<%if(i==9)
+						break;
+						i++;
+					} %> 
 				</ul>
 			</div>
 			
@@ -58,12 +62,16 @@
 				<ul>
 					<%
 						users = userDao.findAllUserOrderByApprove();
+						i=0;
 						for(User user:users){
 					%>
 							<li class = "userApprove">
 								<div><a href = ""><%=user.getUserName() %></a>:<%=user.getUserApprove() %></div>
 							</li>
-					<%} %>
+					<%if(i==9)
+						break;
+						i++;
+					} %>
 				</ul>
 			</div>
 		
@@ -73,14 +81,18 @@
 					<%
 						CommentDao commentDao = CommentDaoFactory.getCommentDaoInstance();
 						List<Comment> comments = commentDao.findCommentOrderByApprove();
+						i = 0;
 						for(Comment comment:comments){
-					%>
+					%> 
 							<li class = "comment">
 								<div><%=comment.getCommentTitle() %></div>
 								<div><a href = "ShowBook?bookID=<%=comment.getBookID()%>"><%=comment.getCommentContent() %></a></div>
 								<div>点赞数:<%=comment.getCommentApprove() %></div>
 							</li>
-					<%} %>
+					<%if(i==4)
+						break;
+						i++;
+					} %>
 				</ul>
 			</div>
 		</div>
@@ -93,6 +105,7 @@
 					<%
 						BookDao bookDao = BookDaoFactory.getBookDaoInstance();
 						List<Book> books = bookDao.findAllBookOrderByTime(); 
+						i=0;
 						for(Book book:books){
 					%>
 							<li class = "book">
@@ -100,7 +113,10 @@
 								<div><a href = "ShowBook?bookID=<%=book.getBookID()%>"><%=book.getBookName() %></a></div>
 								<div><%=book.getBookAurthor() %></div>
 							</li>
-					<%} %>
+					<%if(i==1)
+						break;
+						i++;
+					} %> 
 				</ul>
 			</div>
 			
@@ -109,6 +125,7 @@
 				<ul>
 					<%
 						books = bookDao.findAllBookOrderByRead(); 
+						i=0;
 						for(Book book:books){
 					%>
 							<li class = "book">
@@ -117,7 +134,10 @@
 								<div>作者:<%=book.getBookAurthor() %></div>
 								<div>已读人数:<%=book.getBookRead() %></div>
 							</li>
-					<%} %>
+					<%if(i==4)
+						break;
+						i++;
+					} %>
 				</ul>
 			</div>
 		
@@ -125,7 +145,8 @@
 				<h2>评分最高</h2>
 				<ul>
 					<%
-						books = bookDao.findAllBookOrderByScore(); 
+						books = bookDao.findAllBookOrderByScore();
+						i=0;
 						for(Book book:books){
 					%>
 							<li class = "book">
@@ -134,7 +155,10 @@
 								<div>作者:<%=book.getBookAurthor() %></div>
 								<div>评分:<%=book.getBookScore() %></div>
 							</li>
-					<%} %>
+					<%if(i==9)
+						break;
+						i++;
+					} %>
 				</ul>
 			</div>
 		</div>
