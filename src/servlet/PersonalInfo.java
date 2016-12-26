@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.User;
 import dao.FindReadDao;
+import dao.UserDao;
 import factory.FindReadDaoFactory;
+import factory.UserDaoFactory;
 
 
 public class PersonalInfo extends HttpServlet {
@@ -26,9 +28,11 @@ public class PersonalInfo extends HttpServlet {
 		
 		User user = (User)request.getSession().getAttribute("user");
 		FindReadDao findReadDao = FindReadDaoFactory.getFindReadDaoInstance();
-		System.out.println(user.getUserID());
 		//List <Book> books = findReadDao.findAllBookRead(user.getUserID());
 		request.setAttribute("userreadbook",findReadDao.findAllBookRead(user.getUserID()));
+		UserDao userDao = UserDaoFactory.getUserDaoInstance();
+		User userNew = userDao.findUserByID(user.getUserID());
+		request.setAttribute("userNew", userNew);
 		dispatcher=servletContext.getRequestDispatcher("/personalinfo.jsp");
 		dispatcher.forward(request, response);
 		

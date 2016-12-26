@@ -16,16 +16,16 @@
 							<label for="name" >密    码:</label>
 							<input name = "userpassword" type = "password" id="password">
 						</span>
-						<input value = "提交" type = "submit">
+						<input value = "登录" type = "submit">
 						<input value="注册" type = "button"  onclick = "window.location.href='register.jsp';">
 					</form>
 					<font color="red">${requestScope.error }</font>
 				</c:when>
 				<c:otherwise>
-					<select>
-  						<option value ="username">用户名：${user.userName}</option>
-  						<option value ="personalinfo" onclick = "window.location.href='PersonalInfo';">个人主页</option>
-  						<option value="logoff" onclick = "window.location.href='LogOff';">退出</option>
+					<select onchange="window.location=this.value;">
+  						<option >用户名：${user.userName}</option>
+  						<option value ="PersonalInfo" >个人主页</option>
+  						<option value="LogOff" >退出</option>
 					</select>
 				</c:otherwise>
 			</c:choose>

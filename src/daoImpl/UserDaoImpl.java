@@ -102,7 +102,7 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public User findUserByID(int userID) {
 		Connection conn = DBConnection.getConnection();
-		String fingBySql = "select * from tb_user whereuserID = ?";
+		String fingBySql = "select * from tb_user where userID = ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		User user = new User();

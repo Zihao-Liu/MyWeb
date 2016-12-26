@@ -66,15 +66,15 @@
 			<input type="submit" value="读过"/>
 			<input type="hidden" value ="${book.bookID}" name = "bookID"/>
 		</form>
-	<%} else{%>
-	<label>您的评分:<%=readDao.findread(bookID, userID).getScore() %></label>
+	<%} else{%><font color="red">${requestScope.error }</font>
+	<label class = "read">您的评分:<%=readDao.findread(bookID, userID).getScore() %></label>
 	<%} }%>
 		<h2>内容简介:</h2>
 		<p class="brief">${book.bookInfo}</p>
 	</div>
-	<font color="red">${requestScope.error }</font>
 	
 	
+
 	<div class="comment">
 		<h2>热门评论</h2>
 		<c:forEach items="${requestScope.commentList1}" var="comment">
