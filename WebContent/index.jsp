@@ -1,13 +1,13 @@
-<%@page import="daoImpl.BookDaoImpl"%>
-<%@page import="factory.BookDaoFactory"%>
-<%@page import="factory.UserDaoFactory"%>
-<%@page import="factory.CommentDaoFactory"%>
-<%@page import="dao.BookDao"%>
-<%@page import="dao.CommentDao"%>
-<%@page import="dao.UserDao"%>
-<%@page import="bean.Book"%>
-<%@page import="bean.Comment"%>
-<%@page import="bean.User"%>
+<%@page import="daoImpl.BookDaoImpl" language="java"%>
+<%@page import="factory.BookDaoFactory" language="java"%>
+<%@page import="factory.UserDaoFactory" language="java"%>
+<%@page import="factory.CommentDaoFactory" language="java"%>
+<%@page import="dao.BookDao" language="java"%>
+<%@page import="dao.CommentDao" language="java"%>
+<%@page import="dao.UserDao" language="java"%>
+<%@page import="bean.Book" language="java"%>
+<%@page import="bean.Comment" language="java"%>
+<%@page import="bean.User" language="java"%>
 <%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -113,7 +113,7 @@
 								<div><a href = "ShowBook?bookID=<%=book.getBookID()%>"><%=book.getBookName() %></a></div>
 								<div><%=book.getBookAurthor() %></div>
 							</li>
-					<%if(i==1)
+					<%if(i==4)
 						break;
 						i++;
 					} %> 
@@ -155,7 +155,7 @@
 								<div>×÷Õß:<%=book.getBookAurthor() %></div>
 								<div>ÆÀ·Ö:<%=book.getBookScore() %></div>
 							</li>
-					<%if(i==9)
+					<%if(i==4)
 						break;
 						i++;
 					} %>

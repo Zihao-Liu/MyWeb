@@ -11,9 +11,9 @@
 <body>
 	<%@include file = "header.jsp"%> 
 	<div id = "userInfo">
-		<h2><label>用户名：</label>${user.userName}</h2>
-		<h2><label>我收到的赞:</label>${user.userApprove}</h2>
-		<h2><label>我读过的书:</label>${user.userRead }</h2>
+		<h2><label>用户名：</label>${userNew.userName}</h2>
+		<h2><label>我收到的赞:</label>${userNew.userApprove}</h2>
+		<h2><label>我读过的书:</label>${userNew.userRead }</h2>
 	</div>
 	<div class="booklist">
 	<c:forEach items="${requestScope.userreadbook}" var="userreadbook">

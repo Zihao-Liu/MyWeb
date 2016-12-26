@@ -1,3 +1,4 @@
+
 # MyWeb是第一个web项目，因为还没有学习框架，所以主要采用了jsp, servlet, javabean, MySQL来实现。
 主要功能为：
 1）登录，注册，退出。
