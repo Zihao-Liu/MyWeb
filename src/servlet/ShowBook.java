@@ -35,14 +35,10 @@ public class ShowBook extends HttpServlet {
 		request.setAttribute("commentList1", comments1);
 		List<Comment> comments2 = commentDao.findCommentByBookIDOrderByPublishTime(bookID);
 		request.setAttribute("commentList2", comments2);
-		
 		dispatcher = servletContext.getRequestDispatcher("/showBook.jsp");
 		dispatcher.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

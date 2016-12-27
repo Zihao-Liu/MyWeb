@@ -48,7 +48,7 @@
 						for(User user:users){
 					%>
 							<li class = "userApprove">
-								<div><a href = ""><%=user.getUserName() %></a>:<%=user.getUserRead() %>本</div>
+								<div><a href = "ShowUser?userID=<%=user.getUserID()%>"><%=user.getUserName() %></a>:<%=user.getUserRead() %>本</div>
 							</li>
 					<%if(i==9)
 						break;
@@ -66,7 +66,7 @@
 						for(User user:users){
 					%>
 							<li class = "userApprove">
-								<div><a href = ""><%=user.getUserName() %></a>:<%=user.getUserApprove() %></div>
+								<div><a href = "ShowUser?userID=<%=user.getUserID()%>"><%=user.getUserName() %></a>:<%=user.getUserApprove() %></div>
 							</li>
 					<%if(i==9)
 						break;
@@ -109,7 +109,7 @@
 						for(Book book:books){
 					%>
 							<li class = "book">
-								<div><img src="<%=book.getBookCoverPath()%>"/></div>
+								<div><a href = "ShowBook?bookID=<%=book.getBookID()%>"><img src="<%=book.getBookCoverPath()%>"/></a></div>
 								<div><a href = "ShowBook?bookID=<%=book.getBookID()%>"><%=book.getBookName() %></a></div>
 								<div><%=book.getBookAurthor() %></div>
 							</li>
@@ -129,7 +129,7 @@
 						for(Book book:books){
 					%>
 							<li class = "book">
-								<div><img src="<%=book.getBookCoverPath()%>"/></div>
+								<div><a href = "ShowBook?bookID=<%=book.getBookID()%>"><img src="<%=book.getBookCoverPath()%>"/></a></div>
 								<div>书名:<a href = "ShowBook?bookID=<%=book.getBookID()%>"><%=book.getBookName() %></a></div>
 								<div>作者:<%=book.getBookAurthor() %></div>
 								<div>已读人数:<%=book.getBookRead() %></div>
@@ -150,7 +150,7 @@
 						for(Book book:books){
 					%>
 							<li class = "book">
-								<div><img src="<%=book.getBookCoverPath()%>"/></div>
+								<div><a href = "ShowBook?bookID=<%=book.getBookID()%>"><img src="<%=book.getBookCoverPath()%>"/></a></div>
 								<div>书名:<a href = "ShowBook?bookID=<%=book.getBookID()%>"><%=book.getBookName() %></a></div>
 								<div>作者:<%=book.getBookAurthor() %></div>
 								<div>评分:<%=book.getBookScore() %></div>

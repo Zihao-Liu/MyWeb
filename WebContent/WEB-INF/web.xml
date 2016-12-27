@@ -73,6 +73,22 @@
     <servlet-name>LogOff</servlet-name>
     <url-pattern>/LogOff</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ShowUser</servlet-name>
+    <servlet-class>servlet.ShowUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowUser</servlet-name>
+    <url-pattern>/ShowUser</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>SearchBook</servlet-name>
+    <servlet-class>servlet.SearchBook</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchBook</servlet-name>
+    <url-pattern>/SearchBook</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
