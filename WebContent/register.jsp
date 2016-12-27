@@ -8,7 +8,8 @@
 <title>×¢²á</title>
 </head>
 <body>
-<div id="topnavigation">
+<%@include file = "header.jsp" %> 
+<%-- <div id="topnavigation">
 		<div id="logo">Áõ×ÓºÀ</div>
 		
 		
@@ -17,8 +18,8 @@
 		</div>
 		
 		<div id="menu">
-				<form action="" method="post" id="searchbar">
-					<input name="searchText" type="text" placeholder ="ËÑË÷Äã¸ÐÐËÈ¤µÄÍ¼Êé" id ="searchtext">
+				<form action="SearchBook" method="post" id="searchbar">
+					<input name="searchText" type="text" placeholder ="ËÑË÷Äã¸ÐÐËÈ¤µÄÍ¼ÊéÃû³Æ" id ="searchtext">
 					<input value="ËÑË÷" type="submit">
 				</form>
 				<ul>
@@ -27,7 +28,7 @@
 				</ul>
 		</div>
 	
-	</div>
+	</div>--%>
 
 	<font color="red">${requestScope.error }</font>
 	<br><br>
