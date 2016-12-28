@@ -8,6 +8,7 @@
 <%@page import="bean.Book" language="java"%>
 <%@page import="bean.Comment" language="java"%>
 <%@page import="bean.User" language="java"%>
+<%@page import="java.net.URLEncoder" language="java" %>
 <%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -27,14 +28,14 @@
 			<div class="sort">
 				<h2>分类</h2>
 				<ul>
-					<li><a href="">小说</a></li>
-					<li><a href="">戏剧</a></li>
-					<li><a href="">散文</a></li>
-					<li><a href="">漫画</a></li>
+					<li><a href="BookClassify?bookType=<%=URLEncoder.encode("小说", "utf-8") %>">小说</a></li>
+					<li><a href="BookClassify?bookType=<%=URLEncoder.encode("戏剧", "utf-8") %>">戏剧</a></li>
+					<li><a href="BookClassify?bookType=<%=URLEncoder.encode("散文", "utf-8") %>">散文</a></li>
+					<li><a href="BookClassify?bookType=<%=URLEncoder.encode("漫画", "utf-8") %>">漫画</a></li>
 				</ul>
 				<ul>
-					<li><a href="">历史</a></li>
-					<li><a href="">哲学</a></li>
+					<li><a href="BookClassify?bookType=<%=URLEncoder.encode("历史", "utf-8") %>">历史</a></li>
+					<li><a href="BookClassify?bookType=<%=URLEncoder.encode("哲学", "utf-8") %>">哲学</a></li>
 				</ul>	
 			</div>
 			

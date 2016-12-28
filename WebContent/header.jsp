@@ -38,7 +38,7 @@
 				</form>
 				<ul>
 					<li class = "navigationbutton"><a href = "./index.jsp">Ê×Ò³</a></li>
-					<li class = "navigationbutton"><a href="">Í¼Êé</a></li>
+					<li class = "navigationbutton"><a href="./bookPage.jsp">Í¼Êé</a></li>
 				</ul>
 		</div>
 	
