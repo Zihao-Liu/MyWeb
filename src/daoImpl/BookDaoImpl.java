@@ -299,6 +299,40 @@ public class BookDaoImpl implements BookDao {
 		
 	}
 
+	@Override
+	public List<Book> findAllBookByType(String bookType) {
+		Connection conn = DBConnection.getConnection();
+		String sql="select * from tb_book where bookType = ?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Book> books = new ArrayList<Book>();
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bookType);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Book book = new Book();
+				book.setBookID(rs.getInt(1));
+				book.setBookName(rs.getString(2));
+				book.setBookAurthor(rs.getString(3));
+				book.setBookType(rs.getString(4));
+				book.setBookInfo(rs.getString(5));
+				book.setBookAddTime(rs.getDate(6));
+				book.setBookCoverPath(rs.getString(7));
+				book.setBookRead(rs.getInt(8));
+				book.setBookScore(rs.getFloat(9));
+				books.add(book);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(rs);
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+		return books;
+	}
+
 	
 
 }

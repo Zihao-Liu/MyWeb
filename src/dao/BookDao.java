@@ -14,6 +14,7 @@ public interface BookDao {
 	public List<Book> findAllBookOrderByTime();
 	public List<Book> findAllBookOrderByRead();
 	public List<Book> findAllBookOrderByScore();
+	public List<Book> findAllBookByType(String bookType);
 	public void updateBook(Book book);
 	public void modifyBookRead(int bookID,float bookScore);
 }
