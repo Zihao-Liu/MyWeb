@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.User;
 import dao.FindReadDao;
+import dao.StatusDao;
 import dao.UserDao;
 import factory.FindReadDaoFactory;
+import factory.StatusDaoFactory;
 import factory.UserDaoFactory;
 
 
@@ -32,6 +34,8 @@ public class ShowUser extends HttpServlet {
 		int userID= Integer.parseInt(request.getParameter("userID"));
 		FindReadDao findReadDao = FindReadDaoFactory.getFindReadDaoInstance();
 		request.setAttribute("userreadbook",findReadDao.findAllBookRead(userID));
+		StatusDao statusDao = StatusDaoFactory.getStatusDaoInstance();
+		request.setAttribute("userstatus", statusDao.findStatusByUserID(userID));
 		UserDao userDao = UserDaoFactory.getUserDaoInstance();
 		User userNew = userDao.findUserByID(userID);
 		request.setAttribute("userNew", userNew);

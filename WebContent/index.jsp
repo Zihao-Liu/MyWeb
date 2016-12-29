@@ -1,13 +1,12 @@
-<%@page import="daoImpl.BookDaoImpl" language="java"%>
-<%@page import="factory.BookDaoFactory" language="java"%>
 <%@page import="factory.UserDaoFactory" language="java"%>
 <%@page import="factory.CommentDaoFactory" language="java"%>
-<%@page import="dao.BookDao" language="java"%>
+<%@page import="factory.StatusDaoFactory" language="java"%>
 <%@page import="dao.CommentDao" language="java"%>
 <%@page import="dao.UserDao" language="java"%>
-<%@page import="bean.Book" language="java"%>
+<%@page import="dao.StatusDao" language="java"%>
 <%@page import="bean.Comment" language="java"%>
 <%@page import="bean.User" language="java"%>
+<%@page import="bean.Status" language="java"%>
 <%@page import="java.net.URLEncoder" language="java" %>
 <%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -17,16 +16,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <link href="index.css" type="text/css" rel="stylesheet" media="all" />
 <link href="header.css" type="text/css" rel="stylesheet" media="all" />
-
+<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <title>主页</title>
 </head>
 <body>
 	
-	<%@include file = "header.jsp"%> 
+	<%@include file = "header.jsp"%>
+	<div id ="top">
+		<form action="AddStatus" method="post">
+			<textarea cols="80" rows="10" name="statusContent">你有什么想说的</textarea>
+			<script type="text/javascript">CKEDITOR.replace( "statusContent",{
+				width:950,height:60,
+				toolbar :
+				    [
+						['Image','Link']
+				    ]});</script>
+				    <input type="submit" value="发布">
+		</form>
+	</div>
 	<div class="content">
 		<div class="sidebar">
 			<div class="sort">
-				<h2>分类</h2>
+				<h2>图书分类</h2>
 				<ul>
 					<li><a href="BookClassify?bookType=<%=URLEncoder.encode("小说", "utf-8") %>">小说</a></li>
 					<li><a href="BookClassify?bookType=<%=URLEncoder.encode("戏剧", "utf-8") %>">戏剧</a></li>
@@ -100,66 +111,20 @@
 	
 	
 		<div class="main">
-			<div class="recommendbytime">
-				<h2>新书速递</h2>
-				<ul>
-					<%
-						BookDao bookDao = BookDaoFactory.getBookDaoInstance();
-						List<Book> books = bookDao.findAllBookOrderByTime(); 
-						i=0;
-						for(Book book:books){
-					%>
-							<li class = "book">
-								<div><a href = "ShowBook?bookID=<%=book.getBookID()%>"><img src="<%=book.getBookCoverPath()%>"/></a></div>
-								<div><a href = "ShowBook?bookID=<%=book.getBookID()%>"><%=book.getBookName() %></a></div>
-								<div><%=book.getBookAurthor() %></div>
-							</li>
-					<%if(i==4)
-						break;
-						i++;
-					} %> 
-				</ul>
-			</div>
-			
-			<div class="recommendbyhot">
-				<h2>最受关注</h2>
-				<ul>
-					<%
-						books = bookDao.findAllBookOrderByRead(); 
-						i=0;
-						for(Book book:books){
-					%>
-							<li class = "book">
-								<div><a href = "ShowBook?bookID=<%=book.getBookID()%>"><img src="<%=book.getBookCoverPath()%>"/></a></div>
-								<div>书名:<a href = "ShowBook?bookID=<%=book.getBookID()%>"><%=book.getBookName() %></a></div>
-								<div>作者:<%=book.getBookAurthor() %></div>
-								<div>已读人数:<%=book.getBookRead() %></div>
-							</li>
-					<%if(i==4)
-						break;
-						i++;
-					} %>
-				</ul>
-			</div>
-		
 			<div class="recommendbyscore">
-				<h2>评分最高</h2>
+				<h2>最新动态</h2>
 				<ul>
 					<%
-						books = bookDao.findAllBookOrderByScore();
-						i=0;
-						for(Book book:books){
-					%>
-							<li class = "book">
-								<div><a href = "ShowBook?bookID=<%=book.getBookID()%>"><img src="<%=book.getBookCoverPath()%>"/></a></div>
-								<div>书名:<a href = "ShowBook?bookID=<%=book.getBookID()%>"><%=book.getBookName() %></a></div>
-								<div>作者:<%=book.getBookAurthor() %></div>
-								<div>评分:<%=book.getBookScore() %></div>
-							</li>
-					<%if(i==4)
-						break;
-						i++;
-					} %>
+						StatusDao statusDao= StatusDaoFactory.getStatusDaoInstance();
+						List<Status> statuss = statusDao.findAllStatus();
+						for(Status status:statuss){
+					%> 
+					<li class = "status">
+						<div><%=status.getStatusContent()%></div>
+						<div class="user">作者:<a href = "ShowUser?userID=<%=status.getUserID()%>"><%=userDao.findUserByID(status.getUserID()).getUserName()%></a></div>
+						<div><%=status.getPublishTime() %></div>
+					</li>
+					<%} %>
 				</ul>
 			</div>
 		</div>

@@ -12,7 +12,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <link href="header.css" type="text/css" rel="stylesheet" media="all" />
-<link href="index.css" type="text/css" rel="stylesheet" media="all" />
+<link href="bookpage.css" type="text/css" rel="stylesheet" media="all" />
 <title>${book.bookType}</title>
 </head>
 <body>

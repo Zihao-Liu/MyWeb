@@ -15,7 +15,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<link href="index.css" type="text/css" rel="stylesheet" media="all" />
+<link href="bookpage.css" type="text/css" rel="stylesheet" media="all" />
 <link href="header.css" type="text/css" rel="stylesheet" media="all" />
 <title>图书</title>
 </head>
