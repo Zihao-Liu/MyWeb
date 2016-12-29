@@ -1,4 +1,6 @@
 .content{width:1350px;}
+#top{margin-left:200px;padding-top:20px;}
+#top textarea{font-color:rgb(51, 153, 255);}
 .sidebar{
 	float:right;
 	margin-right:200px;
@@ -11,20 +13,6 @@
 .sort li{display:inline;list-style:none;padding-right:10px;}
 .rank li{list-style:decimal;}
 
-.main{margin-left:200px;font-size:80%}
-.recommendbytime{height:300px;width:500px;}
-.recommendbytime ul{margin-left:-50px;}
-.recommendbytime li{list-style:none; padding:20px 20px 0 20px;float:left;}
-
-.recommendbyhot{height:300px;width:500px;}
-.recommendbyhot ul{margin-left:-50px;}
-.recommendbyhot li{list-style:none; padding:20px 20px 0 20px;float:left;}
-
-.recommendbyscore{height:300px;width:500px;}
-.recommendbyscore ul{margin-left:-50px;}
-.recommendbyscore li{list-style:none; padding:20px 20px 0 20px;float:left;}
-
-
-#bookclassify{list-style:none; padding:60px 40px 20px 0;float:left;}
-#bookclassify img{float:left;}
-.detail{padding-bottom:20px;padding-left:130px;}
+.main{margin-left:200px;font-size:80%;width:600px;font-size:120%;}
+.status{border-bottom-style:solid;list-style:none;}
+.user{float:left;padding-right:350px;}

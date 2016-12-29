@@ -16,13 +16,24 @@
 		<h2><label>我读过的书:</label>${userNew.userRead }</h2>
 	</div>
 	<div class="booklist">
-	<c:forEach items="${requestScope.userreadbook}" var="userreadbook">
-		<li class = "book">
-			<div><img src="${userreadbook.bookCoverPath}"/></div>
-			<div>书名:<a href = "ShowBook?bookID=${userreadbook.bookID}">${userreadbook.bookName }</a></div>
-			<div>作者:${userreadbook.bookAurthor}</div>
-		</li>
-	</c:forEach>
+		<h2>我的书单</h2>
+		<c:forEach items="${requestScope.userreadbook}" var="userreadbook">
+			<li class = "book">
+				<div><img src="${userreadbook.bookCoverPath}"/></div>
+				<div>书名:<a href = "ShowBook?bookID=${userreadbook.bookID}">${userreadbook.bookName }</a></div>
+				<div>作者:${userreadbook.bookAurthor}</div>
+			</li>
+		</c:forEach>
+	</div>
+	
+	<div class="statuslist">
+		<h2>我的动态</h2>
+		<c:forEach items="${requestScope.userstatus}" var="userstatus">
+			<li class = "status">
+				<div>${userstatus.statusContent }</div>
+				<div>${userstatus.publishTime}</div>
+			</li>
+		</c:forEach>
 	</div>
 </body>
 </html>

@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.User;
 import dao.FindReadDao;
+import dao.StatusDao;
 import dao.UserDao;
 import factory.FindReadDaoFactory;
+import factory.StatusDaoFactory;
 import factory.UserDaoFactory;
 
 
@@ -28,8 +30,10 @@ public class PersonalInfo extends HttpServlet {
 		
 		User user = (User)request.getSession().getAttribute("user");
 		FindReadDao findReadDao = FindReadDaoFactory.getFindReadDaoInstance();
-		//List <Book> books = findReadDao.findAllBookRead(user.getUserID());
 		request.setAttribute("userreadbook",findReadDao.findAllBookRead(user.getUserID()));
+		
+		StatusDao statusDao = StatusDaoFactory.getStatusDaoInstance();
+		request.setAttribute("userstatus", statusDao.findStatusByUserID(user.getUserID()));
 		UserDao userDao = UserDaoFactory.getUserDaoInstance();
 		User userNew = userDao.findUserByID(user.getUserID());
 		request.setAttribute("userNew", userNew);

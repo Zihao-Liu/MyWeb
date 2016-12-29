@@ -11,9 +11,6 @@ public class DBConnection {
 	private static final String DBURL = "jdbc:mysql://localhost:3306/db_myweb";
 	private static final String DBUSER = "root";
 	private static final String DBPASSWORD = "admin";
-	/*private static final String DBURL = "jdbc:mysql://us-cdbr-azure-east-c.cloudapp.net:3306/acsm_71c32d881b73cf9";
-	private static final String DBUSER = "bd388ca6904bd6";
-	private static final String DBPASSWORD = "ae1721e3";*/
 
 	
 	public static Connection getConnection(){
