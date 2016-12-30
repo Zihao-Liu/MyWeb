@@ -39,7 +39,7 @@ public class StatusRecognise extends HttpServlet {
 			}
 			else{
 				UserDao userDao = UserDaoFactory.getUserDaoInstance();
-				User user = userDao.findUser(userName);
+				User user = userDao.findUserByName(userName);
 				if(user == null){
 					request.setAttribute("error", "该用户不存在");
 					dispatcher = servletcontext.getRequestDispatcher("/index.jsp");

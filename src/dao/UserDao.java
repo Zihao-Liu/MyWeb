@@ -7,7 +7,7 @@ import bean.User;
 public interface UserDao {
 	public void addUser(User user);
 	public void deleteUser(int userID);
-	public User findUser(String userName);
+	public User findUserByName(String userName);
 	public User findUserByID(int userID);
 	public List<User> findAllUser();
 	public List<User> findAllUserOrderByApprove();

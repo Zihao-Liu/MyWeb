@@ -14,7 +14,7 @@ import util.DBConnection;
 public class UserDaoImpl implements UserDao{
 	
 	@Override
-	public User findUser(String userName){
+	public User findUserByName(String userName){
 		Connection conn = DBConnection.getConnection();
 		String findBySQL = "select * from tb_user where userName = ?";
 		PreparedStatement pstmt = null;
