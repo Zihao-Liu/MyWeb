@@ -32,8 +32,8 @@
 		</div>
 		
 		<div id="menu">
-				<form action="SearchBook" method="post" id="searchbar">
-					<input name="searchText" type="text" placeholder ="搜索你感兴趣的图书名称" id ="searchtext">
+				<form action="Search" method="post" id="searchbar">
+					<input name="searchText" type="text" placeholder ="搜索你感兴趣的图书或用户名称" id ="searchtext">
 					<input value="搜索" type="submit">
 				</form>
 				<ul>

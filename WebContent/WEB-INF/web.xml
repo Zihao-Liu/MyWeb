@@ -82,12 +82,12 @@
     <url-pattern>/ShowUser</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>SearchBook</servlet-name>
-    <servlet-class>servlet.SearchBook</servlet-class>
+    <servlet-name>Search</servlet-name>
+    <servlet-class>servlet.Search</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>SearchBook</servlet-name>
-    <url-pattern>/SearchBook</url-pattern>
+    <servlet-name>Search</servlet-name>
+    <url-pattern>/Search</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>BookClassify</servlet-name>

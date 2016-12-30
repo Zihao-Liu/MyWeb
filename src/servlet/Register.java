@@ -42,7 +42,7 @@ public class Register extends HttpServlet {
 				}else{
 					UserDao userDao = UserDaoFactory.getUserDaoInstance();
 					User user = new User();
-					if(userDao.findUser(userName)==null){
+					if(userDao.findUserByName(userName)==null){
 						user.setUserName(userName);
 						user.setUserSex(userSex);
 						user.setPassword(userPassword);
