@@ -11,15 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Book;
-import bean.Comment;
+import bean.BookComment;
 import bean.Read;
 import bean.User;
 import dao.BookDao;
-import dao.CommentDao;
+import dao.BookCommentDao;
 import dao.ReadDao;
 import dao.UserDao;
 import factory.BookDaoFactory;
-import factory.CommentDaoFactory;
+import factory.BookCommentDaoFactory;
 import factory.ReadDaoFactory;
 import factory.UserDaoFactory;
 
@@ -63,10 +63,10 @@ public class ModifyReadNum extends HttpServlet {
 			dispatcher = servletContext.getRequestDispatcher("/showBook.jsp");
 		}
 		request.setAttribute("book", book);
-		CommentDao commentDao = CommentDaoFactory.getCommentDaoInstance();
-		List<Comment> comments1 = commentDao.findCommentByBookIDOrderByApprove(bookID);
+		BookCommentDao commentDao = BookCommentDaoFactory.getCommentDaoInstance();
+		List<BookComment> comments1 = commentDao.findCommentByBookIDOrderByApprove(bookID);
 		request.setAttribute("commentList1", comments1);
-		List<Comment> comments2 = commentDao.findCommentByBookIDOrderByPublishTime(bookID);
+		List<BookComment> comments2 = commentDao.findCommentByBookIDOrderByPublishTime(bookID);
 		request.setAttribute("commentList2", comments2);
 		dispatcher.forward(request, response);
 		

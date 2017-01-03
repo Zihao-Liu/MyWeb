@@ -1,15 +1,15 @@
 <%@page import="factory.ReadDaoFactory"%>
 <%@page import="dao.ReadDao"%>
-<%@page import="factory.ApproveDaoFactory"%>
+<%@page import="factory.BookApproveDaoFactory"%>
 <%@page import="factory.UserDaoFactory"%>
-<%@page import="factory.CommentDaoFactory"%>
+<%@page import="factory.BookCommentDaoFactory"%>
 <%@page import="bean.Book"%>
 <%@page import="bean.User"%>
-<%@page import="bean.Comment"%>
-<%@page import="dao.CommentDao"%>
+<%@page import="bean.BookComment"%>
+<%@page import="dao.BookCommentDao"%>
 <%@page import="dao.BookDao"%>
 <%@page import="dao.UserDao"%>
-<%@page import="dao.ApproveDao"%>
+<%@page import="dao.BookApproveDao"%>
 <%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
 <%@ taglib uri="http://java.fckeditor.net" prefix="FCK"%>	
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -85,9 +85,9 @@
 					回复人:${comment.userID} 
 			  		时间:${comment.publishTime}
 			  		<font color="red">${requestScope.error1 }</font>
-			  		<a href="ModifyApproveNum?commentID=${comment.commentID}&action=1">赞同</a>
+			  		<a href="ModifyBookApproveNum?commentID=${comment.commentID}&action=1">赞同</a>
 			  		${comment.commentApprove}
-			  		<a href="ModifyApproveNum?commentID=${comment.commentID}&action=0">反对</a>
+			  		<a href="ModifyBookApproveNum?commentID=${comment.commentID}&action=0">反对</a>
 			  	</div>
 		  	</div>
 		</c:forEach>
@@ -102,9 +102,9 @@
 				回复人:${comment.userID} 
 		  		时间:${comment.publishTime}
 		  		<font color="red">${requestScope.error1 }</font>
-		  		<a href="ModifyApproveNum?commentID=${comment.commentID}&action=1">赞同</a>
+		  		<a href="ModifyBookApproveNum?commentID=${comment.commentID}&action=1">赞同</a>
 		  		${comment.commentApprove}
-		  		<a href="ModifyApproveNum?commentID=${comment.commentID}&action=0">反对</a>
+		  		<a href="ModifyBookApproveNum?commentID=${comment.commentID}&action=0">反对</a>
 		  	</div>
 		</c:forEach>
 		
@@ -112,7 +112,7 @@
 		
 		
 		<div class="commentBox">
-			<form action="AddComment" method="post">
+			<form action="AddBookComment" method="post">
 				<p>标题:<input name = "commenttitle" type = "text"></p>
 				<p>内容:</p>
 				<p>
