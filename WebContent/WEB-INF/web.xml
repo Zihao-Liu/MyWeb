@@ -34,20 +34,20 @@
     <url-pattern>/ShowBook</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>AddComment</servlet-name>
-    <servlet-class>servlet.AddComment</servlet-class>
+    <servlet-name>AddBookComment</servlet-name>
+    <servlet-class>servlet.AddBookComment</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AddComment</servlet-name>
-    <url-pattern>/AddComment</url-pattern>
+    <servlet-name>AddBookComment</servlet-name>
+    <url-pattern>/AddBookComment</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>ModifyApproveNum</servlet-name>
-    <servlet-class>servlet.ModifyApproveNum</servlet-class>
+    <servlet-name>ModifyBookApproveNum</servlet-name>
+    <servlet-class>servlet.ModifyBookApproveNum</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ModifyApproveNum</servlet-name>
-    <url-pattern>/ModifyApproveNum</url-pattern>
+    <servlet-name>ModifyBookApproveNum</servlet-name>
+    <url-pattern>/ModifyBookApproveNum</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>ModifyReadNum</servlet-name>

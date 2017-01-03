@@ -1,9 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
 <%@page import="factory.UserDaoFactory" language="java"%>
-<%@page import="factory.CommentDaoFactory" language="java"%>
-<%@page import="dao.CommentDao" language="java"%>
+<%@page import="factory.BookCommentDaoFactory" language="java"%>
+<%@page import="dao.BookCommentDao" language="java"%>
 <%@page import="dao.UserDao" language="java"%>
-<%@page import="bean.Comment" language="java"%>
+<%@page import="bean.BookComment" language="java"%>
 <%@page import="bean.User" language="java"%>
 <%@page import="java.net.URLEncoder" language="java" %>
  <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -76,15 +76,15 @@
 				<h2>热门评论</h2>
 				<ul>
 					<%
-						CommentDao commentDao = CommentDaoFactory.getCommentDaoInstance();
-						List<Comment> comments = commentDao.findCommentOrderByApprove();
+						BookCommentDao bookCommentDao = BookCommentDaoFactory.getCommentDaoInstance();
+						List<BookComment> bookComments = bookCommentDao.findCommentOrderByApprove();
 						i = 0;
-						for(Comment comment:comments){
+						for(BookComment bookComment:bookComments){
 					%> 
 							<li class = "comment">
-								<div><%=comment.getCommentTitle() %></div>
-								<div><a href = "ShowBook?bookID=<%=comment.getBookID()%>"><%=comment.getCommentContent() %></a></div>
-								<div>点赞数:<%=comment.getCommentApprove() %></div>
+								<div><%=bookComment.getCommentTitle() %></div>
+								<div><a href = "ShowBook?bookID=<%=bookComment.getBookID()%>"><%=bookComment.getCommentContent() %></a></div>
+								<div>点赞数:<%=bookComment.getCommentApprove() %></div>
 							</li>
 					<%if(i==4)
 						break;
