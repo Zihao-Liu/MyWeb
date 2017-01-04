@@ -32,6 +32,7 @@ public class UserDaoImpl implements UserDao{
 				user.setPassword(rs.getString(4));
 				user.setUserApprove(rs.getInt(5));
 				user.setUserRead(rs.getInt(6));
+				user.setUserWatch(rs.getInt(7));
 			}
 		}catch(SQLException e){
 				e.printStackTrace();
@@ -83,6 +84,7 @@ public class UserDaoImpl implements UserDao{
 				user.setUserSex(rs.getString(3));
 				user.setUserApprove(rs.getInt(5));
 				user.setUserRead(rs.getInt(6));
+				user.setUserWatch(rs.getInt(7));
 				users.add(user);
 			}
 		}catch(SQLException e){
@@ -117,6 +119,7 @@ public class UserDaoImpl implements UserDao{
 				user.setPassword(rs.getString(4));
 				user.setUserApprove(rs.getInt(5));
 				user.setUserRead(rs.getInt(6));
+				user.setUserWatch(rs.getInt(7));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -164,6 +167,7 @@ public class UserDaoImpl implements UserDao{
 				user.setUserSex(rs.getString(3));
 				user.setUserApprove(rs.getInt(5));
 				user.setUserRead(rs.getInt(6));
+				user.setUserWatch(rs.getInt(7));
 				users.add(user);
 			}
 		}catch(SQLException e){
@@ -192,6 +196,7 @@ public class UserDaoImpl implements UserDao{
 				user.setUserSex(rs.getString(3));
 				user.setUserApprove(rs.getInt(5));
 				user.setUserRead(rs.getInt(6));
+				user.setUserWatch(rs.getInt(7));
 				users.add(user);
 			}
 		}catch(SQLException e){
@@ -219,5 +224,51 @@ public class UserDaoImpl implements UserDao{
 			DBConnection.close(conn);
 		}
 		
+	}
+	@Override
+	public void modifyUserWatch(int userID) {
+		Connection conn = DBConnection.getConnection();
+		String sql="update tb_user set userWatch= userWatch +1 where userID = ?";
+		PreparedStatement pstmt = null;
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userID);
+			pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+		
+	}
+	@Override
+	public List<User> findAlluserOrderByWatch() {
+		Connection conn = DBConnection.getConnection();
+		String findbysql  = "select * from tb_user order by userWatch Desc";
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
+		List<User> users = new ArrayList<User>();
+		try{
+			pstmt = conn.prepareStatement(findbysql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				User user = new User();
+				user.setUserID(rs.getInt(1));
+				user.setUserName(rs.getString(2));
+				user.setUserSex(rs.getString(3));
+				user.setUserApprove(rs.getInt(5));
+				user.setUserRead(rs.getInt(6));
+				user.setUserWatch(rs.getInt(7));
+				users.add(user);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(rs);
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+		return users;
 	}
 }

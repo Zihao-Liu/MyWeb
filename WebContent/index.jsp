@@ -1,12 +1,15 @@
 <%@page import="factory.UserDaoFactory" language="java"%>
 <%@page import="factory.BookCommentDaoFactory" language="java"%>
 <%@page import="factory.StatusDaoFactory" language="java"%>
+<%@page import="factory.FilmCommentDaoFactory" language="java"%>
 <%@page import="dao.BookCommentDao" language="java"%>
 <%@page import="dao.UserDao" language="java"%>
 <%@page import="dao.StatusDao" language="java"%>
+<%@page import="dao.FilmCommentDao" language="java"%>
 <%@page import="bean.BookComment" language="java"%>
 <%@page import="bean.User" language="java"%>
 <%@page import="bean.Status" language="java"%>
+<%@page import="bean.FilmComment" language="java"%>
 <%@page import="java.net.URLEncoder" language="java" %>
 <%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -50,6 +53,20 @@
 				</ul>	
 			</div>
 			
+			<div class="sort">
+				<h2>电影分类</h2>
+				<ul>
+					<li><a href="FilmClassify?filmType=<%=URLEncoder.encode("科幻", "utf-8") %>">科幻</a></li>
+					<li><a href="FilmClassify?filmType=<%=URLEncoder.encode("悬疑", "utf-8") %>">悬疑</a></li>
+					<li><a href="FilmClassify?filmType=<%=URLEncoder.encode("恐怖", "utf-8") %>">恐怖</a></li>
+					<li><a href="FilmClassify?filmType=<%=URLEncoder.encode("动画", "utf-8") %>">动画</a></li>
+				</ul>
+				<ul>
+					<li><a href="FilmClassify?filmType=<%=URLEncoder.encode("历史", "utf-8") %>">历史</a></li>
+					<li><a href="FilmClassify?filmType=<%=URLEncoder.encode("剧情", "utf-8") %>">剧情</a></li>
+				</ul>	
+			</div>
+			
 			<div class="rank">
 				<h2>阅读排名</h2>
 				<ul>
@@ -61,6 +78,24 @@
 					%>
 							<li class = "userApprove">
 								<div><a href = "ShowUser?userID=<%=user.getUserID()%>"><%=user.getUserName() %></a>:<%=user.getUserRead() %>本</div>
+							</li>
+					<%if(i==9)
+						break;
+						i++;
+					} %> 
+				</ul>
+			</div>
+			
+			<div class="rank">
+				<h2>观影排名</h2>
+				<ul>
+					<%
+						users = userDao.findAlluserOrderByWatch();
+						i =0;
+						for(User user:users){
+					%>
+							<li class = "userApprove">
+								<div><a href = "ShowUser?userID=<%=user.getUserID()%>"><%=user.getUserName() %></a>:<%=user.getUserWatch() %>部</div>
 							</li>
 					<%if(i==9)
 						break;
@@ -88,7 +123,7 @@
 			</div>
 		
 			<div class="hotcomment">
-				<h2>热门评论</h2>
+				<h2>图书热门评论</h2>
 				<ul>
 					<%
 						BookCommentDao bookCommentDao = BookCommentDaoFactory.getCommentDaoInstance();
@@ -100,6 +135,27 @@
 								<div><%=bookComment.getCommentTitle() %></div>
 								<div><a href = "ShowBook?bookID=<%=bookComment.getBookID()%>"><%=bookComment.getCommentContent() %></a></div>
 								<div>点赞数:<%=bookComment.getCommentApprove() %></div>
+							</li>
+					<%if(i==4)
+						break;
+						i++;
+					} %>
+				</ul>
+			</div>
+			
+			<div class="hotcomment">
+				<h2>电影热门评论</h2>
+				<ul>
+					<%
+						FilmCommentDao filmCommentDao = FilmCommentDaoFactory.getCommentDaoInstance();
+						List<FilmComment> filmComments = filmCommentDao.findCommentOrderByApprove();
+						i = 0;
+						for(FilmComment filmComment:filmComments){
+					%> 
+							<li class = "comment">
+								<div><%=filmComment.getCommentTitle() %></div>
+								<div><a href = "ShowFilm?filmID=<%=filmComment.getFilmID()%>"><%=filmComment.getCommentContent() %></a></div>
+								<div>点赞数:<%=filmComment.getCommentApprove() %></div>
 							</li>
 					<%if(i==4)
 						break;

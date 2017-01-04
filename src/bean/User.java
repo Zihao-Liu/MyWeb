@@ -7,6 +7,7 @@ public class User {
 	private String password;
 	private int userApprove;
 	private int userRead;
+	private int userWatch;
 	public int getUserID() {
 		return userID;
 	}
@@ -42,5 +43,11 @@ public class User {
 	}
 	public void setUserRead(int userRead) {
 		this.userRead = userRead;
+	}
+	public int getUserWatch() {
+		return userWatch;
+	}
+	public void setUserWatch(int userWatch) {
+		this.userWatch = userWatch;
 	}
 }

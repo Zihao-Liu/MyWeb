@@ -12,7 +12,9 @@ public interface UserDao {
 	public List<User> findAllUser();
 	public List<User> findAllUserOrderByApprove();
 	public List<User> findAlluserOrderByRead();
+	public List<User> findAlluserOrderByWatch();
 	public void updateUser(User user);
 	public void modifyUserApprove(int userID,int action);
 	public void modifyUserRead(int userID);
+	public void modifyUserWatch(int userID);
 }

@@ -109,8 +109,8 @@
 					%>
 							<li class = "book">
 								<div><a href = "ShowBook?bookID=<%=book.getBookID()%>"><img src="<%=book.getBookCoverPath()%>"/></a></div>
-								<div><a href = "ShowBook?bookID=<%=book.getBookID()%>"><%=book.getBookName() %></a></div>
-								<div><%=book.getBookAurthor() %></div>
+								<div>书名:<a href = "ShowBook?bookID=<%=book.getBookID()%>"><%=book.getBookName() %></a></div>
+								<div>作者:<%=book.getBookAuthor() %></div>
 							</li>
 					<%if(i==4)
 						break;
@@ -130,7 +130,7 @@
 							<li class = "book">
 								<div><a href = "ShowBook?bookID=<%=book.getBookID()%>"><img src="<%=book.getBookCoverPath()%>"/></a></div>
 								<div>书名:<a href = "ShowBook?bookID=<%=book.getBookID()%>"><%=book.getBookName() %></a></div>
-								<div>作者:<%=book.getBookAurthor() %></div>
+								<div>作者:<%=book.getBookAuthor() %></div>
 								<div>已读人数:<%=book.getBookRead() %></div>
 							</li>
 					<%if(i==4)
@@ -151,7 +151,7 @@
 							<li class = "book">
 								<div><a href = "ShowBook?bookID=<%=book.getBookID()%>"><img src="<%=book.getBookCoverPath()%>"/></a></div>
 								<div>书名:<a href = "ShowBook?bookID=<%=book.getBookID()%>"><%=book.getBookName() %></a></div>
-								<div>作者:<%=book.getBookAurthor() %></div>
+								<div>作者:<%=book.getBookAuthor() %></div>
 								<div>评分:<%=book.getBookScore() %></div>
 							</li>
 					<%if(i==4)

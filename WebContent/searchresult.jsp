@@ -22,7 +22,7 @@
 				<div class="Infodisplay" >
 					<a href ="ShowBook?bookID=${booksearch.bookID}"><img src="${booksearch.bookCoverPath }"></a>
 					<ul>
-						<li>作者:${booksearch.bookAurthor}</li>
+						<li>作者:${booksearch.bookAuthor}</li>
 						<li>分类:${booksearch.bookType}</li>
 						<li>阅读人数:${booksearch.bookRead }</li>
 						<li>评分:${booksearch.bookScore }</li>
@@ -30,6 +30,29 @@
 				</div>
 				<h2 class="briefh2">内容简介:</h2>
 				<p class="brief">${booksearch.bookInfo}</p>
+			</div>
+		</c:otherwise>
+	</c:choose>
+	
+	<c:choose>
+		<c:when test="${empty requestScope.filmsearch}">
+			<h2 class = "filmflag">找不到您要的电影</h2>
+		</c:when>
+		<c:otherwise>
+			<h2 class = "filmflag">电影搜索结果：</h2>
+			<div class = "filmInfo">
+				<h2><a href ="ShowFilm?filmID=${filmsearch.filmID}">${filmsearch.filmName}</a></h2>
+				<div class="Infodisplay" >
+					<a href ="ShowFilm?filmID=${filmsearch.filmID}"><img src="${filmsearch.filmCoverPath }"></a>
+					<ul>
+						<li>导演:${filmsearch.filmDirector}</li>
+						<li>分类:${filmsearch.filmType}</li>
+						<li>阅读人数:${filmsearch.filmWatch }</li>
+						<li>评分:${filmsearch.filmScore }</li>
+					</ul>
+				</div>
+				<h2 class="briefh2">内容简介:</h2>
+				<p class="brief">${filmsearch.filmInfo}</p>
 			</div>
 		</c:otherwise>
 	</c:choose>
@@ -43,7 +66,8 @@
 			<div id = "userInfo">
 				<h2><a href="ShowUser?userID=${usersearch.userID }"><label>用户名：</label>${usersearch.userName}</a></h2>
 				<h2><label>收到的赞:</label>${usersearch.userApprove}</h2>
-				<h2><label>读过的书:</label>${usersearch.userRead }</h2>
+				<h2><label>读过的图书:</label>${usersearch.userRead }</h2>
+				<h2><label>看过的电影:</label>${usersearch.userWatch }</h2>
 			</div>		
 		</c:otherwise>
 	</c:choose>

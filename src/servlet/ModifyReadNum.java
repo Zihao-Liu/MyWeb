@@ -48,12 +48,12 @@ public class ModifyReadNum extends HttpServlet {
 		else{
 			int userID = user.getUserID();
 			ReadDao readDao = ReadDaoFactory.getReadDAoInstance();
-			if(readDao.findread(bookID, userID)==null){
+			if(readDao.findRead(bookID, userID)==null){
 				readDao.addRead(bookID, userID, bookScore);
 				bookDao.modifyBookRead(bookID, bookScore);
 				UserDao userDao = UserDaoFactory.getUserDaoInstance();
 				userDao.modifyUserRead(userID);
-				Read read = readDao.findread(bookID, userID);
+				Read read = readDao.findRead(bookID, userID);
 				request.setAttribute("read", read);
 			}
 			else{

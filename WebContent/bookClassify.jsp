@@ -105,7 +105,7 @@
 						<li id="bookclassify">
 							<div><a href = "ShowBook?bookID=${book.bookID }"><img src="${book.bookCoverPath}"/></a></div>
 							<div class = "detail">书名:<a href = "ShowBook?bookID=${book.bookID }">${book.bookName }</a></div>
-							<div class = "detail">作者:${book.bookAurthor }</div>
+							<div class = "detail">作者:${book.bookAuthor }</div>
 							<div class = "detail">评分:${book.bookScore }</div>
 							<div class = "detail">已读人数:${book.bookRead }</div>
 						</li>	

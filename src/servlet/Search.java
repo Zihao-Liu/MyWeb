@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Book;
+import bean.Film;
 import bean.User;
 import dao.BookDao;
+import dao.FilmDao;
 import dao.UserDao;
 import factory.BookDaoFactory;
+import factory.FilmDaoFactory;
 import factory.UserDaoFactory;
 
 
@@ -31,20 +34,18 @@ public class Search extends HttpServlet {
 		String itemName = request.getParameter("searchText");
 		BookDao bookDao = BookDaoFactory.getBookDaoInstance();
 		Book book = bookDao.findBookByName(itemName);
+		FilmDao filmDao = FilmDaoFactory.getFilmDaoInstance();
+		Film film = filmDao.findFilmByName(itemName);
 		UserDao userDao = UserDaoFactory.getUserDaoInstance();
 		User user = userDao.findUserByName(itemName);
-		if(book!=null){
+		if(book!=null)
 			request.setAttribute("booksearch", book);
-			/*CommentDao commentDao = CommentDaoFactory.getCommentDaoInstance();
-			List<Comment> comments1 = commentDao.findCommentByBookIDOrderByApprove(book.getBookID());
-			request.setAttribute("commentList1", comments1);
-			List<Comment> comments2 = commentDao.findCommentByBookIDOrderByPublishTime(book.getBookID());
-			request.setAttribute("commentList2", comments2);
-			dispatcher = servletContext.getRequestDispatcher("/showBook.jsp");*/
-		}
+		if(film!=null)
+			request.setAttribute("filmsearch", book);
 		if(user!=null)
 			request.setAttribute("usersearch", user);
 		dispatcher = servletContext.getRequestDispatcher("/searchresult.jsp");
+		
 		dispatcher.forward(request, response);
 	}
 
