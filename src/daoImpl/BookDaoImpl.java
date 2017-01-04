@@ -23,7 +23,7 @@ public class BookDaoImpl implements BookDao {
 		try{
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, book.getBookName());
-			pstmt.setString(2, book.getBookAurthor());
+			pstmt.setString(2, book.getBookAuthor());
 			pstmt.setString(3, book.getBookType());
 			pstmt.setString(4, book.getBookInfo());
 			pstmt.setTimestamp(5, new Timestamp(book.getBookAddTime().getTime()));
@@ -57,7 +57,7 @@ public class BookDaoImpl implements BookDao {
 				book = new Book();
 				book.setBookID(rs.getInt(1));
 				book.setBookName(rs.getString(2));
-				book.setBookAurthor(rs.getString(3));
+				book.setBookAuthor(rs.getString(3));
 				book.setBookType(rs.getString(4));
 				book.setBookInfo(rs.getString(5));
 				book.setBookAddTime(rs.getDate(6));
@@ -90,7 +90,7 @@ public class BookDaoImpl implements BookDao {
 				book = new Book();
 				book.setBookID(rs.getInt(1));
 				book.setBookName(rs.getString(2));
-				book.setBookAurthor(rs.getString(3));
+				book.setBookAuthor(rs.getString(3));
 				book.setBookType(rs.getString(4));
 				book.setBookInfo(rs.getString(5));
 				book.setBookAddTime(rs.getDate(6));
@@ -123,7 +123,7 @@ public class BookDaoImpl implements BookDao {
 			while(rs.next()){
 				book.setBookID(rs.getInt(1));
 				book.setBookName(rs.getString(2));
-				book.setBookAurthor(rs.getString(3));
+				book.setBookAuthor(rs.getString(3));
 				book.setBookType(rs.getString(4));
 				book.setBookInfo(rs.getString(5));
 				book.setBookAddTime(rs.getDate(6));
@@ -156,7 +156,7 @@ public class BookDaoImpl implements BookDao {
 				Book book = new Book();
 				book.setBookID(rs.getInt(1));
 				book.setBookName(rs.getString(2));
-				book.setBookAurthor(rs.getString(3));
+				book.setBookAuthor(rs.getString(3));
 				book.setBookType(rs.getString(4));
 				book.setBookInfo(rs.getString(5));
 				book.setBookAddTime(rs.getDate(6));
@@ -195,7 +195,7 @@ public class BookDaoImpl implements BookDao {
 				Book book = new Book();
 				book.setBookID(rs.getInt(1));
 				book.setBookName(rs.getString(2));
-				book.setBookAurthor(rs.getString(3));
+				book.setBookAuthor(rs.getString(3));
 				book.setBookType(rs.getString(4));
 				book.setBookInfo(rs.getString(5));
 				book.setBookAddTime(rs.getDate(6));
@@ -228,7 +228,7 @@ public class BookDaoImpl implements BookDao {
 				Book book = new Book();
 				book.setBookID(rs.getInt(1));
 				book.setBookName(rs.getString(2));
-				book.setBookAurthor(rs.getString(3));
+				book.setBookAuthor(rs.getString(3));
 				book.setBookType(rs.getString(4));
 				book.setBookInfo(rs.getString(5));
 				book.setBookAddTime(rs.getDate(6));
@@ -261,7 +261,7 @@ public class BookDaoImpl implements BookDao {
 				Book book = new Book();
 				book.setBookID(rs.getInt(1));
 				book.setBookName(rs.getString(2));
-				book.setBookAurthor(rs.getString(3));
+				book.setBookAuthor(rs.getString(3));
 				book.setBookType(rs.getString(4));
 				book.setBookInfo(rs.getString(5));
 				book.setBookAddTime(rs.getDate(6));
@@ -314,7 +314,7 @@ public class BookDaoImpl implements BookDao {
 				Book book = new Book();
 				book.setBookID(rs.getInt(1));
 				book.setBookName(rs.getString(2));
-				book.setBookAurthor(rs.getString(3));
+				book.setBookAuthor(rs.getString(3));
 				book.setBookType(rs.getString(4));
 				book.setBookInfo(rs.getString(5));
 				book.setBookAddTime(rs.getDate(6));

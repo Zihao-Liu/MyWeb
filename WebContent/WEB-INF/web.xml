@@ -105,6 +105,46 @@
     <servlet-name>AddStatus</servlet-name>
     <url-pattern>/AddStatus</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AddFilmComment</servlet-name>
+    <servlet-class>servlet.AddFilmComment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddFilmComment</servlet-name>
+    <url-pattern>/AddFilmComment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>FilmClassify</servlet-name>
+    <servlet-class>servlet.FilmClassify</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FilmClassify</servlet-name>
+    <url-pattern>/FilmClassify</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ModifyFilmApproveNum</servlet-name>
+    <servlet-class>servlet.ModifyFilmApproveNum</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModifyFilmApproveNum</servlet-name>
+    <url-pattern>/ModifyFilmApproveNum</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ModifyWatchNum</servlet-name>
+    <servlet-class>servlet.ModifyWatchNum</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModifyWatchNum</servlet-name>
+    <url-pattern>/ModifyWatchNum</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ShowFilm</servlet-name>
+    <servlet-class>servlet.ShowFilm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowFilm</servlet-name>
+    <url-pattern>/ShowFilm</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

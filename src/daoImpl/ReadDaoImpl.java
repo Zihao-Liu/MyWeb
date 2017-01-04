@@ -32,7 +32,7 @@ public class ReadDaoImpl implements ReadDao {
 	}
 
 	@Override
-	public Read findread(int bookID, int userID) {
+	public Read findRead(int bookID, int userID) {
 		Connection conn = DBConnection.getConnection();
 		String sql = "select * from tb_read where bookID=? and userID = ?";
 		PreparedStatement pstmt = null;

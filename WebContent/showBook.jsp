@@ -29,7 +29,7 @@
 		<div class="Infodisplay" >
 			<img src="${book.bookCoverPath }">
 			<ul>
-				<li>作者:${book.bookAurthor}</li>
+				<li>作者:${book.bookAuthor}</li>
 				<li>分类:${book.bookType}</li>
 				<li>阅读人数:${book.bookRead }</li>
 				<li>评分:${book.bookScore }</li>
@@ -55,7 +55,7 @@
 			ReadDao readDao = ReadDaoFactory.getReadDAoInstance();
 			int bookID = book.getBookID();
 			int userID = user.getUserID();
-			if(readDao.findread(bookID, userID)==null){
+			if(readDao.findRead(bookID, userID)==null){
 	%>
 		<form action="ModifyReadNum" method="post" class="read">
 			<label><input name="score" type="radio" value="1" />1分</label>
@@ -67,7 +67,7 @@
 			<input type="hidden" value ="${book.bookID}" name = "bookID"/>
 		</form>
 	<%} else{%><font color="red">${requestScope.error }</font>
-	<label class = "read">您的评分:<%=readDao.findread(bookID, userID).getScore() %></label>
+	<label class = "read">您的评分:<%=readDao.findRead(bookID, userID).getScore() %></label>
 	<%} }%>
 		<h2>内容简介:</h2>
 		<p class="brief">${book.bookInfo}</p>

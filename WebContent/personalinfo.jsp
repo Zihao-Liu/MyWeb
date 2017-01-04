@@ -14,6 +14,7 @@
 		<h2><label>用户名：</label>${userNew.userName}</h2>
 		<h2><label>我收到的赞:</label>${userNew.userApprove}</h2>
 		<h2><label>我读过的书:</label>${userNew.userRead }</h2>
+		<h2><label>我看过的电影:</label>${userNew.userWatch }</h2>
 	</div>
 	<div class="booklist">
 		<h2>我的书单</h2>
@@ -21,7 +22,17 @@
 			<li class = "book">
 				<div><img src="${userreadbook.bookCoverPath}"/></div>
 				<div>书名:<a href = "ShowBook?bookID=${userreadbook.bookID}">${userreadbook.bookName }</a></div>
-				<div>作者:${userreadbook.bookAurthor}</div>
+				<div>作者:${userreadbook.bookAuthor}</div>
+			</li>
+		</c:forEach>
+	</div>
+	<div class="filmlist">
+		<h2>我的影单</h2>
+		<c:forEach items="${requestScope.userwatchfilm}" var="userwatchfilm">
+			<li class = "film">
+				<div><img src="${userwatchfilm.filmCoverPath}"/></div>
+				<div>片名:<a href = "ShowFilm?filmID=${userwatchfilm.filmID}">${userwatchfilm.filmName }</a></div>
+				<div>导演:${userwatchfilm.filmDirector}</div>
 			</li>
 		</c:forEach>
 	</div>

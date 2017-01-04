@@ -5,7 +5,7 @@ import java.util.Date;
 public class Book {
 	private int bookID;
 	private String bookName;
-	private String bookAurthor;
+	private String bookAuthor;
 	private String bookType;
 	private String bookInfo;
 	private String bookCoverPath;
@@ -24,11 +24,11 @@ public class Book {
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
 	}
-	public String getBookAurthor() {
-		return bookAurthor;
+	public String getBookAuthor() {
+		return bookAuthor;
 	}
-	public void setBookAurthor(String bookAurthor) {
-		this.bookAurthor = bookAurthor;
+	public void setBookAuthor(String bookAuthor) {
+		this.bookAuthor = bookAuthor;
 	}
 	public String getBookType() {
 		return bookType;

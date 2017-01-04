@@ -23,7 +23,7 @@
 				</c:when>
 				<c:otherwise>
 					<select onchange="window.location=this.value;">
-  						<option >用户名：${user.userName}</option>
+  						<option value = "PersonalInfo">用户名：${user.userName}</option>
   						<option value ="PersonalInfo" >个人主页</option>
   						<option value="LogOff" >退出</option>
 					</select>
@@ -39,6 +39,7 @@
 				<ul>
 					<li class = "navigationbutton"><a href = "./index.jsp">首页</a></li>
 					<li class = "navigationbutton"><a href="./bookPage.jsp">图书</a></li>
+					<li class = "navigationbutton"><a href="./filmPage.jsp">电影</a></li>
 				</ul>
 		</div>
 	
