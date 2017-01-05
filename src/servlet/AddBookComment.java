@@ -31,7 +31,7 @@ public class AddBookComment extends HttpServlet {
 		User user = (User)request.getSession().getAttribute("user");
 		if(user == null){
 			request.setAttribute("error", "请先登录");
-			dispatcher = servletContext.getRequestDispatcher("/index.jsp");
+			dispatcher = servletContext.getRequestDispatcher("/ShowBook?bookID="+bookID);
 		}else{
 			if(commentTitle == null||"".equals(commentTitle)){
 				request.setAttribute("error", "标题不能为空");

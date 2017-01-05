@@ -92,4 +92,21 @@ public class StatusDaoImpl implements StatusDao {
 		return statuss;
 	}
 
+	@Override
+	public void deleteStatus(int statusID) {
+		Connection conn = DBConnection.getConnection();
+		String sql = "delete from tb_status where statusID=?";
+		PreparedStatement pstmt = null;
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, statusID);
+			pstmt.executeUpdate();
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				DBConnection.close(pstmt);
+				DBConnection.close(conn);
+		}
+	}
+
 }

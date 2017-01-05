@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
+<%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="topnavigation">
 		<div id="logo">刘子豪</div>
 		
@@ -22,7 +23,7 @@
 					<font color="red">${requestScope.error }</font>
 				</c:when>
 				<c:otherwise>
-					<select onchange="window.location=this.value;">
+					<select onchange="window.location=this.value;" >
   						<option value = "PersonalInfo">用户名：${user.userName}</option>
   						<option value ="PersonalInfo" >个人主页</option>
   						<option value="LogOff" >退出</option>
