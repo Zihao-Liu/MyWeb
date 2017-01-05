@@ -18,7 +18,7 @@
 <link href="css/bookpage.css" type="text/css" rel="stylesheet" media="all" />
 <link href="css/header.css" type="text/css" rel="stylesheet" media="all" />
 <link href="css/footer.css" type="text/css" rel="stylesheet" media="all" />
-<title>图书</title>
+<title>所有图书</title>
 </head>
 <body>
 	<%@include file = "header.jsp"%> 
@@ -99,13 +99,12 @@
 	
 	
 		<div class="main">
-			<div class="recommendbytime">
-				<h2>新书速递</h2>
+			<div class="allbook">
+				<h2>图书列表</h2>
 				<ul>
 					<%
 						BookDao bookDao = BookDaoFactory.getBookDaoInstance();
-						List<Book> books = bookDao.findAllBookOrderByTime(); 
-						i=0;
+						List<Book> books = bookDao.findAllBook(); 
 						for(Book book:books){
 					%>
 							<li class = "book">
@@ -113,57 +112,10 @@
 								<div>书名:<a href = "ShowBook?bookID=<%=book.getBookID()%>"><%=book.getBookName() %></a></div>
 								<div>作者:<%=book.getBookAuthor() %></div>
 							</li>
-					<%if(i==4)
-						break;
-						i++;
-					} %> 
+					<%} %> 
 				</ul>
-				<a href = "./showAllBook.jsp">显示所有>></a>
 			</div>
 			
-			<div class="recommendbyhot">
-				<h2>最受关注</h2>
-				<ul>
-					<%
-						books = bookDao.findAllBookOrderByRead(); 
-						i=0;
-						for(Book book:books){
-					%>
-							<li class = "book">
-								<div><a href = "ShowBook?bookID=<%=book.getBookID()%>"><img src="<%=book.getBookCoverPath()%>"/></a></div>
-								<div>书名:<a href = "ShowBook?bookID=<%=book.getBookID()%>"><%=book.getBookName() %></a></div>
-								<div>作者:<%=book.getBookAuthor() %></div>
-								<div>已读人数:<%=book.getBookRead() %></div>
-							</li>
-					<%if(i==4)
-						break;
-						i++;
-					} %>
-				</ul>
-				<a href = "./showAllBook.jsp">显示所有>></a>
-			</div>
-		
-			<div class="recommendbyscore">
-				<h2>评分最高</h2>
-				<ul>
-					<%
-						books = bookDao.findAllBookOrderByScore();
-						i=0;
-						for(Book book:books){
-					%>
-							<li class = "book">
-								<div><a href = "ShowBook?bookID=<%=book.getBookID()%>"><img src="<%=book.getBookCoverPath()%>"/></a></div>
-								<div>书名:<a href = "ShowBook?bookID=<%=book.getBookID()%>"><%=book.getBookName() %></a></div>
-								<div>作者:<%=book.getBookAuthor() %></div>
-								<div>评分:<%=book.getBookScore() %></div>
-							</li>
-					<%if(i==4)
-						break;
-						i++;
-					} %>
-				</ul>
-				<a href = "./showAllBook.jsp">显示所有>></a>
-			</div>
 		</div>
 	</div>
 	

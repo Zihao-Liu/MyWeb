@@ -11,15 +11,16 @@
 <%@page import="dao.UserDao"%>
 <%@page import="dao.BookApproveDao"%>
 <%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
-<%@ taglib uri="http://java.fckeditor.net" prefix="FCK"%>	
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<link href="header.css" type="text/css" rel="stylesheet" media="all" />
-<link href="showbook.css" type="text/css" rel="stylesheet" media="all" />
+<link href="css/header.css" type="text/css" rel="stylesheet" media="all" />
+<link href="css/showbook.css" type="text/css" rel="stylesheet" media="all" />
+<link href="css/footer.css" type="text/css" rel="stylesheet" media="all" />
+<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <title>图书信息</title>
 </head>
 <body>
@@ -111,7 +112,7 @@
 		
 		
 		
-		<div class="commentBox">
+		<%-- <div class="commentBox">
 			<form action="AddBookComment" method="post">
 				<p>标题:<input name = "commenttitle" type = "text"></p>
 				<p>内容:</p>
@@ -122,7 +123,24 @@
 				<p><input value = "提交" type = "submit"></p>
 			</form>
 		
+		</div>--%>
+		
+		<div class="commentBox">
+			<form action="AddBookComment" method="post">
+				<p>标题:<input name = "commenttitle" type = "text"></p>
+				<p>内容:</p>
+				
+					<textarea cols="80" rows="10" name="commentcontent">你有什么想说的</textarea>
+					<script type="text/javascript">CKEDITOR.replace( "commentcontent",{
+						width:950,height:300,
+						toolbar :'basic'});
+					</script>
+				<input type="hidden" name="bookID" value="${book.bookID}"/> 
+				<p><input value = "提交" type = "submit"></p>
+			</form>
 		</div>
 	</div>
+	
+	<%@include file = "footer.jsp"%>
 </body>
 </html>

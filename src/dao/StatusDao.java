@@ -8,4 +8,5 @@ public interface StatusDao {
 	public void addStatus(Status status);
 	public List<Status> findAllStatus();
 	public List<Status> findStatusByUserID(int userID);
+	public void deleteStatus(int statusID);
 }

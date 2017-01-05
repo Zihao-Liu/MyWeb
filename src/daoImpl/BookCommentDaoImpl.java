@@ -119,7 +119,7 @@ public class BookCommentDaoImpl implements BookCommentDao{
 	@Override
 	public BookComment findCommentByCommentID(int commentID) {
 		Connection conn = DBConnection.getConnection();
-		String findbysql  = "select * from tb_comment where commentID= ?";
+		String findbysql  = "select * from tb_bookcomment where commentID= ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs =null;
 		BookComment comment = new BookComment();

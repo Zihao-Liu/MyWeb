@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<link href="header.css" type="text/css" rel="stylesheet" media="all" />
+<link href="css/header.css" type="text/css" rel="stylesheet" media="all" />
+<link href="css/footer.css" type="text/css" rel="stylesheet" media="all" />
 <title>注册</title>
 </head>
 <body>
@@ -39,5 +40,7 @@
 			   <input name = "usersex"  value = "woman" type = "radio" >女
 		<input value = "提交" type = "submit">
 	</form>
+	
+	<%@include file = "footer.jsp"%>
 </body>
 </html>

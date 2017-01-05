@@ -4,8 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<link href="header.css" type="text/css" rel="stylesheet" media="all" />
-<link href="searchresult.css" type="text/css" rel="stylesheet" media="all" />
+<link href="css/header.css" type="text/css" rel="stylesheet" media="all" />
+<link href="css/searchresult.css" type="text/css" rel="stylesheet" media="all" />
+<link href="css/footer.css" type="text/css" rel="stylesheet" media="all" />
 
 <title>搜索结果</title>
 </head>
@@ -71,5 +72,7 @@
 			</div>		
 		</c:otherwise>
 	</c:choose>
+	
+	<%@include file = "footer.jsp"%>
 </body>
 </html>

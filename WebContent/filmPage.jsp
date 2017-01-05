@@ -15,8 +15,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<link href="filmpage.css" type="text/css" rel="stylesheet" media="all" />
-<link href="header.css" type="text/css" rel="stylesheet" media="all" />
+<link href="css/filmpage.css" type="text/css" rel="stylesheet" media="all" />
+<link href="css/header.css" type="text/css" rel="stylesheet" media="all" />
+<link href="css/footer.css" type="text/css" rel="stylesheet" media="all" />
 <title>电影</title>
 </head>
 <body>
@@ -117,6 +118,7 @@
 						i++;
 					} %> 
 				</ul>
+				<a href = "./showAllFilm.jsp">显示所有>></a>
 			</div>
 			
 			<div class="recommendbyhot">
@@ -138,6 +140,7 @@
 						i++;
 					} %>
 				</ul>
+				<a href = "./showAllFilm.jsp">显示所有>></a>
 			</div>
 		
 			<div class="recommendbyscore">
@@ -159,8 +162,11 @@
 						i++;
 					} %>
 				</ul>
+				<a href = "./showAllFilm.jsp">显示所有>></a>
 			</div>
 		</div>
 	</div>
+	
+	<%@include file = "footer.jsp"%>
 </body>
 </html>

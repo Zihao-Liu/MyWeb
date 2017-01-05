@@ -17,8 +17,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<link href="index.css" type="text/css" rel="stylesheet" media="all" />
-<link href="header.css" type="text/css" rel="stylesheet" media="all" />
+<link href="css/index.css" type="text/css" rel="stylesheet" media="all" />
+<link href="css/header.css" type="text/css" rel="stylesheet" media="all" />
+<link href="css/footer.css" type="text/css" rel="stylesheet" media="all" />
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <title>主页</title>
 </head>
@@ -186,6 +187,6 @@
 		</div>
 	</div>
 	
-		
+	<%@include file = "footer.jsp"%>
 </body>
 </html>

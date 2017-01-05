@@ -20,11 +20,11 @@ import factory.StatusDaoFactory;
 import factory.UserDaoFactory;
 
 
-public class ShowUser extends HttpServlet {
+
+public class DeleteStatus extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
-    public ShowUser() {
+    public DeleteStatus() {
         super();
     }
 
@@ -33,19 +33,27 @@ public class ShowUser extends HttpServlet {
 		ServletContext servletContext = getServletContext();
 		RequestDispatcher dispatcher = null;
 		
-		int userID= Integer.parseInt(request.getParameter("userID"));
-		FindReadDao findReadDao = FindReadDaoFactory.getFindReadDaoInstance();
-		FindWatchDao findWatchDao = FindWatchDaoFactory.getFindWatchDaoInstance();
-		request.setAttribute("userreadbook",findReadDao.findAllBookRead(userID));
-		request.setAttribute("userwatchfilm", findWatchDao.findAllFilmWatch(userID));
+		int statusID = Integer.parseInt(request.getParameter("statusID"));
+		User user = (User)request.getSession().getAttribute("user");
 		
 		StatusDao statusDao = StatusDaoFactory.getStatusDaoInstance();
-		request.setAttribute("userstatus", statusDao.findStatusByUserID(userID));
+		statusDao.deleteStatus(statusID);
+		
 		UserDao userDao = UserDaoFactory.getUserDaoInstance();
-		User userNew = userDao.findUserByID(userID);
+		
+		FindReadDao findReadDao = FindReadDaoFactory.getFindReadDaoInstance();
+		FindWatchDao findWatchDao = FindWatchDaoFactory.getFindWatchDaoInstance();
+		User userNew = userDao.findUserByID(user.getUserID());
+		request.setAttribute("userreadbook",findReadDao.findAllBookRead(user.getUserID()));
+		request.setAttribute("userwatchfilm", findWatchDao.findAllFilmWatch(user.getUserID()));
+		request.setAttribute("userstatus", statusDao.findStatusByUserID(user.getUserID()));
 		request.setAttribute("userNew", userNew);
-		dispatcher=servletContext.getRequestDispatcher("/showUser.jsp");
+		
+		dispatcher=servletContext.getRequestDispatcher("/personalinfo.jsp");
 		dispatcher.forward(request, response);
+		
+		
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

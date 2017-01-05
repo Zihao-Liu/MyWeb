@@ -117,7 +117,7 @@ public class FilmCommentDaoImpl implements FilmCommentDao {
 	@Override
 	public FilmComment findCommentByCommentID(int commentID) {
 		Connection conn = DBConnection.getConnection();
-		String findbysql  = "select * from tb_comment where commentID= ?";
+		String findbysql  = "select * from tb_filmcomment where commentID= ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs =null;
 		FilmComment comment = new FilmComment();
