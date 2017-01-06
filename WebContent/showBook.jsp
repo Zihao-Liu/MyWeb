@@ -21,6 +21,7 @@
 <link href="css/showbook.css" type="text/css" rel="stylesheet" media="all" />
 <link href="css/footer.css" type="text/css" rel="stylesheet" media="all" />
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+
 <title>图书信息</title>
 </head>
 <body>
@@ -53,7 +54,7 @@
 			<input type="hidden" value ="${book.bookID}" name = "bookID"/>
 		</form>
 	<%}else{
-			ReadDao readDao = ReadDaoFactory.getReadDAoInstance();
+			ReadDao readDao = ReadDaoFactory.getReadDaoInstance();
 			int bookID = book.getBookID();
 			int userID = user.getUserID();
 			if(readDao.findRead(bookID, userID)==null){
@@ -85,6 +86,16 @@
 				<div class="commentuserInfo">
 					回复人:${comment.userID} 
 			  		时间:${comment.publishTime}
+			  		<%-- 
+			  		<c:choose>
+			  			<c:when test="${empty sessionScope.user}">
+			  			</c:when>
+			  			<c:otherwise>
+			  				<c:if test="${comment.userID == sessionScope.user.userID}"  >
+			  					<input type="submit" name="Submit2" value="删除评论" onclick="firm(${comment.commentID})" />
+			  				</c:if>
+			  			</c:otherwise>
+			  		</c:choose>--%>
 			  		<font color="red">${requestScope.error1 }</font>
 			  		<a href="ModifyBookApproveNum?commentID=${comment.commentID}&action=1">赞同</a>
 			  		${comment.commentApprove}

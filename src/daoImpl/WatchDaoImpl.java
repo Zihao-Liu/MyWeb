@@ -58,4 +58,37 @@ public class WatchDaoImpl implements WatchDao{
 		}
 		return watch;
 	}
+
+	@Override
+	public void deleteWatch(int filmID, int userID, float filmScore) {
+		Connection conn = DBConnection.getConnection();
+		String sql = "delete from tb_watch where filmID=? and userID=?";
+		String sql2 = "update tb_film set filmWatch = filmWatch-1,filmScore = ((filmScore*(filmWatch+1))- ? )/(filmWatch+0.00001)  where filmID = ?";
+		String sql3 = "update tb_user set userWatch = userWatch-1 where userID = ?";
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		PreparedStatement pstmt3 = null;
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt2 = conn.prepareStatement(sql2);
+			pstmt3 = conn.prepareStatement(sql3);
+			pstmt.setInt(1, filmID);
+			pstmt.setInt(2, userID);
+			pstmt3.setInt(1, userID);
+			pstmt2.setFloat(1, filmScore);
+			pstmt2.setInt(2, filmID);
+			
+			pstmt.executeUpdate();
+			pstmt3.executeUpdate();
+			pstmt2.executeUpdate();
+			
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				DBConnection.close(pstmt);
+				DBConnection.close(pstmt2);
+				DBConnection.close(pstmt3);
+				DBConnection.close(conn);
+		}
+	}
 }

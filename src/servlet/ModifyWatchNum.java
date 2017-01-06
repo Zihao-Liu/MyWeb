@@ -49,7 +49,7 @@ public class ModifyWatchNum extends HttpServlet {
 		}
 		else{
 			int userID = user.getUserID();
-			WatchDao watchDao = WatchDaoFactory.getWatchDAoInstance();
+			WatchDao watchDao = WatchDaoFactory.getWatchDaoInstance();
 			if(watchDao.findWatch(filmID, userID)==null){
 				watchDao.addWatch(filmID, userID, filmScore);
 				filmDao.modifyFilmWatch(filmID, filmScore);
