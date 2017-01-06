@@ -18,7 +18,25 @@ function firm(statusID){
 	}
 }
 
+function firm2(bookID,bookScore){
+	if(confirm("您确定要删除该图书吗")){
+		location.href="DeleteBookFromRead?bookID="+bookID+"&bookScore="+bookScore; 
+	}
+	else{
+		alert("取消删除");
+	}
+}
+
+function firm3(filmID,filmScore){
+	if(confirm("您确定要删除该影片吗")){
+		location.href="DeleteFilmFromWatch?filmID="+filmID+"&filmScore="+filmScore; 
+	}
+	else{
+		alert("取消删除");
+	}
+}
 </script>
+
 <title>我的信息</title>
 </head>
 <body>
@@ -37,7 +55,9 @@ function firm(statusID){
 					<div><img src="${userreadbook.bookCoverPath}"/></div>
 					<div>书名:<a href = "ShowBook?bookID=${userreadbook.bookID}">${userreadbook.bookName }</a></div>
 					<div>作者:${userreadbook.bookAuthor}</div>
+					<div><input type="submit" name="Submit2" value="删除图书" onclick="firm2(${userreadbook.bookID},${userreadbook.bookScore})" /></div>
 				</li>
+			
 			</c:forEach>
 		</div>
 		<div class="filmlist">
@@ -47,6 +67,7 @@ function firm(statusID){
 					<div><img src="${userwatchfilm.filmCoverPath}"/></div>
 					<div>片名:<a href = "">${userwatchfilm.filmName }</a></div>
 					<div>导演:${userwatchfilm.filmDirector}</div>
+					<div><input type="submit" name="Submit2" value="删除电影" onclick="firm3(${userwatchfilm.filmID},${userwatchfilm.filmScore})" /></div>
 				</li>
 			</c:forEach>
 		</div>

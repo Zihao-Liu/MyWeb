@@ -4,7 +4,7 @@ import dao.ReadDao;
 import daoImpl.ReadDaoImpl;
 
 public class ReadDaoFactory {
-	public static ReadDao getReadDAoInstance(){
+	public static ReadDao getReadDaoInstance(){
 		return new ReadDaoImpl();
 	}
 }

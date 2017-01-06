@@ -153,39 +153,46 @@
     <servlet-name>DeleteStatus</servlet-name>
     <url-pattern>/DeleteStatus</url-pattern>
   </servlet-mapping>
-  
-  
-  <!-- 400错误 -->  
-  <error-page>  
-  <error-code>400</error-code>  
-  <location>/WEB-INF/error.jsp</location>  
-  </error-page>  
-  <!-- 404 页面不存在错误 -->  
-  <error-page>  
-  <error-code>404</error-code>  
-  <location>/WEB-INF/error.jsp</location>  
-  </error-page>  
-  <!-- 500 服务器内部错误 -->  
-  <error-page>  
-  <error-code>500</error-code>  
-  <location>/WEB-INF/error.jsp</location>   
-  </error-page>  
-  <!-- java.lang.Exception异常错误,依据这个标记可定义多个类似错误提示 -->  
-  <error-page>  
-  <exception-type>java.lang.Exception</exception-type>  
-  <location>/WEB-INF/error.jsp</location> 
-  </error-page>  
-  <!-- java.lang.NullPointerException异常错误,依据这个标记可定义多个类似错误提示 -->  
-  <error-page>  
-  <exception-type>java.lang.NullPointerException </exception-type>  
-  <location>/WEB-INF/error.jsp</location> 
-  </error-page>    
-  <error-page>  
-  <exception-type>javax.servlet.ServletException</exception-type>  
-  <location>/WEB-INF/error.jsp</location>   
+  <servlet>
+    <servlet-name>DeleteBookFromRead</servlet-name>
+    <servlet-class>servlet.DeleteBookFromRead</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteBookFromRead</servlet-name>
+    <url-pattern>/DeleteBookFromRead</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteFilmFromWatch</servlet-name>
+    <servlet-class>servlet.DeleteFilmFromWatch</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteFilmFromWatch</servlet-name>
+    <url-pattern>/DeleteFilmFromWatch</url-pattern>
+  </servlet-mapping>
+  <error-page>
+    <error-code>400</error-code>
+    <location>/WEB-INF/error.jsp</location>
   </error-page>
-  
-   
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/error.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/WEB-INF/error.jsp</location>
+  </error-page>
+  <error-page>
+    <exception-type>java.lang.Exception</exception-type>
+    <location>/WEB-INF/error.jsp</location>
+  </error-page>
+  <error-page>
+    <exception-type>java.lang.NullPointerException </exception-type>
+    <location>/WEB-INF/error.jsp</location>
+  </error-page>
+  <error-page>
+    <exception-type>javax.servlet.ServletException</exception-type>
+    <location>/WEB-INF/error.jsp</location>
+  </error-page>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

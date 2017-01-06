@@ -8,10 +8,9 @@ import java.sql.SQLException;
 
 public class DBConnection {
 	private static final String DBDRIVER = "com.mysql.jdbc.Driver";
-	private static final String DBURL = "jdbc:mysql://localhost:3306/db_myweb";
+	private static final String DBURL = "jdbc:mysql://localhost:3306/db_myweb?autoReconnect=true";
 	private static final String DBUSER = "root";
 	private static final String DBPASSWORD = "admin";
-	
 
 	
 	public static Connection getConnection(){

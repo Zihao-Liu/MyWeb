@@ -53,7 +53,7 @@
 			<input type="hidden" value ="${film.filmID}" name = "filmID"/>
 		</form>
 	<%}else{
-			WatchDao watchDao = WatchDaoFactory.getWatchDAoInstance();
+			WatchDao watchDao = WatchDaoFactory.getWatchDaoInstance();
 			int filmID = film.getFilmID();
 			int userID = user.getUserID();
 			if(watchDao.findWatch(filmID, userID)==null){

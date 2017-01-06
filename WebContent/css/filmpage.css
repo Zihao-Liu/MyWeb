@@ -12,23 +12,25 @@
 .rank li{list-style:decimal;}
 
 .main{margin-left:200px;font-size:80%}
-.recommendbytime{height:300px;width:500px;}
+.recommendbytime{height:500px;width:550px;}
 .recommendbytime ul{margin-left:-50px;}
 .recommendbytime li{list-style:none; padding:20px 20px 0 20px;float:left;}
 
-.recommendbyhot{height:300px;width:500px;}
+.recommendbyhot{height:500px;width:550px;}
 .recommendbyhot ul{margin-left:-50px;}
 .recommendbyhot li{list-style:none; padding:20px 20px 0 20px;float:left;}
 
-.recommendbyscore{height:300px;width:500px;}
+.recommendbyscore{height:500px;width:550px;}
 .recommendbyscore ul{margin-left:-50px;}
 .recommendbyscore li{list-style:none; padding:20px 20px 0 20px;float:left;}
 
 .allfilm{width:500px;}
 .allfilm ul{margin-left:-50px;}
 .allfilm li{list-style:none; padding:20px 20px 0 20px;float:left;}
+.film{width:120px;}
 
-#filmclassify{list-style:none; padding:60px 40px 20px 0;float:left;}
+.classmain{margin-left:200px;font-size:80%;width:600px;}
+#filmclassify{list-style:none; padding:60px 40px 20px 0;float:left; width:260px;}
 #filmclassify img{float:left;}
-.detail{padding-bottom:20px;padding-left:130px;}
+.detail{padding-bottom:10px;padding-left:130px;}
 

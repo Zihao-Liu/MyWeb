@@ -30,17 +30,17 @@
 		</div>
 	
 	</div>--%>
-
-	<font color="red">${requestScope.error }</font>
-	<br><br>
-	<form action="Register" method="post">
-		用户名:<input name = "username" type = "text">
-		密码:<input name = "userpassword" type = "password">
-		性别:<input name = "usersex"  value = "man" type = "radio" >男
-			   <input name = "usersex"  value = "woman" type = "radio" >女
-		<input value = "提交" type = "submit">
-	</form>
-	
+	<div id="regist">
+		<font color="red">${requestScope.error }</font>
+		<br><br>
+		<form action="Register" method="post">
+			用户名:<input name = "username" type = "text">
+			密码:<input name = "userpassword" type = "password">
+			性别:<input name = "usersex"  value = "man" type = "radio" >男
+				   <input name = "usersex"  value = "woman" type = "radio" >女
+			<input value = "提交" type = "submit">
+		</form>
+	</div>
 	<%@include file = "footer.jsp"%>
 </body>
 </html>
