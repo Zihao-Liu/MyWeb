@@ -6,6 +6,8 @@
 3）用户可以添加，删除已看影片，可以对影片评分，评论等。可以为别人评论点赞。
 4）用户可以发布，删除动态。
 5）首页显示用户排名等。
+6）用户可以隐藏个人详细信息。
 
 网站网址：http://liu-zihao.azurewebsites.net/MyWeb/index.jsp
+http://liuzihao.azurewebsites.net/MyWeb/index.jsp
 
