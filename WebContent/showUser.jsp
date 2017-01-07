@@ -17,36 +17,45 @@
 		<h2><label>他读过的书:</label>${userNew.userRead }本</h2>
 		<h2><label>他看过的电影:</label>${userNew.userWatch }部</h2>
 	</div>
-	<div class="booklist">
-		<h2>他的书单</h2>
-		<c:forEach items="${requestScope.userreadbook}" var="userreadbook">
-			<li class = "book">
-				<div><img src="${userreadbook.bookCoverPath}"/></div>
-				<div>书名:<a href = "ShowBook?bookID=${userreadbook.bookID}">${userreadbook.bookName }</a></div>
-				<div>作者:${userreadbook.bookAuthor}</div>
-			</li>
-		</c:forEach>
-	</div>
-	<div class="filmlist">
-		<h2>他的影单</h2>
-		<c:forEach items="${requestScope.userwatchfilm}" var="userwatchfilm">
-			<li class = "film">
-				<div><img src="${userwatchfilm.filmCoverPath}"/></div>
-				<div>片名:<a href = "ShowFilm?filmID=${userwatchfilm.filmID}">${userwatchfilm.filmName }</a></div>
-				<div>导演:${userwatchfilm.filmDirector}</div>
-			</li>
-		</c:forEach>
-	</div>
-	
-	<div class="statuslist">
-		<h2>他的动态</h2>
-		<c:forEach items="${requestScope.userstatus}" var="userstatus">
-			<li class = "status">
-				<div>${userstatus.statusContent }</div>
-				<div>${userstatus.publishTime}</div>
-			</li>
-		</c:forEach>
-	</div>
+	<c:choose>
+	<c:when test="${userNew.userHide==1}">
+		<div id = "test">
+			<h2>您没有权限查看该用户详细信息</h2>
+		</div>
+	</c:when>
+	<c:otherwise>
+		<div class="booklist">
+			<h2>他的书单</h2>
+			<c:forEach items="${requestScope.userreadbook}" var="userreadbook">
+				<li class = "book">
+					<div><img src="${userreadbook.bookCoverPath}"/></div>
+					<div>书名:<a href = "ShowBook?bookID=${userreadbook.bookID}">${userreadbook.bookName }</a></div>
+					<div>作者:${userreadbook.bookAuthor}</div>
+				</li>
+			</c:forEach>
+		</div>
+		<div class="filmlist">
+			<h2>他的影单</h2>
+			<c:forEach items="${requestScope.userwatchfilm}" var="userwatchfilm">
+				<li class = "film">
+					<div><img src="${userwatchfilm.filmCoverPath}"/></div>
+					<div>片名:<a href = "ShowFilm?filmID=${userwatchfilm.filmID}">${userwatchfilm.filmName }</a></div>
+					<div>导演:${userwatchfilm.filmDirector}</div>
+				</li>
+			</c:forEach>
+		</div>
+		
+		<div class="statuslist">
+			<h2>他的动态</h2>
+			<c:forEach items="${requestScope.userstatus}" var="userstatus">
+				<li class = "status">
+					<div>${userstatus.statusContent }</div>
+					<div>${userstatus.publishTime}</div>
+				</li>
+			</c:forEach>
+		</div>
+	</c:otherwise>
+	</c:choose>
 	
 	<%@include file = "footer.jsp"%>
 </body>

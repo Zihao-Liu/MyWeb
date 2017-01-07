@@ -34,7 +34,7 @@ public class StatusRecognise extends HttpServlet {
 			dispatcher = servletcontext.getRequestDispatcher("/index.jsp");
 		}else{
 			if(userPassword == null||"".equals(userPassword)){
-				request.setAttribute("error1", "ÇëÊäÈëÃÜÂë");
+				request.setAttribute("error", "ÇëÊäÈëÃÜÂë");
 				dispatcher = servletcontext.getRequestDispatcher("/index.jsp");
 			}
 			else{

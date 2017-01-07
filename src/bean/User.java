@@ -8,6 +8,7 @@ public class User {
 	private int userApprove;
 	private int userRead;
 	private int userWatch;
+	private int userHide;
 	public int getUserID() {
 		return userID;
 	}
@@ -49,5 +50,11 @@ public class User {
 	}
 	public void setUserWatch(int userWatch) {
 		this.userWatch = userWatch;
+	}
+	public int getUserHide() {
+		return userHide;
+	}
+	public void setUserHide(int userHide) {
+		this.userHide = userHide;
 	}
 }
