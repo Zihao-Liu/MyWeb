@@ -169,6 +169,14 @@
     <servlet-name>DeleteFilmFromWatch</servlet-name>
     <url-pattern>/DeleteFilmFromWatch</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ModifyUserHide</servlet-name>
+    <servlet-class>servlet.ModifyUserHide</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModifyUserHide</servlet-name>
+    <url-pattern>/ModifyUserHide</url-pattern>
+  </servlet-mapping>
   <error-page>
     <error-code>400</error-code>
     <location>/WEB-INF/error.jsp</location>

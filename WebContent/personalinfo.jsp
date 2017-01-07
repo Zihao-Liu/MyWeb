@@ -47,6 +47,22 @@ function firm3(filmID,filmScore){
 			<h2><label>我收到的赞:</label>${userNew.userApprove}个</h2>
 			<h2><label>我读过的书:</label>${userNew.userRead }本</h2>
 			<h2><label>我看过的电影:</label>${userNew.userWatch }部</h2>
+			<form action="ModifyUserHide" method="post" >
+				<c:choose>
+					<c:when test="${userNew.userHide==0}">
+						<label>个人信息当前为其他人可见</label>
+						<label><input name="hide" type="radio" value="0" checked="checked"/>其他人可见</label>
+						<label><input name="hide" type="radio" value="1" />其他人不可见</label>
+					</c:when>
+					<c:otherwise>
+						<label>个人信息当前为其他人不可见</label>
+						<label><input name="hide" type="radio" value="0" "/>其他人可见</label>
+						<label><input name="hide" type="radio" value="1" checked="checked"/>其他人不可见</label>
+					</c:otherwise>
+				</c:choose>
+				<input type="submit" value="提交"/>
+				<input type="hidden" value ="${userNew.userID}" name = "userID"/>
+			</form>
 		</div>
 		<div class="booklist">
 			<h2>我的书单</h2>
@@ -57,7 +73,6 @@ function firm3(filmID,filmScore){
 					<div>作者:${userreadbook.bookAuthor}</div>
 					<div><input type="submit" name="Submit2" value="删除图书" onclick="firm2(${userreadbook.bookID},${userreadbook.bookScore})" /></div>
 				</li>
-			
 			</c:forEach>
 		</div>
 		<div class="filmlist">

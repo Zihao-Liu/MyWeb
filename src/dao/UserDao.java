@@ -17,4 +17,5 @@ public interface UserDao {
 	public void modifyUserApprove(int userID,int action);
 	public void modifyUserRead(int userID);
 	public void modifyUserWatch(int userID);
+	public void modifyUserHide(int userID,int hide);
 }

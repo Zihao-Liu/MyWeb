@@ -33,6 +33,7 @@ public class UserDaoImpl implements UserDao{
 				user.setUserApprove(rs.getInt(5));
 				user.setUserRead(rs.getInt(6));
 				user.setUserWatch(rs.getInt(7));
+				user.setUserHide(rs.getInt(8));
 			}
 		}catch(SQLException e){
 				e.printStackTrace();
@@ -85,6 +86,7 @@ public class UserDaoImpl implements UserDao{
 				user.setUserApprove(rs.getInt(5));
 				user.setUserRead(rs.getInt(6));
 				user.setUserWatch(rs.getInt(7));
+				user.setUserHide(rs.getInt(8));
 				users.add(user);
 			}
 		}catch(SQLException e){
@@ -120,6 +122,7 @@ public class UserDaoImpl implements UserDao{
 				user.setUserApprove(rs.getInt(5));
 				user.setUserRead(rs.getInt(6));
 				user.setUserWatch(rs.getInt(7));
+				user.setUserHide(rs.getInt(8));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -168,6 +171,7 @@ public class UserDaoImpl implements UserDao{
 				user.setUserApprove(rs.getInt(5));
 				user.setUserRead(rs.getInt(6));
 				user.setUserWatch(rs.getInt(7));
+				user.setUserHide(rs.getInt(8));
 				users.add(user);
 			}
 		}catch(SQLException e){
@@ -197,6 +201,7 @@ public class UserDaoImpl implements UserDao{
 				user.setUserApprove(rs.getInt(5));
 				user.setUserRead(rs.getInt(6));
 				user.setUserWatch(rs.getInt(7));
+				user.setUserHide(rs.getInt(8));
 				users.add(user);
 			}
 		}catch(SQLException e){
@@ -260,6 +265,7 @@ public class UserDaoImpl implements UserDao{
 				user.setUserApprove(rs.getInt(5));
 				user.setUserRead(rs.getInt(6));
 				user.setUserWatch(rs.getInt(7));
+				user.setUserHide(rs.getInt(8));
 				users.add(user);
 			}
 		}catch(SQLException e){
@@ -270,5 +276,25 @@ public class UserDaoImpl implements UserDao{
 			DBConnection.close(conn);
 		}
 		return users;
+	}
+	@Override
+	public void modifyUserHide(int userID,int hide) {
+		Connection conn = DBConnection.getConnection();
+		String sql = null;
+		if(hide ==1)
+			sql="update tb_user set userHide= 1 where userID = ?";
+		else 
+			sql="update tb_user set userHide= 0 where userID = ?";
+		PreparedStatement pstmt = null;
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userID);
+			pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
 	}
 }
