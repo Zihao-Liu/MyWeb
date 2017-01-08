@@ -13,7 +13,7 @@ public class FilmApproveDaoImpl implements FilmApproveDao{
 	@Override
 	public void addApprove(int commentID, int userID,int action) {
 		Connection conn = DBConnection.getConnection();
-		String sql = "insert into tb_filmapprove (commentId,userID,approveAction) values(?,?,?)";
+		String sql = "insert into tb_filmapprove (commentID,userID,approveAction) values(?,?,?)";
 		PreparedStatement pstmt = null;
 		try{
 			pstmt = conn.prepareStatement(sql);
@@ -62,14 +62,13 @@ public class FilmApproveDaoImpl implements FilmApproveDao{
 	}
 
 	@Override
-	public void deleteApprove(int commentID, int userID) {
+	public void deleteApprove(int commentID) {
 		Connection conn = DBConnection.getConnection();
-		String sql = "delete from tb_filmapprove where commentID=? and userID = ?";
+		String sql = "delete from tb_filmapprove where commentID=?";
 		PreparedStatement pstmt = null;
 		try{
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, commentID);
-			pstmt.setInt(2, userID);
 			pstmt.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();

@@ -29,8 +29,8 @@
 			<c:forEach items="${requestScope.userreadbook}" var="userreadbook">
 				<li class = "book">
 					<div><img src="${userreadbook.bookCoverPath}"/></div>
-					<div>书名:<a href = "ShowBook?bookID=${userreadbook.bookID}">${userreadbook.bookName }</a></div>
-					<div>作者:${userreadbook.bookAuthor}</div>
+					<div><a href = "ShowBook?bookID=${userreadbook.bookID}">${userreadbook.bookName }</a></div>
+					<div>${userreadbook.bookAuthor}</div>
 				</li>
 			</c:forEach>
 		</div>
@@ -39,8 +39,8 @@
 			<c:forEach items="${requestScope.userwatchfilm}" var="userwatchfilm">
 				<li class = "film">
 					<div><img src="${userwatchfilm.filmCoverPath}"/></div>
-					<div>片名:<a href = "ShowFilm?filmID=${userwatchfilm.filmID}">${userwatchfilm.filmName }</a></div>
-					<div>导演:${userwatchfilm.filmDirector}</div>
+					<div><a href = "ShowFilm?filmID=${userwatchfilm.filmID}">${userwatchfilm.filmName }</a></div>
+					<div>${userwatchfilm.filmDirector}</div>
 				</li>
 			</c:forEach>
 		</div>
