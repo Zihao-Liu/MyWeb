@@ -36,8 +36,40 @@ public class FilmCommentDaoImpl implements FilmCommentDao {
 	}
 
 	@Override
-	public void deleteComment(FilmComment comment) {
-		// TODO Auto-generated method stub
+	public void deleteComment(int commentID,int userID) {
+		Connection conn = DBConnection.getConnection();
+		String sql = "select commentApprove from tb_filmcomment where commentID = ?";
+		String sql2 = "delete from tb_filmcomment where commentID=?";
+		String sql3 = "update tb_user set userApprove = userApprove -? where userID =?";
+		PreparedStatement pstmt1 = null;
+		PreparedStatement pstmt2 = null;
+		PreparedStatement pstmt3 = null;
+		ResultSet rs = null;
+		try{
+			pstmt1 = conn.prepareStatement(sql);
+			pstmt1.setInt(1, commentID);
+			rs = pstmt1.executeQuery();
+			int i =0;
+			while(rs.next()){
+				i = rs.getInt(1);
+			}
+			pstmt2 = conn.prepareStatement(sql2);
+			pstmt2.setInt(1, commentID);
+			pstmt3 = conn.prepareStatement(sql3);
+			pstmt3.setInt(1, i);
+			pstmt3.setInt(2, userID);
+			pstmt2.executeUpdate();
+			pstmt3.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(rs);
+			DBConnection.close(pstmt1);
+			DBConnection.close(pstmt2);
+			DBConnection.close(pstmt2);
+			DBConnection.close(conn);
+		}
+		
 		
 	}
 

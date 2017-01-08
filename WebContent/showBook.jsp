@@ -21,7 +21,16 @@
 <link href="css/showbook.css" type="text/css" rel="stylesheet" media="all" />
 <link href="css/footer.css" type="text/css" rel="stylesheet" media="all" />
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
-
+<script language="javascript">
+function firm(commentID,userID){
+	if(confirm("您确定要删除该条评论吗，这样会删除您所收到的赞数")){
+		location.href="DeleteBookComment?commentID="+commentID+"&userID="+userID; 
+	}
+	else{
+		alert("取消删除");
+	}
+}
+</script>
 <title>图书信息</title>
 </head>
 <body>
@@ -86,17 +95,17 @@
 				<div class="commentuserInfo">
 					回复人:${comment.userID} 
 			  		时间:${comment.publishTime}
-			  		<%-- 
+			  		
 			  		<c:choose>
 			  			<c:when test="${empty sessionScope.user}">
 			  			</c:when>
 			  			<c:otherwise>
 			  				<c:if test="${comment.userID == sessionScope.user.userID}"  >
-			  					<input type="submit" name="Submit2" value="删除评论" onclick="firm(${comment.commentID})" />
+			  					<input type="submit" name="Submit2" value="删除评论" onclick="firm(${comment.commentID},${comment.userID})" />
 			  				</c:if>
 			  			</c:otherwise>
-			  		</c:choose>--%>
-			  		<font color="red">${requestScope.error1 }</font>
+			  		</c:choose>
+			  		<font color="red">${requestScope.error }</font>
 			  		<a href="ModifyBookApproveNum?commentID=${comment.commentID}&action=1">赞同</a>
 			  		${comment.commentApprove}
 			  		<a href="ModifyBookApproveNum?commentID=${comment.commentID}&action=0">反对</a>
@@ -113,7 +122,16 @@
 			<div class="commentuserInfo">
 				回复人:${comment.userID} 
 		  		时间:${comment.publishTime}
-		  		<font color="red">${requestScope.error1 }</font>
+		  		<c:choose>
+			  			<c:when test="${empty sessionScope.user}">
+			  			</c:when>
+			  			<c:otherwise>
+			  				<c:if test="${comment.userID == sessionScope.user.userID}"  >
+			  					<input type="submit" name="Submit2" value="删除评论" onclick="firm(${comment.commentID},${comment.userID})" />
+			  				</c:if>
+			  			</c:otherwise>
+			  		</c:choose>
+		  		<font color="red">${requestScope.error }</font>
 		  		<a href="ModifyBookApproveNum?commentID=${comment.commentID}&action=1">赞同</a>
 		  		${comment.commentApprove}
 		  		<a href="ModifyBookApproveNum?commentID=${comment.commentID}&action=0">反对</a>

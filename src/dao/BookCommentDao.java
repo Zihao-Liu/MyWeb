@@ -7,7 +7,7 @@ import bean.BookComment;
 
 public interface BookCommentDao {
 	public void addComment(BookComment comment);
-	public void deleteComment(BookComment comment);
+	public void deleteComment(int commentID,int userID);
 	public List<BookComment> findCommentByBookName(String bookName);
 	public List<BookComment> findCommentByBookID(int bookID);
 	public List<BookComment> findCommentByUserName(String userName);

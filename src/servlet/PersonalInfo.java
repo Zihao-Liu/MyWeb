@@ -29,8 +29,8 @@ public class PersonalInfo extends HttpServlet {
 		request.setCharacterEncoding("gbk");
 		ServletContext servletContext = getServletContext();
 		RequestDispatcher dispatcher = null;
-		
 		User user = (User)request.getSession().getAttribute("user");
+		
 		FindReadDao findReadDao = FindReadDaoFactory.getFindReadDaoInstance();
 		FindWatchDao findWatchDao = FindWatchDaoFactory.getFindWatchDaoInstance();
 		request.setAttribute("userreadbook",findReadDao.findAllBookRead(user.getUserID()));
@@ -43,7 +43,6 @@ public class PersonalInfo extends HttpServlet {
 		request.setAttribute("userNew", userNew);
 		dispatcher=servletContext.getRequestDispatcher("/personalinfo.jsp");
 		dispatcher.forward(request, response);
-		
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

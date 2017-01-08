@@ -7,7 +7,7 @@ import bean.FilmComment;
 
 public interface FilmCommentDao {
 	public void addComment(FilmComment comment);
-	public void deleteComment(FilmComment comment);
+	public void deleteComment(int commentID,int userID);
 	public List<FilmComment> findCommentByFilmName(String filmName);
 	public List<FilmComment> findCommentByFilmID(int filmID);
 	public List<FilmComment> findCommentByUserName(String userName);

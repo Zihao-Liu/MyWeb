@@ -69,8 +69,8 @@ function firm3(filmID,filmScore){
 			<c:forEach items="${requestScope.userreadbook}" var="userreadbook">
 				<li class = "book">
 					<div><img src="${userreadbook.bookCoverPath}"/></div>
-					<div>书名:<a href = "ShowBook?bookID=${userreadbook.bookID}">${userreadbook.bookName }</a></div>
-					<div>作者:${userreadbook.bookAuthor}</div>
+					<div><a href = "ShowBook?bookID=${userreadbook.bookID}">${userreadbook.bookName }</a></div>
+					<div>${userreadbook.bookAuthor}</div>
 					<div><input type="submit" name="Submit2" value="删除图书" onclick="firm2(${userreadbook.bookID},${userreadbook.bookScore})" /></div>
 				</li>
 			</c:forEach>
@@ -80,8 +80,8 @@ function firm3(filmID,filmScore){
 			<c:forEach items="${requestScope.userwatchfilm}" var="userwatchfilm">
 				<li class = "film">
 					<div><img src="${userwatchfilm.filmCoverPath}"/></div>
-					<div>片名:<a href = "">${userwatchfilm.filmName }</a></div>
-					<div>导演:${userwatchfilm.filmDirector}</div>
+					<div><a href = "">${userwatchfilm.filmName }</a></div>
+					<div>${userwatchfilm.filmDirector}</div>
 					<div><input type="submit" name="Submit2" value="删除电影" onclick="firm3(${userwatchfilm.filmID},${userwatchfilm.filmScore})" /></div>
 				</li>
 			</c:forEach>
