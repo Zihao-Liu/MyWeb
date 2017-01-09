@@ -1,6 +1,6 @@
 
 #userInfo{margin-left:200px;width:950px;}
-
+#userInfoadd{margin-left:200px;width:950px;}
 .booklist{margin-left:200px;width:900px;height:300px;}
 .book{list-style:none;float:left;padding-left:20px;}
 
@@ -15,3 +15,5 @@ a:hover{background-color:rgb(243, 255, 204);color:rgb(51, 153, 255); text-decora
 .status{list-style:none;padding-bottom:20px;padding-left:20px;}
 
 #test{height:260px;margin-bottom:260px;margin-left:200px;}
+
+#follow{margin-left:200px;height:520px;}

@@ -185,6 +185,30 @@
     <servlet-name>DeleteBookComment</servlet-name>
     <url-pattern>/DeleteBookComment</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AddFollow</servlet-name>
+    <servlet-class>servlet.AddFollow</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddFollow</servlet-name>
+    <url-pattern>/AddFollow</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteFollow</servlet-name>
+    <servlet-class>servlet.DeleteFollow</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteFollow</servlet-name>
+    <url-pattern>/DeleteFollow</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ShowFollow</servlet-name>
+    <servlet-class>servlet.ShowFollow</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowFollow</servlet-name>
+    <url-pattern>/ShowFollow</url-pattern>
+  </servlet-mapping>
   <error-page>
     <error-code>400</error-code>
     <location>/WEB-INF/error.jsp</location>
