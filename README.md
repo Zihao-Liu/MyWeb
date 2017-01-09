@@ -7,7 +7,7 @@
 4）用户可以发布，删除动态。
 5）首页显示用户排名等。
 6）用户可以隐藏个人详细信息。
-
+7）用户可以关注其他用户。
 网站网址：http://liu-zihao.azurewebsites.net/MyWeb/index.jsp
 或http://liuzihao.azurewebsites.net/MyWeb/index.jsp
 
