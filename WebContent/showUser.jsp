@@ -13,17 +13,37 @@
 	<%@include file = "header.jsp"%> 
 	<div id = "userInfo">
 		<h2><label>用户名：</label>${userNew.userName}</h2>
+		<font color="red">${requestScope.error }</font>
+		<c:if test="${not empty sessionScope.user }">
+			<c:choose>
+				<c:when test = "${empty requestScope.follow }">
+					<a href="AddFollow?followerUserID=${userNew.userID}&followingUserID=${sessionScope.user.userID }">关注他</a>
+				</c:when>
+				<c:otherwise>
+					<a href="DeleteFollow?followerUserID=${userNew.userID}&followingUserID=${sessionScope.user.userID }">取消关注</a>
+				</c:otherwise>
+			</c:choose>
+		</c:if>
 		<h2><label>他收到的赞:</label>${userNew.userApprove}个</h2>
 		<h2><label>他读过的书:</label>${userNew.userRead }本</h2>
 		<h2><label>他看过的电影:</label>${userNew.userWatch }部</h2>
 	</div>
+	
 	<c:choose>
 	<c:when test="${userNew.userHide==1}">
+		<div id = "userInfoadd">
+			<h2><label>关注他的人:</label>${userNew.userFollower}个</h2>
+			<h2><label>他关注的人:</label>${userNew.userFollowing}个</h2>
+		</div>
 		<div id = "test">
 			<h2>您没有权限查看该用户详细信息</h2>
 		</div>
 	</c:when>
 	<c:otherwise>
+		<div id = "userInfoadd">
+			<h2><label>关注他的人:</label><a href="ShowFollow?userID=${userNew.userID }">${userNew.userFollower}个</a></h2>
+			<h2><label>他关注的人:</label><a href="ShowFollow?userID=${userNew.userID }">${userNew.userFollowing}个</a></h2>
+		</div>
 		<div class="booklist">
 			<h2>他的书单</h2>
 			<c:forEach items="${requestScope.userreadbook}" var="userreadbook">

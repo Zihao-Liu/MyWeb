@@ -47,6 +47,8 @@ function firm3(filmID,filmScore){
 			<h2><label>我收到的赞:</label>${userNew.userApprove}个</h2>
 			<h2><label>我读过的书:</label>${userNew.userRead }本</h2>
 			<h2><label>我看过的电影:</label>${userNew.userWatch }部</h2>
+			<h2><label>关注我的人:</label><a href="showFollower?userID = ${userNew.userID }">${userNew.userFollower}个</a></h2>
+			<h2><label>我关注的人:</label><a href="showFollowing?userID = ${userNew.userID }">${userNew.userFollowing}个</a></h2>
 			<form action="ModifyUserHide" method="post" >
 				<c:choose>
 					<c:when test="${userNew.userHide==0}">

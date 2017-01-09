@@ -41,7 +41,7 @@ public class Search extends HttpServlet {
 		if(book!=null)
 			request.setAttribute("booksearch", book);
 		if(film!=null)
-			request.setAttribute("filmsearch", book);
+			request.setAttribute("filmsearch", film);
 		if(user!=null)
 			request.setAttribute("usersearch", user);
 		dispatcher = servletContext.getRequestDispatcher("/searchresult.jsp");

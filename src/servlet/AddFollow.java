@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Follow;
+
 import bean.User;
 import dao.FindReadDao;
 import dao.FindWatchDao;
@@ -23,44 +23,51 @@ import factory.StatusDaoFactory;
 import factory.UserDaoFactory;
 
 
-public class ShowUser extends HttpServlet {
+public class AddFollow extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
    
-    public ShowUser() {
+    public AddFollow() {
         super();
     }
 
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("gbk");
 		ServletContext servletContext = getServletContext();
 		RequestDispatcher dispatcher = null;
 		
-		int userID= Integer.parseInt(request.getParameter("userID"));
-		User user = (User)request.getSession().getAttribute("user");
-		FindReadDao findReadDao = FindReadDaoFactory.getFindReadDaoInstance();
-		FindWatchDao findWatchDao = FindWatchDaoFactory.getFindWatchDaoInstance();
-		request.setAttribute("userreadbook",findReadDao.findAllBookRead(userID));
-		request.setAttribute("userwatchfilm", findWatchDao.findAllFilmWatch(userID));
-		
-		StatusDao statusDao = StatusDaoFactory.getStatusDaoInstance();
-		request.setAttribute("userstatus", statusDao.findStatusByUserID(userID));
-		UserDao userDao = UserDaoFactory.getUserDaoInstance();
-		User userNew = userDao.findUserByID(userID);
-		request.setAttribute("userNew", userNew);
+		int followerUserID = Integer.parseInt(request.getParameter("followerUserID"));
+		int followingUserID = Integer.parseInt(request.getParameter("followingUserID"));
 		
 		FollowDao followDao = FollowDaoFactory.getFollowDaoInstance();
-		Follow follow = null;
-		if(user!=null){
-			follow = followDao.findFollow(userID, user.getUserID());
+		if(followerUserID ==followingUserID)
+			request.setAttribute("error", "不能关注自己");
+		else if(followDao.findFollow(followerUserID ,followingUserID)!=null){
+			request.setAttribute("error", "不能重复提交");
+			request.setAttribute("follow", followDao.findFollow(followerUserID, followingUserID));
 		}
-		request.setAttribute("follow", follow);
+		else{
+			followDao.addFollow(followerUserID, followingUserID);
+			request.setAttribute("follow", followDao.findFollow(followerUserID, followingUserID));
+		}
+		FindReadDao findReadDao = FindReadDaoFactory.getFindReadDaoInstance();
+		FindWatchDao findWatchDao = FindWatchDaoFactory.getFindWatchDaoInstance();
+		request.setAttribute("userreadbook",findReadDao.findAllBookRead(followerUserID ));
+		request.setAttribute("userwatchfilm", findWatchDao.findAllFilmWatch(followerUserID ));
+		
+		StatusDao statusDao = StatusDaoFactory.getStatusDaoInstance();
+		request.setAttribute("userstatus", statusDao.findStatusByUserID(followerUserID ));
+		UserDao userDao = UserDaoFactory.getUserDaoInstance();
+		User userNew = userDao.findUserByID(followerUserID );
+		request.setAttribute("userNew", userNew);
 		dispatcher=servletContext.getRequestDispatcher("/showUser.jsp");
 		dispatcher.forward(request, response);
+		
 	}
 
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -3,7 +3,6 @@
 <div id="topnavigation">
 		<div id="logo">Áõ×ÓºÀ</div>
 		
-		
 		<div id="user">
 			<c:choose>
 				<c:when test="${empty sessionScope.user}">
