@@ -209,6 +209,38 @@
     <servlet-name>ShowFollow</servlet-name>
     <url-pattern>/ShowFollow</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ShowLetter</servlet-name>
+    <servlet-class>servlet.ShowLetter</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowLetter</servlet-name>
+    <url-pattern>/ShowLetter</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ShowNewLetter</servlet-name>
+    <servlet-class>servlet.ShowNewLetter</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowNewLetter</servlet-name>
+    <url-pattern>/ShowNewLetter</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddLetter</servlet-name>
+    <servlet-class>servlet.AddLetter</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddLetter</servlet-name>
+    <url-pattern>/AddLetter</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>ShowAllLetter</servlet-name>
+    <servlet-class>servlet.ShowAllLetter</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowAllLetter</servlet-name>
+    <url-pattern>/ShowAllLetter</url-pattern>
+  </servlet-mapping>
   <error-page>
     <error-code>400</error-code>
     <location>/WEB-INF/error.jsp</location>

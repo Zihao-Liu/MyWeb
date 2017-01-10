@@ -1,0 +1,6 @@
+.letter{margin-left:200px;padding-top:20px;float:left;}
+#letterinfo{list-style-type:none;border-bottom: 1px solid; padding-top:15px;float:left;width:800px; }
+
+a:link{color:rgb(51, 153, 255); text-decoration:none;}
+a:visited{background-color:rgb(243, 255, 204);color:rgb(51, 153, 255); text-decoration:none;}
+a:hover{background-color:rgb(243, 255, 204);color:rgb(51, 153, 255); text-decoration:none;}
