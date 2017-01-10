@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -9,10 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
+import bean.Letter;
 import bean.User;
+import dao.LetterDao;
 import dao.UserDao;
+import factory.LetterDaoFactory;
 import factory.UserDaoFactory;
 
 
@@ -49,8 +51,14 @@ public class StatusRecognise extends HttpServlet {
 				else{
 					if(user.getPassword().equals(userPassword)){
 						request.getSession().setAttribute("user", user);
-						response.sendRedirect("index.jsp");
-						return;
+						LetterDao letterDao = LetterDaoFactory.getLetterDaoInstance();
+						List<Letter> letters = null;
+						if(letterDao.findAllLetterNotRead(user.getUserID())!=null)
+							letters = letterDao.findAllLetterNotRead(user.getUserID());
+						request.setAttribute("newLetter", letters);
+						dispatcher = servletcontext.getRequestDispatcher("/index.jsp");
+						/*response.sendRedirect("index.jsp");
+						return;*/
 					}
 					else{
 						request.setAttribute("error", "√‹¬Î¥ÌŒÛ");

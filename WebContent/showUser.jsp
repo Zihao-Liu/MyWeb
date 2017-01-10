@@ -21,6 +21,19 @@
 				</c:when>
 				<c:otherwise>
 					<a href="DeleteFollow?followerUserID=${userNew.userID}&followingUserID=${sessionScope.user.userID }">取消关注</a>
+					<form action="AddLetter" method="post">
+						<textarea cols="80" rows="10" name="letterContent">您要回复的内容</textarea>
+						<script type="text/javascript">CKEDITOR.replace( "letterContent",{
+							width:950,height:200,
+							toolbar :
+				    		[
+								['Image','Link']
+				    		]});
+						</script>
+						<input type="hidden" name = "sendUserID" value = "${sessionScope.user.userID }">
+						<input type="hidden" name = "receiveUserID" value = "${userNew.userID}">
+			 			<input type="submit" value="写私信">
+					</form>
 				</c:otherwise>
 			</c:choose>
 		</c:if>

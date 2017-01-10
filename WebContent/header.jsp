@@ -22,6 +22,9 @@
 					<font color="red">${requestScope.error }</font>
 				</c:when>
 				<c:otherwise>
+					<c:if test="${not empty requestScope.newLetter }">
+						<a href="ShowNewLetter?receiveUserID=${user.userID }">您有新私信</a>
+					</c:if>
 					<select onchange="window.location=this.value;" >
   						<option value = "PersonalInfo">用户名：${user.userName}</option>
   						<option value ="PersonalInfo" >个人主页</option>

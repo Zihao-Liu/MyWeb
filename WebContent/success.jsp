@@ -4,12 +4,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <meta content= "5;index.jsp"  http-equiv= "Refresh"  />  
-<title>错误页面</title>
-
-       
+<title>发布成功</title>
 </head>
 <body>
-	对不起出现错误，<b style=color:blue><span id=jump>5</span></b> 秒钟后页面将自动返回首页
+	私信发送成功，<b style=color:blue><span id=jump>5</span></b> 秒钟后页面将自动返回首页
 </body>
 </html>
 
