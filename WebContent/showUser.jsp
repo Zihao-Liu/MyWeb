@@ -58,8 +58,11 @@
 			<h2><label>他关注的人:</label><a href="ShowFollow?userID=${userNew.userID }">${userNew.userFollowing}个</a></h2>
 		</div>
 		<div class="booklist">
-			<h2>他的书单</h2>
-			<c:forEach items="${requestScope.userreadbook}" var="userreadbook">
+			<h2>他的书单</h2>		
+			<c:if test="${not empty requestScope.userreadbook }">
+				<a href = "ShowAllReadBook?userID=${userNew.userID }">显示所有>></a>	
+			</c:if>
+			<c:forEach items="${requestScope.userreadbook}" var="userreadbook" begin="1" end="4">
 				<li class = "book">
 					<div><img src="${userreadbook.bookCoverPath}"/></div>
 					<div><a href = "ShowBook?bookID=${userreadbook.bookID}">${userreadbook.bookName }</a></div>
@@ -68,8 +71,11 @@
 			</c:forEach>
 		</div>
 		<div class="filmlist">
-			<h2>他的影单</h2>
-			<c:forEach items="${requestScope.userwatchfilm}" var="userwatchfilm">
+			<h2>他的影单</h2>		
+			<c:if test="${not empty requestScope.userwatchfilm }">
+				<a href = "ShowAllWatchFilm?userID=${userNew.userID }">显示所有>></a>	
+			</c:if>			
+			<c:forEach items="${requestScope.userwatchfilm}" var="userwatchfilm" begin="0" end="3" >
 				<li class = "film">
 					<div><img src="${userwatchfilm.filmCoverPath}"/></div>
 					<div><a href = "ShowFilm?filmID=${userwatchfilm.filmID}">${userwatchfilm.filmName }</a></div>
@@ -80,7 +86,7 @@
 		
 		<div class="statuslist">
 			<h2>他的动态</h2>
-			<c:forEach items="${requestScope.userstatus}" var="userstatus">
+			<c:forEach items="${requestScope.userstatus}" var="userstatus" begin="0" end="3">
 				<li class = "status">
 					<div>${userstatus.statusContent }</div>
 					<div>${userstatus.publishTime}</div>
