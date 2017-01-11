@@ -233,13 +233,29 @@
     <servlet-name>AddLetter</servlet-name>
     <url-pattern>/AddLetter</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>ShowAllLetter</servlet-name>
     <servlet-class>servlet.ShowAllLetter</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ShowAllLetter</servlet-name>
     <url-pattern>/ShowAllLetter</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>ShowAllReadBook</servlet-name>
+    <servlet-class>servlet.ShowAllReadBook</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowAllReadBook</servlet-name>
+    <url-pattern>/ShowAllReadBook</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ShowAllWatchFilm</servlet-name>
+    <servlet-class>servlet.ShowAllWatchFilm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowAllWatchFilm</servlet-name>
+    <url-pattern>/ShowAllWatchFilm</url-pattern>
   </servlet-mapping>
   <error-page>
     <error-code>400</error-code>

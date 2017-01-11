@@ -68,8 +68,12 @@ function firm3(filmID,filmScore){
 			</form>
 		</div>
 		<div class="booklist">
-			<h2>我的书单</h2>
-			<c:forEach items="${requestScope.userreadbook}" var="userreadbook">
+			<h2>我的书单</h2>		
+			<c:if test="${not empty requestScope.userreadbook }">
+				<a href = "ShowAllReadBook?userID=${userNew.userID }">显示所有>></a>	
+			</c:if>
+			<c:forEach items="${requestScope.userreadbook}" var="userreadbook" begin="0" end="3">
+
 				<li class = "book">
 					<div><img src="${userreadbook.bookCoverPath}"/></div>
 					<div><a href = "ShowBook?bookID=${userreadbook.bookID}">${userreadbook.bookName }</a></div>
@@ -79,8 +83,11 @@ function firm3(filmID,filmScore){
 			</c:forEach>
 		</div>
 		<div class="filmlist">
-			<h2>我的影单</h2>
-			<c:forEach items="${requestScope.userwatchfilm}" var="userwatchfilm">
+			<h2>我的影单</h2>		
+			<c:if test="${not empty requestScope.userwatchfilm }">
+				<a href = "ShowAllWatchFilm?userID=${userNew.userID }">显示所有>></a>	
+			</c:if>
+			<c:forEach items="${requestScope.userwatchfilm}" var="userwatchfilm" begin="0" end="3" >
 				<li class = "film">
 					<div><img src="${userwatchfilm.filmCoverPath}"/></div>
 					<div><a href = "">${userwatchfilm.filmName }</a></div>

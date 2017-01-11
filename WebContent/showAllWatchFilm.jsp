@@ -18,7 +18,7 @@
 <link href="css/filmpage.css" type="text/css" rel="stylesheet" media="all" />
 <link href="css/header.css" type="text/css" rel="stylesheet" media="all" />
 <link href="css/footer.css" type="text/css" rel="stylesheet" media="all" />
-<title>所有电影</title>
+<title>已看电影</title>
 </head>
 <body>
 	<%@include file = "header.jsp"%> 
@@ -28,20 +28,14 @@
 	
 		<div class="main">
 			<div class="allfilm">
-				<h2>影片列表</h2>
-				<ul>
-					<%
-						FilmDao filmDao = FilmDaoFactory.getFilmDaoInstance();
-						List<Film> films = filmDao.findAllFilm(); 
-						for(Film film:films){
-					%>
-							<li class = "film">
-								<div><a href = "ShowFilm?filmID=<%=film.getFilmID()%>"><img src="<%=film.getFilmCoverPath()%>"/></a></div>
-								<div><a href = "ShowFilm?filmID=<%=film.getFilmID()%>"><%=film.getFilmName() %></a></div>
-								<div><%=film.getFilmDirector() %></div>
-							</li>
-					<%} %> 
-				</ul>
+				<h2>他的影单</h2>				
+				<c:forEach items="${requestScope.userwatchfilm}" var="userwatchfilm" >
+					<li class = "film">
+						<div><img src="${userwatchfilm.filmCoverPath}"/></div>
+						<div><a href = "ShowFilm?filmID=${userwatchfilm.filmID}">${userwatchfilm.filmName }</a></div>
+						<div>${userwatchfilm.filmDirector}</div>
+					</li>
+				</c:forEach>
 			</div>
 			
 			
