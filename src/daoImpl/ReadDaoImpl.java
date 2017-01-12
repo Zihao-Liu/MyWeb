@@ -64,6 +64,7 @@ public class ReadDaoImpl implements ReadDao {
 	public void deleteRead(int bookID, int userID,float bookScore) {
 		Connection conn = DBConnection.getConnection();
 		String sql = "delete from tb_read where bookID=? and userID=?";
+		//下面两个应该在book里添加减少readnum功能
 		String sql2 = "update tb_book set bookRead = bookRead-1,bookScore = ((bookScore*(bookRead+1))- ? )/(bookRead+0.00001)  where bookID = ?";
 		String sql3 = "update tb_user set userRead = userRead-1 where userID = ?";
 		PreparedStatement pstmt = null;

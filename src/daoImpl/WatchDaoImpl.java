@@ -63,6 +63,7 @@ public class WatchDaoImpl implements WatchDao{
 	public void deleteWatch(int filmID, int userID, float filmScore) {
 		Connection conn = DBConnection.getConnection();
 		String sql = "delete from tb_watch where filmID=? and userID=?";
+		//下面两项应该调整到filmDao
 		String sql2 = "update tb_film set filmWatch = filmWatch-1,filmScore = ((filmScore*(filmWatch+1))- ? )/(filmWatch+0.00001)  where filmID = ?";
 		String sql3 = "update tb_user set userWatch = userWatch-1 where userID = ?";
 		PreparedStatement pstmt = null;

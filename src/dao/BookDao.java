@@ -17,4 +17,6 @@ public interface BookDao {
 	public List<Book> findAllBookByType(String bookType);
 	public void updateBook(Book book);
 	public void modifyBookRead(int bookID,float bookScore);
+	//public void addBookRead(int bookID,float bookScore);
+	//public void deductBookRead(int bookID,float bookScore)
 }

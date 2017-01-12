@@ -7,5 +7,5 @@ import bean.Film;
 
 
 public interface FindWatchDao {
-	public List<Film> findAllFilmWatch(int userID);
+	public List<Film> findAllFilmWatch(int userID);//应该移到watchDao里
 }

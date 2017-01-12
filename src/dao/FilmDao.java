@@ -19,4 +19,6 @@ public interface FilmDao {
 	public List<Film> findAllFilmByType(String filmType);
 	public void updateFilm(Film film);
 	public void modifyFilmWatch(int filmID,float filmScore);
+	//public void addFilmWatch(int filmID,float filmScore);
+	//public void deductFilmWatch(int filmID,float filmScore);
 }
