@@ -7,6 +7,7 @@
 <link href="css/header.css" type="text/css" rel="stylesheet" media="all" />
 <link href="css/personalinfo.css" type="text/css" rel="stylesheet" media="all" />
 <link href="css/footer.css" type="text/css" rel="stylesheet" media="all" />
+<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <title>用户信息</title>
 </head>
 <body>
@@ -22,9 +23,9 @@
 				<c:otherwise>
 					<a href="DeleteFollow?followerUserID=${userNew.userID}&followingUserID=${sessionScope.user.userID }">取消关注</a>
 					<form action="AddLetter" method="post">
-						<textarea cols="80" rows="10" name="letterContent">您要回复的内容</textarea>
+						<textarea cols="80" rows="10" name="letterContent">给他写个私信吧</textarea>
 						<script type="text/javascript">CKEDITOR.replace( "letterContent",{
-							width:950,height:200,
+							width:950,height:150,
 							toolbar :
 				    		[
 								['Image','Link']
