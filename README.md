@@ -9,6 +9,7 @@
 6）用户可以隐藏个人详细信息。
 7）用户可以关注其他用户。
 8）增加了私信功能，用户可以给已关注的人发送私信，可以回复私信。登录时首页会有新私信提醒。
+9）正在开发小组功能
 网站网址：http://liu-zihao.azurewebsites.net/MyWeb/index.jsp
 或http://liuzihao.azurewebsites.net/MyWeb/index.jsp
 
