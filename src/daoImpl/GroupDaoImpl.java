@@ -37,6 +37,7 @@ public class GroupDaoImpl implements GroupDao {
 				group.setGroupType(rs.getString(3));
 				group.setGroupInfo(rs.getString(4));
 				group.setGroupUserNum(rs.getInt(5));
+				group.setGroupPostNum(rs.getInt(6));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -65,6 +66,7 @@ public class GroupDaoImpl implements GroupDao {
 				group.setGroupType(rs.getString(3));
 				group.setGroupInfo(rs.getString(4));
 				group.setGroupUserNum(rs.getInt(5));
+				group.setGroupPostNum(rs.getInt(6));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -93,6 +95,7 @@ public class GroupDaoImpl implements GroupDao {
 				group.setGroupType(rs.getString(3));
 				group.setGroupInfo(rs.getString(4));
 				group.setGroupUserNum(rs.getInt(5));
+				group.setGroupPostNum(rs.getInt(6));
 				groups.add(group);
 			}
 		}catch(SQLException e){
@@ -122,6 +125,7 @@ public class GroupDaoImpl implements GroupDao {
 				group.setGroupType(rs.getString(3));
 				group.setGroupInfo(rs.getString(4));
 				group.setGroupUserNum(rs.getInt(5));
+				group.setGroupPostNum(rs.getInt(6));
 				groups.add(group);
 			}
 		}catch(SQLException e){
@@ -152,6 +156,7 @@ public class GroupDaoImpl implements GroupDao {
 				group.setGroupType(rs.getString(3));
 				group.setGroupInfo(rs.getString(4));
 				group.setGroupUserNum(rs.getInt(5));
+				group.setGroupPostNum(rs.getInt(6));
 				groups.add(group);
 			}
 		}catch(SQLException e){
@@ -168,6 +173,24 @@ public class GroupDaoImpl implements GroupDao {
 	public void addGroupUserNum(int groupID) {
 		Connection conn = DBConnection.getConnection();
 		String sql="update tb_group set groupUserNum = groupUserNum+1 where groupID = ?";
+		PreparedStatement  pstmt = null;
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, groupID);
+			pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+		
+	}
+
+	@Override
+	public void addGroupPostNum(int groupID) {
+		Connection conn = DBConnection.getConnection();
+		String sql="update tb_group set groupPostNum = groupPostNum+1 where groupID = ?";
 		PreparedStatement  pstmt = null;
 		try{
 			pstmt = conn.prepareStatement(sql);
