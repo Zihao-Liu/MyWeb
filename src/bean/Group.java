@@ -7,6 +7,7 @@ public class Group {
 	private String groupType;
 	private String groupInfo;
 	private int groupUserNum;
+	private int groupPostNum;
 	public int getGroupID() {
 		return groupID;
 	}
@@ -36,5 +37,11 @@ public class Group {
 	}
 	public void setGroupUserNum(int groupUserNum) {
 		this.groupUserNum = groupUserNum;
+	}
+	public int getGroupPostNum() {
+		return groupPostNum;
+	}
+	public void setGroupPostNum(int groupPostNum) {
+		this.groupPostNum = groupPostNum;
 	}
 }

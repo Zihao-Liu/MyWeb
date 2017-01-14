@@ -11,6 +11,7 @@ public class User {
 	private int userHide;
 	private int userFollower;//±»¹Ø×¢
 	private int userFollowing;//¹Ø×¢
+	private int userAttend;
 	public int getUserID() {
 		return userID;
 	}
@@ -70,5 +71,11 @@ public class User {
 	}
 	public void setUserFollowing(int userFollowing) {
 		this.userFollowing = userFollowing;
+	}
+	public int getUserAttend() {
+		return userAttend;
+	}
+	public void setUserAttend(int userAttend) {
+		this.userAttend = userAttend;
 	}
 }

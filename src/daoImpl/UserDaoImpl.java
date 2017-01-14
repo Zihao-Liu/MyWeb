@@ -36,6 +36,7 @@ public class UserDaoImpl implements UserDao{
 				user.setUserHide(rs.getInt(8));
 				user.setUserFollower(rs.getInt(9));
 				user.setUserFollowing(rs.getInt(10));
+				user.setUserAttend(rs.getInt(11));
 			}
 		}catch(SQLException e){
 				e.printStackTrace();
@@ -91,6 +92,7 @@ public class UserDaoImpl implements UserDao{
 				user.setUserHide(rs.getInt(8));
 				user.setUserFollower(rs.getInt(9));
 				user.setUserFollowing(rs.getInt(10));
+				user.setUserAttend(rs.getInt(11));
 				users.add(user);
 			}
 		}catch(SQLException e){
@@ -129,6 +131,7 @@ public class UserDaoImpl implements UserDao{
 				user.setUserHide(rs.getInt(8));
 				user.setUserFollower(rs.getInt(9));
 				user.setUserFollowing(rs.getInt(10));
+				user.setUserAttend(rs.getInt(11));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -180,6 +183,7 @@ public class UserDaoImpl implements UserDao{
 				user.setUserHide(rs.getInt(8));
 				user.setUserFollower(rs.getInt(9));
 				user.setUserFollowing(rs.getInt(10));
+				user.setUserAttend(rs.getInt(11));
 				users.add(user);
 			}
 		}catch(SQLException e){
@@ -212,6 +216,7 @@ public class UserDaoImpl implements UserDao{
 				user.setUserHide(rs.getInt(8));
 				user.setUserFollower(rs.getInt(9));
 				user.setUserFollowing(rs.getInt(10));
+				user.setUserAttend(rs.getInt(11));
 				users.add(user);
 			}
 		}catch(SQLException e){
@@ -278,6 +283,7 @@ public class UserDaoImpl implements UserDao{
 				user.setUserHide(rs.getInt(8));
 				user.setUserFollower(rs.getInt(9));
 				user.setUserFollowing(rs.getInt(10));
+				user.setUserAttend(rs.getInt(11));
 				users.add(user);
 			}
 		}catch(SQLException e){
