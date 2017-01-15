@@ -1,4 +1,4 @@
-
+h2{font-size:100%;}
 #userInfo{margin-left:200px;width:950px;}
 #userInfoadd{margin-left:200px;width:950px;}
 .booklist{margin-left:200px;width:900px;height:300px;}
@@ -6,6 +6,9 @@
 
 .filmlist{margin-left:200px;width:900px;height:300px;}
 .film{list-style:none;float:left;padding-left:20px;}
+
+.grouplist{margin-left:200px;width:900px;height:300px;}
+.group{list-style:none;float:left;padding-left:20px;}
 
 a:link{color:rgb(51, 153, 255); text-decoration:none;}
 a:visited{background-color:rgb(243, 255, 204);color:rgb(51, 153, 255); text-decoration:none;}
@@ -17,3 +20,4 @@ a:hover{background-color:rgb(243, 255, 204);color:rgb(51, 153, 255); text-decora
 #test{height:260px;margin-bottom:260px;margin-left:200px;}
 
 #follow{margin-left:200px;height:520px;}
+

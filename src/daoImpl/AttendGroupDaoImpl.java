@@ -10,7 +10,10 @@ import java.util.List;
 
 
 import bean.AttendGroup;
+import bean.Group;
 import dao.AttendGroupDao;
+import dao.GroupDao;
+import factory.GroupDaoFactory;
 import util.DBConnection;
 
 public class AttendGroupDaoImpl implements AttendGroupDao {
@@ -81,22 +84,19 @@ public class AttendGroupDaoImpl implements AttendGroupDao {
 	}
 
 	@Override
-	public List<AttendGroup> findAllAttendGroup(int userID) {
+	public List<Group> findAllAttendGroup(int userID) {
 		Connection conn = DBConnection.getConnection();
 		String sql = "select * from tb_attendgroup where userID = ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<AttendGroup> attendGroups = new ArrayList<AttendGroup>();
+		List<Group> groups = new ArrayList<Group>();
 		try{
+			GroupDao groupDao = GroupDaoFactory.getGroupDaoInstance();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, userID);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
-				AttendGroup attendGroup = new AttendGroup();
-				attendGroup.setAttendID(rs.getInt(1));
-				attendGroup.setGroupID(rs.getInt(2));
-				attendGroup.setUserID(rs.getInt(3));
-				attendGroups.add(attendGroup);
+				groups.add(groupDao.findGroupByID(rs.getInt(2)));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -105,7 +105,7 @@ public class AttendGroupDaoImpl implements AttendGroupDao {
 			DBConnection.close(pstmt);
 			DBConnection.close(conn);
 		}
-		return attendGroups;
+		return groups;
 	}
 	
 }

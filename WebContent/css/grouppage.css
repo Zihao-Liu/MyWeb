@@ -1,0 +1,32 @@
+.content{width:1350px;}
+.sidebar{
+	float:right;
+	margin-right:200px;
+	height:500px;
+	}
+.content a:link{color:rgb(51, 153, 255); text-decoration:none;}
+.content a:visited{background-color:rgb(243, 255, 204);color:rgb(51, 153, 255); text-decoration:none;}
+.content a:hover{background-color:rgb(243, 255, 204);color:rgb(51, 153, 255); text-decoration:none;}
+.sort{border-bottom-style:solid;}
+.rank{border-bottom-style:solid;}
+.sort li{display:inline;list-style:none;padding-right:10px;}
+.rank li{list-style:decimal;}
+
+.main{margin-left:200px;font-size:80%}
+
+.recommendbyhot{height:250px;width:550px;font-size:120%}
+.recommendbyhot ul{margin-left:-50px;}
+.recommendbyhot li{list-style:none; padding:20px 20px 20px 20px;float:left;}
+
+.recommendbyscore{height:250px;width:550px;font-size:120%}
+.recommendbyscore ul{margin-left:-50px;}
+.recommendbyscore li{list-style:none; padding:20px 20px 0 20px;float:left;}
+
+
+.group{width:120px;}
+
+.classmain{margin-left:200px;font-size:80%;width:600px;}
+#groupclassify{list-style:none; padding:60px 40px 20px 0;float:left;width:260px;}
+#groupclassify img{float:left;}
+.detail{padding-bottom:10px;padding-left:130px;}
+

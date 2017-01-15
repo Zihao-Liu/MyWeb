@@ -10,7 +10,8 @@ public interface GroupDao {
 	public Group findGroupByID(int groupID);
 	public List<Group> findAllGroup();
 	public List<Group> findAllGroupOrderByUserNum();
-	public List<Group> findGroupByType(String groupType);
+	public List<Group> findAllGroupOrderByPostNum();
+	public List<Group> findAllGroupByType(String groupType);
 	public void addGroupUserNum(int groupID);
 	public void addGroupPostNum(int groupID);
 }

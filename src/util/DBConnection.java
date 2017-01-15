@@ -8,12 +8,9 @@ import java.sql.SQLException;
 
 public class DBConnection {
 	private static final String DBDRIVER = "com.mysql.jdbc.Driver";
-	/*private static final String DBURL = "jdbc:mysql://localhost:3306/db_myweb?autoReconnect=true";
+	private static final String DBURL = "jdbc:mysql://localhost:3306/db_myweb?autoReconnect=true";
 	private static final String DBUSER = "root";
-	private static final String DBPASSWORD = "admin";*/
-	private static final String DBURL = "jdbc:mysql://us-cdbr-azure-east-c.cloudapp.net:3306/acsm_71c32d881b73cf9?autoReconnect=true";
-	private static final String DBUSER = "bd388ca6904bd6";
-	private static final String DBPASSWORD = "ae1721e3";
+	private static final String DBPASSWORD = "admin";
 	
 	public static Connection getConnection(){
 		Connection conn = null;

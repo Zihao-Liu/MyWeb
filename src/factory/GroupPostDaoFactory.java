@@ -4,7 +4,7 @@ import dao.GroupPostDao;
 import daoImpl.GroupPostDaoImpl;
 
 public class GroupPostDaoFactory {
-	public static GroupPostDao GroupPostDaoInstance(){
+	public static GroupPostDao getGroupPostDaoInstance(){
 		return new GroupPostDaoImpl();
 	}
 }

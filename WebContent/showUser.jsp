@@ -59,10 +59,12 @@
 			<h2><label>他关注的人:</label><a href="ShowFollow?userID=${userNew.userID }">${userNew.userFollowing}个</a></h2>
 		</div>
 		<div class="booklist">
-			<h2>他的书单</h2>		
+			<h2>他的书单
 			<c:if test="${not empty requestScope.userreadbook }">
 				<a href = "ShowAllReadBook?userID=${userNew.userID }">显示所有>></a>	
 			</c:if>
+			</h2>		
+			
 			<c:forEach items="${requestScope.userreadbook}" var="userreadbook" begin="1" end="4">
 				<li class = "book">
 					<div><img src="${userreadbook.bookCoverPath}"/></div>
@@ -72,10 +74,12 @@
 			</c:forEach>
 		</div>
 		<div class="filmlist">
-			<h2>他的影单</h2>		
+			<h2>他的影单
 			<c:if test="${not empty requestScope.userwatchfilm }">
 				<a href = "ShowAllWatchFilm?userID=${userNew.userID }">显示所有>></a>	
-			</c:if>			
+			</c:if>	
+			</h2>		
+					
 			<c:forEach items="${requestScope.userwatchfilm}" var="userwatchfilm" begin="0" end="3" >
 				<li class = "film">
 					<div><img src="${userwatchfilm.filmCoverPath}"/></div>
@@ -85,6 +89,23 @@
 			</c:forEach>
 		</div>
 		
+		<div class="grouplist">
+			<h2>他的小组 
+				<c:if test="${not empty requestScope.userattendgroup }">
+					<a href = "ShowAllAttendGroup?userID=${userNew.userID }">显示所有>></a>	
+				</c:if>
+			</h2>		
+			
+			<c:forEach items="${requestScope.userattendgroup }" var="userattendgroup" begin="0" end="3" >
+				<li class = "group">
+					<div class = "detail">小组名:<a href = "ShowGroup?groupID=${userattendgroup.groupID }">${userattendgroup.groupName }</a></div>
+					<div class = "detail">分类:${userattendgroup.groupType }</div>
+					<div class = "detail">帖子数:${userattendgroup.groupPostNum }</div>
+					<div class = "detail">加入人数:${userattendgroup.groupUserNum }</div>
+					<div><input type="submit" name="Submit2" value="退出小组"  /></div>
+				</li>
+			</c:forEach>
+		</div>
 		<div class="statuslist">
 			<h2>他的动态</h2>
 			<c:forEach items="${requestScope.userstatus}" var="userstatus" begin="0" end="3">
