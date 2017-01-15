@@ -10,6 +10,7 @@
 .content a:hover{background-color:rgb(243, 255, 204);color:rgb(51, 153, 255); text-decoration:none;}
 .sort{border-bottom-style:solid;}
 .rank{border-bottom-style:solid;}
+.hotcomment{border-bottom-style:solid;}
 .sort li{display:inline;list-style:none;padding-right:10px;}
 .rank li{list-style:decimal;}
 

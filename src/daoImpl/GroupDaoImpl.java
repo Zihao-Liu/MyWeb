@@ -139,7 +139,7 @@ public class GroupDaoImpl implements GroupDao {
 	}
 
 	@Override
-	public List<Group> findGroupByType(String groupType) {
+	public List<Group> findAllGroupByType(String groupType) {
 		Connection conn = DBConnection.getConnection();
 		String sql="select * from tb_group where groupType = ?";
 		PreparedStatement pstmt = null;
@@ -203,6 +203,36 @@ public class GroupDaoImpl implements GroupDao {
 			DBConnection.close(conn);
 		}
 		
+	}
+
+	@Override
+	public List<Group> findAllGroupOrderByPostNum() {
+		Connection conn = DBConnection.getConnection();
+		String findbysql = "select * from tb_group order by groupPostNum Desc";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Group> groups = new ArrayList<Group>();
+		try{
+			pstmt = conn.prepareStatement(findbysql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Group group = new Group();
+				group.setGroupID(rs.getInt(1));
+				group.setGroupName(rs.getString(2));
+				group.setGroupType(rs.getString(3));
+				group.setGroupInfo(rs.getString(4));
+				group.setGroupUserNum(rs.getInt(5));
+				group.setGroupPostNum(rs.getInt(6));
+				groups.add(group);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(rs);
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+		return groups;
 	}
 
 }

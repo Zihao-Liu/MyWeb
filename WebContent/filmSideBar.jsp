@@ -4,14 +4,14 @@
 			<div class="sort">
 				<h2>分类</h2>
 				<ul>
-					<li><a href="FilmClassify?filmType=<%=URLEncoder.encode("科幻", "utf-8") %>">科幻</a></li>
-					<li><a href="FilmClassify?filmType=<%=URLEncoder.encode("悬疑", "utf-8") %>">悬疑</a></li>
-					<li><a href="FilmClassify?filmType=<%=URLEncoder.encode("恐怖", "utf-8") %>">恐怖</a></li>
-					<li><a href="FilmClassify?filmType=<%=URLEncoder.encode("动画", "utf-8") %>">动画</a></li>
+					<li><a href="GroupClassify?groupType=<%=URLEncoder.encode("电影", "utf-8") %>">电影</a></li>
+					<li><a href="GroupClassify?groupType=<%=URLEncoder.encode("美食", "utf-8") %>">美食</a></li>
+					<li><a href="GroupClassify?groupType=<%=URLEncoder.encode("旅行", "utf-8") %>">旅行</a></li>
+					<li><a href="GroupClassify?groupType=<%=URLEncoder.encode("读书", "utf-8") %>">读书</a></li>
 				</ul>
 				<ul>
-					<li><a href="FilmClassify?filmType=<%=URLEncoder.encode("历史", "utf-8") %>">历史</a></li>
-					<li><a href="FilmClassify?filmType=<%=URLEncoder.encode("剧情", "utf-8") %>">剧情</a></li>
+					<li><a href="GroupClassify?groupType=<%=URLEncoder.encode("历史", "utf-8") %>">历史</a></li>
+					<li><a href="GroupClassify?groupType=<%=URLEncoder.encode("游戏", "utf-8") %>">游戏</a></li>
 				</ul>	
 			</div>
 			

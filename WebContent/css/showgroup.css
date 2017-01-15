@@ -1,0 +1,12 @@
+.groupInfo{margin-left:200px;width:950px;}
+.Infodisplay li{margin-left:-40px;list-style-type:none; padding:3px 0;}
+
+.brief{width:600px;}
+
+.comment{margin-left:200px;width:950px;}
+.commentInfo{padding-top:10px;}
+.commentuserInfo{padding-left:650px;color:rgb(102,102,102);border-bottom-style:solid;}
+
+a:link{color:rgb(51, 153, 255); text-decoration:none;}
+a:visited{background-color:rgb(243, 255, 204);color:rgb(51, 153, 255); text-decoration:none;}
+a:hover{background-color:rgb(243, 255, 204);color:rgb(51, 153, 255); text-decoration:none;}

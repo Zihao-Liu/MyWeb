@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.User;
+import dao.AttendGroupDao;
 import dao.FindReadDao;
 import dao.FindWatchDao;
 import dao.StatusDao;
 import dao.UserDao;
+import factory.AttendGroupDaoFactory;
 import factory.FindReadDaoFactory;
 import factory.FindWatchDaoFactory;
 import factory.StatusDaoFactory;
@@ -35,7 +37,8 @@ public class PersonalInfo extends HttpServlet {
 		FindWatchDao findWatchDao = FindWatchDaoFactory.getFindWatchDaoInstance();
 		request.setAttribute("userreadbook",findReadDao.findAllBookRead(user.getUserID()));
 		request.setAttribute("userwatchfilm", findWatchDao.findAllFilmWatch(user.getUserID()));
-		
+		AttendGroupDao attendGroupDao = AttendGroupDaoFactory.getAttendGroupDaoInstance();
+		request.setAttribute("userattendgroup", attendGroupDao.findAllAttendGroup(user.getUserID()));
 		StatusDao statusDao = StatusDaoFactory.getStatusDaoInstance();
 		request.setAttribute("userstatus", statusDao.findStatusByUserID(user.getUserID()));
 		UserDao userDao = UserDaoFactory.getUserDaoInstance();

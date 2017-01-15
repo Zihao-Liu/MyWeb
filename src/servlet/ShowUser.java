@@ -11,11 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.Follow;
 import bean.User;
+import dao.AttendGroupDao;
 import dao.FindReadDao;
 import dao.FindWatchDao;
 import dao.FollowDao;
 import dao.StatusDao;
 import dao.UserDao;
+import factory.AttendGroupDaoFactory;
 import factory.FindReadDaoFactory;
 import factory.FindWatchDaoFactory;
 import factory.FollowDaoFactory;
@@ -42,7 +44,8 @@ public class ShowUser extends HttpServlet {
 		FindWatchDao findWatchDao = FindWatchDaoFactory.getFindWatchDaoInstance();
 		request.setAttribute("userreadbook",findReadDao.findAllBookRead(userID));
 		request.setAttribute("userwatchfilm", findWatchDao.findAllFilmWatch(userID));
-		
+		AttendGroupDao attendGroupDao = AttendGroupDaoFactory.getAttendGroupDaoInstance();
+		request.setAttribute("userattendgroup", attendGroupDao.findAllAttendGroup(userID));
 		StatusDao statusDao = StatusDaoFactory.getStatusDaoInstance();
 		request.setAttribute("userstatus", statusDao.findStatusByUserID(userID));
 		UserDao userDao = UserDaoFactory.getUserDaoInstance();

@@ -241,7 +241,7 @@
     <servlet-name>ShowAllLetter</servlet-name>
     <url-pattern>/ShowAllLetter</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>ShowAllReadBook</servlet-name>
     <servlet-class>servlet.ShowAllReadBook</servlet-class>
   </servlet>
@@ -256,6 +256,38 @@
   <servlet-mapping>
     <servlet-name>ShowAllWatchFilm</servlet-name>
     <url-pattern>/ShowAllWatchFilm</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>GroupClassify</servlet-name>
+    <servlet-class>servlet.GroupClassify</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GroupClassify</servlet-name>
+    <url-pattern>/GroupClassify</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ShowGroup</servlet-name>
+    <servlet-class>servlet.ShowGroup</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowGroup</servlet-name>
+    <url-pattern>/ShowGroup</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AttendGroupS</servlet-name>
+    <servlet-class>servlet.AttendGroupS</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AttendGroupS</servlet-name>
+    <url-pattern>/AttendGroup</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ShowAllAttendGroup</servlet-name>
+    <servlet-class>servlet.ShowAllAttendGroup</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowAllAttendGroup</servlet-name>
+    <url-pattern>/ShowAllAttendGroup</url-pattern>
   </servlet-mapping>
   <error-page>
     <error-code>400</error-code>

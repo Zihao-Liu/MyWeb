@@ -43,6 +43,7 @@
 					<li class = "navigationbutton"><a href = "./index.jsp">首页</a></li>
 					<li class = "navigationbutton"><a href="./bookPage.jsp">图书</a></li>
 					<li class = "navigationbutton"><a href="./filmPage.jsp">电影</a></li>
+					<li class = "navigationbutton"><a href="./groupPage.jsp">小组</a></li>
 				</ul>
 		</div>
 	

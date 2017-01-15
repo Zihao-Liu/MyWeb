@@ -2,14 +2,17 @@
 <%@page import="factory.BookCommentDaoFactory" language="java"%>
 <%@page import="factory.StatusDaoFactory" language="java"%>
 <%@page import="factory.FilmCommentDaoFactory" language="java"%>
+<%@page import="factory.GroupDaoFactory" language="java"%>
 <%@page import="dao.BookCommentDao" language="java"%>
 <%@page import="dao.UserDao" language="java"%>
 <%@page import="dao.StatusDao" language="java"%>
 <%@page import="dao.FilmCommentDao" language="java"%>
+<%@page import="dao.GroupDao" language="java"%>
 <%@page import="bean.BookComment" language="java"%>
 <%@page import="bean.User" language="java"%>
 <%@page import="bean.Status" language="java"%>
 <%@page import="bean.FilmComment" language="java"%>
+<%@page import="bean.Group" language="java"%>
 <%@page import="java.net.URLEncoder" language="java" %>
 <%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -65,6 +68,20 @@
 				<ul>
 					<li><a href="FilmClassify?filmType=<%=URLEncoder.encode("历史", "utf-8") %>">历史</a></li>
 					<li><a href="FilmClassify?filmType=<%=URLEncoder.encode("剧情", "utf-8") %>">剧情</a></li>
+				</ul>	
+			</div>
+			
+			<div class="sort">
+				<h2>小组分类</h2>
+				<ul>
+					<li><a href="GroupClassify?groupType=<%=URLEncoder.encode("电影", "utf-8") %>">电影</a></li>
+					<li><a href="GroupClassify?groupType=<%=URLEncoder.encode("美食", "utf-8") %>">美食</a></li>
+					<li><a href="GroupClassify?groupType=<%=URLEncoder.encode("旅行", "utf-8") %>">旅行</a></li>
+					<li><a href="GroupClassify?groupType=<%=URLEncoder.encode("读书", "utf-8") %>">读书</a></li>
+				</ul>
+				<ul>
+					<li><a href="GroupClassify?groupType=<%=URLEncoder.encode("历史", "utf-8") %>">历史</a></li>
+					<li><a href="GroupClassify?groupType=<%=URLEncoder.encode("游戏", "utf-8") %>">游戏</a></li>
 				</ul>	
 			</div>
 			
@@ -164,7 +181,30 @@
 					} %>
 				</ul>
 			</div>
+			
+			<div class="lhotcomment">
+				<h2>最受欢迎小组</h2>
+				<ul>
+					<%
+						GroupDao groupDao = GroupDaoFactory.getGroupDaoInstance();
+						List<Group> groups = groupDao.findAllGroupOrderByUserNum();
+						i = 0;
+						for(Group group:groups){
+					%> 
+							<li class = "comment">
+								<div><a href = "ShowGroup?groupID=<%=group.getGroupID()%>"><%=group.getGroupName() %></a></div>
+								<div><%=group.getGroupType() %></div>
+								<div>人数:<%=group.getGroupUserNum() %></div>
+							</li>
+					<%if(i==4)
+						break;
+						i++;
+					} %>
+				</ul>
+			</div>
 		</div>
+		
+			
 	
 	
 		<div class="main">

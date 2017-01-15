@@ -47,6 +47,7 @@ function firm3(filmID,filmScore){
 			<h2><label>我收到的赞:</label>${userNew.userApprove}个</h2>
 			<h2><label>我读过的书:</label>${userNew.userRead }本</h2>
 			<h2><label>我看过的电影:</label>${userNew.userWatch }部</h2>
+			<h2><label>我加入的小组:</label>${userNew.userAttend }个</h2>
 			<h2><label>关注我的人:</label><a href="showFollower?userID = ${userNew.userID }">${userNew.userFollower}个</a></h2>
 			<h2><label>我关注的人:</label><a href="showFollowing?userID = ${userNew.userID }">${userNew.userFollowing}个</a></h2>
 			<h2><a href="ShowAllLetter?receiveUserID=${userNew.userID }">我的私信列表</a></h2>
@@ -59,7 +60,7 @@ function firm3(filmID,filmScore){
 					</c:when>
 					<c:otherwise>
 						<label>个人信息当前为其他人不可见</label>
-						<label><input name="hide" type="radio" value="0" "/>其他人可见</label>
+						<label><input name="hide" type="radio" value="0" />其他人可见</label>
 						<label><input name="hide" type="radio" value="1" checked="checked"/>其他人不可见</label>
 					</c:otherwise>
 				</c:choose>
@@ -68,10 +69,12 @@ function firm3(filmID,filmScore){
 			</form>
 		</div>
 		<div class="booklist">
-			<h2>我的书单</h2>		
+			<h2>我的书单
 			<c:if test="${not empty requestScope.userreadbook }">
 				<a href = "ShowAllReadBook?userID=${userNew.userID }">显示所有>></a>	
 			</c:if>
+			</h2>		
+			
 			<c:forEach items="${requestScope.userreadbook}" var="userreadbook" begin="0" end="3">
 
 				<li class = "book">
@@ -83,16 +86,36 @@ function firm3(filmID,filmScore){
 			</c:forEach>
 		</div>
 		<div class="filmlist">
-			<h2>我的影单</h2>		
+			<h2>我的影单
 			<c:if test="${not empty requestScope.userwatchfilm }">
 				<a href = "ShowAllWatchFilm?userID=${userNew.userID }">显示所有>></a>	
 			</c:if>
+			</h2>		
+			
 			<c:forEach items="${requestScope.userwatchfilm}" var="userwatchfilm" begin="0" end="3" >
 				<li class = "film">
 					<div><img src="${userwatchfilm.filmCoverPath}"/></div>
-					<div><a href = "">${userwatchfilm.filmName }</a></div>
+					<div><a href = "ShowFilm?filmID=${userwatchfilm.filmID }">${userwatchfilm.filmName }</a></div>
 					<div>${userwatchfilm.filmDirector}</div>
 					<div><input type="submit" name="Submit2" value="删除电影" onclick="firm3(${userwatchfilm.filmID},${userwatchfilm.filmScore})" /></div>
+				</li>
+			</c:forEach>
+		</div>
+		
+		<div class="grouplist">
+			<h2>我的小组
+			<c:if test="${not empty requestScope.userattendgroup }">
+				<a href = "ShowAllAttendGroup?userID=${userNew.userID }">显示所有>></a>	
+			</c:if>
+			</h2>		
+			
+			<c:forEach items="${requestScope.userattendgroup }" var="userattendgroup" begin="0" end="3" >
+				<li class = "group">
+					<div class = "detail">小组名:<a href = "ShowGroup?groupID=${userattendgroup.groupID }">${userattendgroup.groupName }</a></div>
+					<div class = "detail">分类:${userattendgroup.groupType }</div>
+					<div class = "detail">帖子数:${userattendgroup.groupPostNum }</div>
+					<div class = "detail">加入人数:${userattendgroup.groupUserNum }</div>
+					<div><input type="submit" name="Submit2" value="退出小组" onclick="firm3(${userwatchfilm.filmID},${userwatchfilm.filmScore})" /></div>
 				</li>
 			</c:forEach>
 		</div>
