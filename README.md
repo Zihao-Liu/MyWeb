@@ -1,5 +1,5 @@
 
-# MyWeb是第一个web项目，因为还没有学习框架，所以主要采用了jsp, servlet, javabean, MySQL来实现。
+# MyWeb是第一个web项目，因为还没有学习框架，所以主要采用了JSP, Servlet, JavaBean, MySQL来实现。
 主要功能为：
 1）登录，注册，登出。
 2）用户可以添加，删除已读图书，可以对书籍评分，评论等。可以为别人评论点赞，可以删除评论。
