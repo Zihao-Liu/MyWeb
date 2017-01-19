@@ -26,7 +26,7 @@ public class FilmClassify extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		ServletContext servletcontext = getServletContext();
+		ServletContext servletContext = getServletContext();
 		RequestDispatcher dispatcher = null;
 		
 		
@@ -34,7 +34,7 @@ public class FilmClassify extends HttpServlet {
 		FilmDao filmDao = FilmDaoFactory.getFilmDaoInstance();
 		List<Film> films = filmDao.findAllFilmByType(filmType);
 		request.setAttribute("filmClassify", films);
-		dispatcher = servletcontext.getRequestDispatcher("/filmClassify.jsp");
+		dispatcher = servletContext.getRequestDispatcher("/filmClassify.jsp");
 		dispatcher.forward(request, response);
 		
 	}

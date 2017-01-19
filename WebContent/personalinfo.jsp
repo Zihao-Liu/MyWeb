@@ -35,6 +35,15 @@ function firm3(filmID,filmScore){
 		alert("取消删除");
 	}
 }
+
+function firm3(groupID){
+	if(confirm("您确定要退出该小组吗")){
+		location.href="DeleteFilmFromWatch?filmID="+filmID+"&filmScore="+filmScore; 
+	}
+	else{
+		alert("取消删除");
+	}
+}
 </script>
 
 <title>我的信息</title>
@@ -115,7 +124,7 @@ function firm3(filmID,filmScore){
 					<div class = "detail">分类:${userattendgroup.groupType }</div>
 					<div class = "detail">帖子数:${userattendgroup.groupPostNum }</div>
 					<div class = "detail">加入人数:${userattendgroup.groupUserNum }</div>
-					<div><input type="submit" name="Submit2" value="退出小组" onclick="firm3(${userwatchfilm.filmID},${userwatchfilm.filmScore})" /></div>
+					<div><input type="submit" name="Submit2" value="退出小组" onclick="firm4(${userattendgroup.groupID})" /></div>
 				</li>
 			</c:forEach>
 		</div>
