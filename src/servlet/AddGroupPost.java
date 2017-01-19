@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,19 +14,19 @@ import javax.servlet.http.HttpServletResponse;
 import bean.Group;
 import bean.GroupPost;
 import bean.User;
-import dao.GroupPostDao;
 import dao.AttendGroupDao;
 import dao.GroupDao;
-import factory.GroupPostDaoFactory;
+import dao.GroupPostDao;
 import factory.AttendGroupDaoFactory;
 import factory.GroupDaoFactory;
+import factory.GroupPostDaoFactory;
 
 
-public class ShowGroup extends HttpServlet {
+public class AddGroupPost extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     
-    public ShowGroup() {
+    public AddGroupPost() {
         super();
     }
 
@@ -35,19 +36,44 @@ public class ShowGroup extends HttpServlet {
 		ServletContext servletContext = getServletContext();
 		RequestDispatcher dispatcher = null;
 		
+		String postTitle = request.getParameter("posttitle");
+		String postContent = request.getParameter("postcontent");
 		int groupID = Integer.parseInt(request.getParameter("groupID"));
 		GroupDao groupDao = GroupDaoFactory.getGroupDaoInstance();
-		Group group = groupDao.findGroupByID(groupID);
-		request.setAttribute("group", group);
 		GroupPostDao postDao = GroupPostDaoFactory.getGroupPostDaoInstance();
-		List<GroupPost> posts = postDao.findPostByGroupIDOrderByRecentModifyTime(groupID);
-		request.setAttribute("postList", posts);
 		
 		User user =(User)request.getSession().getAttribute("user");
 		if(user !=null){
 			AttendGroupDao attendGroupDao = AttendGroupDaoFactory.getAttendGroupDaoInstance();
 			request.setAttribute("attendflag",attendGroupDao.findAttendGroup(user.getUserID(), groupID));
+			if(postTitle==null||"".equals(postTitle))
+				request.setAttribute("error", "标题不能为空");
+			else{
+				if(postContent==null||"".equals(postContent))
+					request.setAttribute("error", "内容不能为空");
+				else{
+					GroupPost groupPost = new GroupPost();
+					groupPost.setPostTitle(postTitle);
+					groupPost.setPostContent(postContent);
+					groupPost.setPublishTime(new Date());
+					groupPost.setGroupID(groupID);
+					groupPost.setUserID(user.getUserID());
+					groupPost.setRecentModifyTime(new Date());
+					postDao.addPost(groupPost);
+					groupDao.addGroupPostNum(groupID);
+				}
+			}
 		}
+		else
+			request.setAttribute("error", "请登录");
+		
+		
+		Group group = groupDao.findGroupByID(groupID);
+		request.setAttribute("group", group);
+		List<GroupPost> posts = postDao.findPostByGroupIDOrderByRecentModifyTime(groupID);
+		request.setAttribute("postList", posts);
+		
+		
 		dispatcher = servletContext.getRequestDispatcher("/showGroup.jsp");
 		dispatcher.forward(request, response);
 	}

@@ -10,23 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Group;
 import bean.GroupPost;
-import bean.User;
+import bean.GroupPostComment;
+import dao.GroupPostCommentDao;
 import dao.GroupPostDao;
-import dao.AttendGroupDao;
-import dao.GroupDao;
+import factory.GroupPostCommentDaoFactory;
 import factory.GroupPostDaoFactory;
-import factory.AttendGroupDaoFactory;
-import factory.GroupDaoFactory;
 
 
-public class ShowGroup extends HttpServlet {
+public class ShowGroupPost extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
-    public ShowGroup() {
+   
+    public ShowGroupPost() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	
@@ -35,20 +33,16 @@ public class ShowGroup extends HttpServlet {
 		ServletContext servletContext = getServletContext();
 		RequestDispatcher dispatcher = null;
 		
-		int groupID = Integer.parseInt(request.getParameter("groupID"));
-		GroupDao groupDao = GroupDaoFactory.getGroupDaoInstance();
-		Group group = groupDao.findGroupByID(groupID);
-		request.setAttribute("group", group);
-		GroupPostDao postDao = GroupPostDaoFactory.getGroupPostDaoInstance();
-		List<GroupPost> posts = postDao.findPostByGroupIDOrderByRecentModifyTime(groupID);
-		request.setAttribute("postList", posts);
+		int postID = Integer.parseInt(request.getParameter("postID"));
 		
-		User user =(User)request.getSession().getAttribute("user");
-		if(user !=null){
-			AttendGroupDao attendGroupDao = AttendGroupDaoFactory.getAttendGroupDaoInstance();
-			request.setAttribute("attendflag",attendGroupDao.findAttendGroup(user.getUserID(), groupID));
-		}
-		dispatcher = servletContext.getRequestDispatcher("/showGroup.jsp");
+		GroupPost post = new GroupPost();
+		GroupPostDao groupPostDao = GroupPostDaoFactory.getGroupPostDaoInstance();
+		post = groupPostDao.findPostByPostID(postID);
+		request.setAttribute("post", post);
+		GroupPostCommentDao groupPostCommentDao =GroupPostCommentDaoFactory.getGroupPostCommentDaoInstance();
+		List<GroupPostComment> groupPostComments = groupPostCommentDao.findAllCommentByPostID(postID);
+		request.setAttribute("commentList", groupPostComments);
+		dispatcher = servletContext.getRequestDispatcher("/showGroupPost.jsp");
 		dispatcher.forward(request, response);
 	}
 

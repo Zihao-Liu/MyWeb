@@ -11,6 +11,7 @@ public class GroupPost {
 	private int groupID;
 	private int commentNum;
 	private int postApprove;
+	private Date recentModifyTime;
 	public int getPostID() {
 		return postID;
 	}
@@ -58,5 +59,11 @@ public class GroupPost {
 	}
 	public void setPostApprove(int postApprove) {
 		this.postApprove = postApprove;
+	}
+	public Date getRecentModifyTime() {
+		return recentModifyTime;
+	}
+	public void setRecentModifyTime(Date recentModifyTime) {
+		this.recentModifyTime = recentModifyTime;
 	}
 }

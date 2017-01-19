@@ -38,7 +38,7 @@ public class ModifyFilmApproveNum extends HttpServlet {
 		User user = (User)request.getSession().getAttribute("user");//获得当前登录用户
 		if(user == null){
 			request.setAttribute("error", "请先登录");
-			dispatcher = servletContext.getRequestDispatcher("//showFilm.jsp");
+			dispatcher = servletContext.getRequestDispatcher("/showFilm.jsp");
 		}
 		else{
 			int action = Integer.parseInt(request.getParameter("action"));//获得点赞还是反对

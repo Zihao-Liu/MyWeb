@@ -11,7 +11,7 @@
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <script language="javascript">
 function firm(postID,userID){
-	if(confirm("您确定要删除该条评论吗，这样会删除您所收到的赞数")){
+	if(confirm("您确定要删除该条帖子吗，这样会删除您所收到的赞数")){
 		location.href="DeleteBookComment?commentID="+commentID+"&userID="+userID; 
 	}
 	else{
@@ -23,6 +23,7 @@ function firm(postID,userID){
 </head>
 <body>
 <%@include file = "header.jsp" %> 
+<font color="red">${requestScope.error }</font>
 	<div class = "groupInfo">
 		<h2>${group.groupName}</h2>
 		<div class="Infodisplay" >
@@ -58,25 +59,12 @@ function firm(postID,userID){
 		<h2>帖子</h2>
 		<c:forEach items="${requestScope.postList}" var="post">
 			<div class="commentInfo">
-				<a href="ShowGroupPostComment?postID=${post.postID }">${post.postTitle }</a>:
+				<a href="ShowGroupPost?postID=${post.postID }">${post.postTitle }</a>:
 				${post.postContent}
 				<div class="commentuserInfo">
 					发帖人:${post.userID} 
 			  		时间:${post.publishTime}
-			  		
-			  		<c:choose>
-			  			<c:when test="${empty sessionScope.user}">
-			  			</c:when>
-			  			<c:otherwise>
-			  				<c:if test="${post.userID == sessionScope.user.userID}"  >
-			  					<input type="submit" name="Submit2" value="删除评论" onclick="firm(${post.postID},${post.userID})" />
-			  				</c:if>
-			  			</c:otherwise>
-			  		</c:choose>
-			  		<font color="red">${requestScope.error }</font>
-			  		<a href="ModifyGroupPostApproveNum?postID=${post.postID}&action=1">赞同</a>
-			  		${post.postApprove}
-			  		<a href="ModifyGroupPostApproveNum?postID=${post.postID}&action=0">反对</a>
+			  		点赞数:${post.postApprove}
 			  	</div>
 		  	</div>
 		</c:forEach>

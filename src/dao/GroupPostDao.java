@@ -12,4 +12,5 @@ public interface GroupPostDao {
 	public List<GroupPost> findAllPostByGroupID(int groupID);
 	public List<GroupPost> findAllPostOrderByCommentNum();
 	public List<GroupPost> findPostByGroupIDOrderByPublishTime(int groupID);
+	public List<GroupPost> findPostByGroupIDOrderByRecentModifyTime(int groupID);
 }

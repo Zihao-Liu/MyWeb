@@ -58,6 +58,28 @@
 		</c:otherwise>
 	</c:choose>
 	
+	
+	<c:choose>
+		<c:when test="${empty requestScope.groupsearch}">
+			<h2 class = "groupflag">找不到您要的小组</h2>
+		</c:when>
+		<c:otherwise>
+			<h2 class = "groupflag">小组搜索结果：</h2>
+			<div class = "groupInfo">
+				<ul>
+					<li>小组名:<a href = "ShowGroup?groupID=${groupsearch.groupID }">${groupsearch.groupName }</a></li>
+					<li>分类:${groupsearch.groupType }</li>
+					<li>帖子数:${groupsearch.groupPostNum }</li>
+					<li>加入人数:${groupsearch.groupUserNum }</li>
+				</ul>
+			
+				<h2 class="briefh2">内容简介:</h2>
+				<p class="brief">${groupsearch.groupInfo}</p>
+			</div>
+		</c:otherwise>
+	</c:choose>
+	
+	
 	<c:choose>
 		<c:when test="${empty requestScope.usersearch}">
 			<h2 class = "userflag">找不到您要的用户</h2>

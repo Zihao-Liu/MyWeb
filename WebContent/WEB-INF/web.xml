@@ -289,6 +289,30 @@
     <servlet-name>ShowAllAttendGroup</servlet-name>
     <url-pattern>/ShowAllAttendGroup</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AddGroupPost</servlet-name>
+    <servlet-class>servlet.AddGroupPost</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddGroupPost</servlet-name>
+    <url-pattern>/AddGroupPost</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>ShowGroupPost</servlet-name>
+    <servlet-class>servlet.ShowGroupPost</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowGroupPost</servlet-name>
+    <url-pattern>/ShowGroupPost</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ModifyGroupPostApproveNum</servlet-name>
+    <servlet-class>servlet.ModifyGroupPostApproveNum</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModifyGroupPostApproveNum</servlet-name>
+    <url-pattern>/ModifyGroupPostApproveNum</url-pattern>
+  </servlet-mapping>
   <error-page>
     <error-code>400</error-code>
     <location>/WEB-INF/error.jsp</location>
@@ -313,6 +337,7 @@
     <exception-type>javax.servlet.ServletException</exception-type>
     <location>/WEB-INF/error.jsp</location>
   </error-page>
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

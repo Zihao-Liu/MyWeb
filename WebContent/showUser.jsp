@@ -102,7 +102,6 @@
 					<div class = "detail">分类:${userattendgroup.groupType }</div>
 					<div class = "detail">帖子数:${userattendgroup.groupPostNum }</div>
 					<div class = "detail">加入人数:${userattendgroup.groupUserNum }</div>
-					<div><input type="submit" name="Submit2" value="退出小组"  /></div>
 				</li>
 			</c:forEach>
 		</div>

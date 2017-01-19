@@ -34,7 +34,7 @@ public class ModifyBookApproveNum extends HttpServlet {
 		User user = (User)request.getSession().getAttribute("user");//获得当前登录用户
 		if(user == null){
 			request.setAttribute("error", "请先登录");
-			dispatcher = servletContext.getRequestDispatcher("//showBook.jsp");
+			dispatcher = servletContext.getRequestDispatcher("/showBook.jsp");
 		}
 		else{
 			int action = Integer.parseInt(request.getParameter("action"));//获得点赞还是反对
