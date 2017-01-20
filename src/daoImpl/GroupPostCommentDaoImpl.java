@@ -4,9 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-
 
 import bean.GroupPostComment;
 import dao.GroupPostCommentDao;
@@ -16,7 +16,23 @@ public class GroupPostCommentDaoImpl implements GroupPostCommentDao{
 
 	@Override
 	public void addComment(GroupPostComment groupPostComment) {
-		// TODO Auto-generated method stub
+		Connection conn = DBConnection.getConnection();
+		String sql = "insert into tb_groupcomment (commentTitle, commentContent, publishTime, userID, postID) values(?,?,?,?,?)";
+		PreparedStatement pstmt = null;
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, groupPostComment.getCommentTitle());
+			pstmt.setString(2, groupPostComment.getCommentContent());
+			pstmt.setTimestamp(3, new Timestamp(groupPostComment.getPublishTime().getTime()));
+			pstmt.setInt(4, groupPostComment.getUserID());
+			pstmt.setInt(5, groupPostComment.getPostID());
+			pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
 		
 	}
 
@@ -28,8 +44,32 @@ public class GroupPostCommentDaoImpl implements GroupPostCommentDao{
 
 	@Override
 	public GroupPostComment findPostCommentByCommentID(int commentID) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = DBConnection.getConnection();
+		String findbysql  = "select * from tb_groupcomment where commentID= ?";
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
+		GroupPostComment comment = new GroupPostComment();
+		try{
+			pstmt = conn.prepareStatement(findbysql);
+			pstmt.setInt(1, commentID);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				comment.setCommentID(rs.getInt(1));
+				comment.setCommentTitle(rs.getString(2));
+				comment.setCommentContent(rs.getString(3));
+				comment.setPublishTime(rs.getDate(4));
+				comment.setUserID(rs.getInt(5));
+				comment.setPostID(rs.getInt(6));
+				comment.setCommentApprove(rs.getInt(7));
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(rs);
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+		return comment;
 	}
 
 	@Override

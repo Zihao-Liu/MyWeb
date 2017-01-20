@@ -1,8 +1,10 @@
 package dao;
 
+
 import java.util.List;
 
 import bean.GroupPost;
+import bean.GroupPostComment;
 
 public interface GroupPostDao {
 	public void addPost(GroupPost groupPost);
@@ -13,4 +15,6 @@ public interface GroupPostDao {
 	public List<GroupPost> findAllPostOrderByCommentNum();
 	public List<GroupPost> findPostByGroupIDOrderByPublishTime(int groupID);
 	public List<GroupPost> findPostByGroupIDOrderByRecentModifyTime(int groupID);
+	public void updateRecentModifyTime(GroupPostComment groupPostComment);
+	public void addCommentNum(int postID);
 }

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.GroupPost;
+import bean.GroupPostComment;
 import dao.GroupPostDao;
 import util.DBConnection;
 
@@ -159,6 +160,42 @@ public class GroupPostDaoImpl implements GroupPostDao {
 			DBConnection.close(conn);
 		}
 		return groupPosts;
+	}
+
+	@Override
+	public void updateRecentModifyTime(GroupPostComment groupPostComment) {
+		Connection conn = DBConnection.getConnection();
+		String sql = "update tb_grouppost set recentModifyTime = ? where postID = ?";
+		PreparedStatement pstmt = null;
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setTimestamp(1, (new Timestamp(groupPostComment.getPublishTime().getTime())));
+			pstmt.setInt(2, groupPostComment.getPostID());
+			pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+	}
+
+	@Override
+	public void addCommentNum(int postID) {
+		Connection conn = DBConnection.getConnection();
+		String sql="update tb_grouppost set commentNum = commentNum+1 where postID = ?";
+		PreparedStatement  pstmt = null;
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, postID);
+			pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+		
 	}
 
 }
