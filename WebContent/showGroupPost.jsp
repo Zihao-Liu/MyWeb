@@ -66,7 +66,7 @@ function firm2(commentID,userID){
 		<h2>评论</h2>
 		<c:forEach items="${requestScope.commentList}" var="comment">
 			<div class="commentInfo">
-				<a href="ShowGroupPostComment?commentID=${comment.commentID }">${comment.commentTitle }</a>:
+				${comment.commentTitle }
 				${comment.commentContent}
 				<div class="commentuserInfo">
 					评论人:${comment.userID} 
@@ -82,9 +82,9 @@ function firm2(commentID,userID){
 			  			</c:otherwise>
 			  		</c:choose>
 			  		
-			  		<a href="ModifyGroupPostCommentApproveNum?commentID=${comment.commentID}&action=1">赞同</a>
+			  		<a href="ModifyGroupPostCommentApproveNum?commentID=${comment.commentID}&action=1&postID=${post.postID}">赞同</a>
 			  		${comment.commentApprove}
-			  		<a href="ModifyGroupPostCommentApproveNum?commentID=${comment.commentID}&action=0">反对</a>
+			  		<a href="ModifyGroupPostCommentApproveNum?commentID=${comment.commentID}&action=0&postID=${post.postID}">反对</a>
 			  	</div>
 		  	</div>
 		</c:forEach>
@@ -101,7 +101,8 @@ function firm2(commentID,userID){
 						toolbar :'basic'});
 					</script>
 				<input type="hidden" name="groupID" value="${group.groupID}"/> 
-				<input type="hidden" name="postID" value = "${post.postID }">				<p><input value = "提交" type = "submit"></p>
+				<input type="hidden" name="postID" value = "${post.postID }">				
+				<p><input value = "提交" type = "submit"></p>
 			</form>
 		</div>
 	</div>

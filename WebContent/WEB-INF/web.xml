@@ -297,7 +297,7 @@
     <servlet-name>AddGroupPost</servlet-name>
     <url-pattern>/AddGroupPost</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>ShowGroupPost</servlet-name>
     <servlet-class>servlet.ShowGroupPost</servlet-class>
   </servlet>
@@ -312,6 +312,22 @@
   <servlet-mapping>
     <servlet-name>ModifyGroupPostApproveNum</servlet-name>
     <url-pattern>/ModifyGroupPostApproveNum</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddGroupPostComment</servlet-name>
+    <servlet-class>servlet.AddGroupPostComment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddGroupPostComment</servlet-name>
+    <url-pattern>/AddGroupPostComment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ModifyGroupPostCommentApproveNum</servlet-name>
+    <servlet-class>servlet.ModifyGroupPostCommentApproveNum</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModifyGroupPostCommentApproveNum</servlet-name>
+    <url-pattern>/ModifyGroupPostCommentApproveNum</url-pattern>
   </servlet-mapping>
   <error-page>
     <error-code>400</error-code>
@@ -337,7 +353,6 @@
     <exception-type>javax.servlet.ServletException</exception-type>
     <location>/WEB-INF/error.jsp</location>
   </error-page>
-  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
