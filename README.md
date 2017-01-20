@@ -12,6 +12,9 @@
 * 9）用户加入了小组功能，可以退出小组。
 - 10)用户加入小组后，可以在小组内发帖，可以为别人帖子点赞，可以删除自己帖子。
 * 11)用户可以给别人帖子评论，可以为别人评论点赞，可以删除自己评论
-####网站网址：http://liu-zihao.azurewebsites.net/MyWeb/index.jsp
+
+
+### 
+网站网址：http://liu-zihao.azurewebsites.net/MyWeb/index.jsp
 或http://liuzihao.azurewebsites.net/MyWeb/index.jsp
 （只添加到了功能8）
