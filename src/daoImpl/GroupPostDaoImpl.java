@@ -39,8 +39,39 @@ public class GroupPostDaoImpl implements GroupPostDao {
 	}
 
 	@Override
-	public void deletePost(int groupPostID) {
-		// TODO Auto-generated method stub
+	public void deletePost(int groupPostID,int userID) {
+		Connection conn = DBConnection.getConnection();
+		String sql = "select postApprove from tb_grouppost where postID = ?";
+		String sql2 = "delete from tb_grouppost where postID=?";
+		String sql3 = "update tb_user set userApprove = userApprove -? where userID =?";
+		PreparedStatement pstmt1 = null;
+		PreparedStatement pstmt2 = null;
+		PreparedStatement pstmt3 = null;
+		ResultSet rs = null;
+		try{
+			pstmt1 = conn.prepareStatement(sql);
+			pstmt1.setInt(1, groupPostID);
+			rs = pstmt1.executeQuery();
+			int i =0;
+			while(rs.next()){
+				i = rs.getInt(1);
+			}
+			pstmt2 = conn.prepareStatement(sql2);
+			pstmt2.setInt(1, groupPostID);
+			pstmt3 = conn.prepareStatement(sql3);
+			pstmt3.setInt(1, i);
+			pstmt3.setInt(2, userID);
+			pstmt2.executeUpdate();
+			pstmt3.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(rs);
+			DBConnection.close(pstmt1);
+			DBConnection.close(pstmt2);
+			DBConnection.close(pstmt2);
+			DBConnection.close(conn);
+		}
 		
 	}
 
@@ -184,6 +215,24 @@ public class GroupPostDaoImpl implements GroupPostDao {
 	public void addCommentNum(int postID) {
 		Connection conn = DBConnection.getConnection();
 		String sql="update tb_grouppost set commentNum = commentNum+1 where postID = ?";
+		PreparedStatement  pstmt = null;
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, postID);
+			pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+		
+	}
+
+	@Override
+	public void subCommentNum(int postID) {
+		Connection conn = DBConnection.getConnection();
+		String sql="update tb_grouppost set commentNum = commentNum-1 where postID = ?";
 		PreparedStatement  pstmt = null;
 		try{
 			pstmt = conn.prepareStatement(sql);

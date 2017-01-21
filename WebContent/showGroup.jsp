@@ -69,20 +69,30 @@ function firm(postID,userID){
 		  	</div>
 		</c:forEach>
 		
-		<div class="commentBox">
-			<form action="AddGroupPost" method="post">
-				<p>标题:<input name = "posttitle" type = "text"></p>
-				<p>内容:</p>
-				
-					<textarea cols="80" rows="10" name="postcontent">你有什么想说的</textarea>
-					<script type="text/javascript">CKEDITOR.replace( "postcontent",{
-						width:950,height:300,
-						toolbar :'basic'});
-					</script>
-				<input type="hidden" name="groupID" value="${group.groupID}"/> 
-				<p><input value = "提交" type = "submit"></p>
-			</form>
-		</div>
+		
+		<c:choose>
+			<c:when  test="${not empty requestScope.attendflag }">
+				<div class="commentBox">
+					<form action="AddGroupPost" method="post">
+						<p>标题:<input name = "posttitle" type = "text"></p>
+						<p>内容:</p>
+						
+							<textarea cols="80" rows="10" name="postcontent">你有什么想说的</textarea>
+							<script type="text/javascript">CKEDITOR.replace( "postcontent",{
+								width:950,height:300,
+								toolbar :'basic'});
+							</script>
+						<input type="hidden" name="groupID" value="${group.groupID}"/> 
+						<p><input value = "提交" type = "submit"></p>
+					</form>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="commentBox" style ="padding-top:20px; height:150px;">
+					对不起您的权限无法发帖，加入小组后可以发贴
+				</div>
+			</c:otherwise>
+		</c:choose>
 	</div>
 	
 	<%@include file = "footer.jsp"%>

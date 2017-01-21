@@ -24,7 +24,7 @@ function firm2(commentID,userID){
 		location.href="DeleteGroupPostComment?commentID="+commentID+"&userID="+userID; 
 	}
 	else{
-		alert("取消删除");
+		alert("取消删除"); 
 	}
 }
 </script>
@@ -46,7 +46,7 @@ function firm2(commentID,userID){
 			  			</c:when>
 			  			<c:otherwise>
 			  				<c:if test="${post.userID == sessionScope.user.userID}"  >
-			  					<input type="submit" name="Submit2" value="删除帖子" onclick="firm(${post.postID},${post.userID})" />
+			  					<input type="submit" name="Submit2" value="删除帖子" onclick="firm1(${post.postID},${post.userID})" />
 			  				</c:if>
 			  			</c:otherwise>
 			  		</c:choose>
