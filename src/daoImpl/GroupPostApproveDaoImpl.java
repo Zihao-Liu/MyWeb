@@ -65,7 +65,19 @@ public class GroupPostApproveDaoImpl implements GroupPostApproveDao{
 
 	@Override
 	public void deleteApprove(int postID) {
-		// TODO Auto-generated method stub
+		Connection conn = DBConnection.getConnection();
+		String sql = "delete from tb_grouppostapprove where postID=?";
+		PreparedStatement pstmt = null;
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, postID);
+			pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
 		
 	}
 

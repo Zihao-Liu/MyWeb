@@ -65,8 +65,19 @@ public class GroupPostCommentApproveDaoImpl implements GroupPostCommentApproveDa
 
 	@Override
 	public void deleteApprove(int commentID) {
-		// TODO Auto-generated method stub
-		
+		Connection conn = DBConnection.getConnection();
+		String sql = "delete from tb_groupcommentapprove where commentID=?";
+		PreparedStatement pstmt = null;
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, commentID);
+			pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
 	}
 
 	@Override
