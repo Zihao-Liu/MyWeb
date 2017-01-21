@@ -19,4 +19,5 @@ public interface UserDao {
 	public void modifyUserWatch(int userID);
 	public void modifyUserHide(int userID,int hide);
 	public void addUserAttend(int userID);
+	public void subUserAttend(int userID);
 }

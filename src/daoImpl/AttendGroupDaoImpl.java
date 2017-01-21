@@ -38,7 +38,7 @@ public class AttendGroupDaoImpl implements AttendGroupDao {
 	}
 
 	@Override
-	public void delete(int userID, int groupID) {
+	public void out(int userID, int groupID) {
 		Connection conn = DBConnection.getConnection();
 		String sql = "delete from tb_attendgroup where groupID = ? and userID = ?";
 		PreparedStatement pstmt = null;
