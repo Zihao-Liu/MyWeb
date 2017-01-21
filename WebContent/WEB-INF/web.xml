@@ -329,6 +329,14 @@
     <servlet-name>ModifyGroupPostCommentApproveNum</servlet-name>
     <url-pattern>/ModifyGroupPostCommentApproveNum</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>OutGroup</servlet-name>
+    <servlet-class>servlet.OutGroup</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OutGroup</servlet-name>
+    <url-pattern>/OutGroup</url-pattern>
+  </servlet-mapping>
   <error-page>
     <error-code>400</error-code>
     <location>/WEB-INF/error.jsp</location>

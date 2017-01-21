@@ -14,4 +14,5 @@ public interface GroupDao {
 	public List<Group> findAllGroupByType(String groupType);
 	public void addGroupUserNum(int groupID);
 	public void addGroupPostNum(int groupID);
+	public void subGroupUserNum(int groupID);
 }

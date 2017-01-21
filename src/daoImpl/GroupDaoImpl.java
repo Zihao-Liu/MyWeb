@@ -235,4 +235,22 @@ public class GroupDaoImpl implements GroupDao {
 		return groups;
 	}
 
+	@Override
+	public void subGroupUserNum(int groupID) {
+		Connection conn = DBConnection.getConnection();
+		String sql="update tb_group set groupUserNum = groupUserNum-1 where groupID = ?";
+		PreparedStatement  pstmt = null;
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, groupID);
+			pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+		
+	}
+
 }

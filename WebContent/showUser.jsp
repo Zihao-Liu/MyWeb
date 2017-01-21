@@ -41,6 +41,7 @@
 		<h2><label>他收到的赞:</label>${userNew.userApprove}个</h2>
 		<h2><label>他读过的书:</label>${userNew.userRead }本</h2>
 		<h2><label>他看过的电影:</label>${userNew.userWatch }部</h2>
+		<h2><label>他加入的小组:</label>${userNew.userAttend }个</h2>
 	</div>
 	
 	<c:choose>

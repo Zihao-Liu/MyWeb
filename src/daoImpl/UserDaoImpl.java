@@ -331,4 +331,21 @@ public class UserDaoImpl implements UserDao{
 			DBConnection.close(conn);
 		}
 	}
+	@Override
+	public void subUserAttend(int userID) {
+		Connection conn = DBConnection.getConnection();
+		String sql="update tb_user set userAttend = userAttend-1 where userID = ?";
+		PreparedStatement  pstmt = null;
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userID);
+			pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+		
+	}
 }
