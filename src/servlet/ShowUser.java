@@ -40,31 +40,26 @@ public class ShowUser extends HttpServlet {
 		
 		int userID= Integer.parseInt(request.getParameter("userID"));
 		User user = (User)request.getSession().getAttribute("user");
-		if(user!=null&&userID == user.getUserID()){
-			dispatcher=servletContext.getRequestDispatcher("/PersonalInfo");
-			dispatcher.forward(request, response);
-		}else{
-			FindReadDao findReadDao = FindReadDaoFactory.getFindReadDaoInstance();
-			FindWatchDao findWatchDao = FindWatchDaoFactory.getFindWatchDaoInstance();
-			request.setAttribute("userreadbook",findReadDao.findAllBookRead(userID));
-			request.setAttribute("userwatchfilm", findWatchDao.findAllFilmWatch(userID));
-			AttendGroupDao attendGroupDao = AttendGroupDaoFactory.getAttendGroupDaoInstance();
-			request.setAttribute("userattendgroup", attendGroupDao.findAllAttendGroup(userID));
-			StatusDao statusDao = StatusDaoFactory.getStatusDaoInstance();
-			request.setAttribute("userstatus", statusDao.findStatusByUserID(userID));
-			UserDao userDao = UserDaoFactory.getUserDaoInstance();
-			User userNew = userDao.findUserByID(userID);
-			request.setAttribute("userNew", userNew);
-			
-			FollowDao followDao = FollowDaoFactory.getFollowDaoInstance();
-			Follow follow = null;
-			if(user!=null){
-				follow = followDao.findFollow(userID, user.getUserID());
-			}
-			request.setAttribute("follow", follow);
-			dispatcher=servletContext.getRequestDispatcher("/showUser.jsp");
-			dispatcher.forward(request, response);
+		FindReadDao findReadDao = FindReadDaoFactory.getFindReadDaoInstance();
+		FindWatchDao findWatchDao = FindWatchDaoFactory.getFindWatchDaoInstance();
+		request.setAttribute("userreadbook",findReadDao.findAllBookRead(userID));
+		request.setAttribute("userwatchfilm", findWatchDao.findAllFilmWatch(userID));
+		AttendGroupDao attendGroupDao = AttendGroupDaoFactory.getAttendGroupDaoInstance();
+		request.setAttribute("userattendgroup", attendGroupDao.findAllAttendGroup(userID));
+		StatusDao statusDao = StatusDaoFactory.getStatusDaoInstance();
+		request.setAttribute("userstatus", statusDao.findStatusByUserID(userID));
+		UserDao userDao = UserDaoFactory.getUserDaoInstance();
+		User userNew = userDao.findUserByID(userID);
+		request.setAttribute("userNew", userNew);
+		
+		FollowDao followDao = FollowDaoFactory.getFollowDaoInstance();
+		Follow follow = null;
+		if(user!=null){
+			follow = followDao.findFollow(userID, user.getUserID());
 		}
+		request.setAttribute("follow", follow);
+		dispatcher=servletContext.getRequestDispatcher("/showUser.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

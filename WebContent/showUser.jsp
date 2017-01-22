@@ -66,7 +66,7 @@
 			</c:if>
 			</h2>		
 			
-			<c:forEach items="${requestScope.userreadbook}" var="userreadbook" begin="0" end="3">
+			<c:forEach items="${requestScope.userreadbook}" var="userreadbook" begin="1" end="4">
 				<li class = "book">
 					<div><img src="${userreadbook.bookCoverPath}"/></div>
 					<div><a href = "ShowBook?bookID=${userreadbook.bookID}">${userreadbook.bookName }</a></div>
