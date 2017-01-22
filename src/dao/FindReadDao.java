@@ -5,5 +5,5 @@ import java.util.List;
 import bean.Book;
 
 public interface FindReadDao {
-	public List<Book> findAllBookRead(int userID);//应该移到readDao里
+	public List<Book> findAllBookRead(int userID);
 }

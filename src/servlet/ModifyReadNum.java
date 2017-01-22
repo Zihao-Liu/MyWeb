@@ -55,6 +55,7 @@ public class ModifyReadNum extends HttpServlet {
 				userDao.modifyUserRead(userID);
 				Read read = readDao.findRead(bookID, userID);
 				request.setAttribute("read", read);
+				book = bookDao.findBookByID(bookID);
 			}
 			else{
 				request.setAttribute("error", "ÄúÒÑ¶Á¹ý");
