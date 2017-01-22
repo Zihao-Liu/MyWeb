@@ -17,4 +17,3 @@
 ### 
 网站网址：http://liu-zihao.azurewebsites.net/MyWeb/index.jsp
 或http://liuzihao.azurewebsites.net/MyWeb/index.jsp
-（只添加到了功能8）
