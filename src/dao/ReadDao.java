@@ -1,5 +1,6 @@
 package dao;
 
+
 import bean.Read;
 
 public interface ReadDao {

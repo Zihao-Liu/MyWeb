@@ -57,6 +57,7 @@ public class ModifyWatchNum extends HttpServlet {
 				userDao.modifyUserWatch(userID);
 				Watch watch = watchDao.findWatch(filmID, userID);
 				request.setAttribute("watch", watch);
+				film = filmDao.findFilmByID(filmID);
 			}
 			else{
 				request.setAttribute("error", "ÄúÒÑ¶Á¹ý");
@@ -64,6 +65,7 @@ public class ModifyWatchNum extends HttpServlet {
 			
 			dispatcher = servletContext.getRequestDispatcher("/showFilm.jsp");
 		}
+		
 		request.setAttribute("film", film);
 		FilmCommentDao commentDao = FilmCommentDaoFactory.getCommentDaoInstance();
 		List<FilmComment> comments1 = commentDao.findCommentByFilmIDOrderByApprove(filmID);

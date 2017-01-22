@@ -24,20 +24,21 @@
 				<div class = "detail">发送日期:${letter.letterSendTime }</div>
 			</li>	
 		</ul>
-		
+	</div>
+	<div style="margin-left:200px;margin-top:300px;">
 		<form action="AddLetter" method="post">
-			<textarea cols="80" rows="10" name="letterContent">您要回复的内容</textarea>
-			<script type="text/javascript">CKEDITOR.replace( "letterContent",{
-				width:950,height:200,
-				toolbar :
-				    [
-						['Image','Link']
-				    ]});
-			</script>
-			<input type="hidden" name = "sendUserID" value = "${letter.receiveUserID }">
-			<input type="hidden" name = "receiveUserID" value = "${letter.sendUserID }">
- 			<input type="submit" value="回复">
-		</form>
+				<textarea cols="80" rows="10" name="letterContent">您要回复的内容</textarea>
+				<script type="text/javascript">CKEDITOR.replace( "letterContent",{
+					width:950,height:200,
+					toolbar :
+					    [
+							['Image','Link']
+					    ]});
+				</script>
+				<input type="hidden" name = "sendUserID" value = "${letter.receiveUserID }">
+				<input type="hidden" name = "receiveUserID" value = "${letter.sendUserID }">
+	 			<input type="submit" value="回复">
+			</form>
 	</div>
 	<%@include file = "footer.jsp"%>
 </body>
