@@ -52,13 +52,14 @@ function firm3(groupID){
 	<%@include file = "header.jsp"%> 
 	<div id="mid">
 		<div id = "userInfo">
+			<h2><label>${userNew.userID }</label></h2>
 			<h2><label>用户名：</label>${userNew.userName}</h2>
 			<h2><label>我收到的赞:</label>${userNew.userApprove}个</h2>
 			<h2><label>我读过的书:</label>${userNew.userRead }本</h2>
 			<h2><label>我看过的电影:</label>${userNew.userWatch }部</h2>
 			<h2><label>我加入的小组:</label>${userNew.userAttend }个</h2>
-			<h2><label>关注我的人:</label><a href="showFollower?userID = ${userNew.userID }">${userNew.userFollower}个</a></h2>
-			<h2><label>我关注的人:</label><a href="showFollowing?userID = ${userNew.userID }">${userNew.userFollowing}个</a></h2>
+			<h2><label>关注他的人:</label><a href="ShowFollow?userID=${userNew.userID }">${userNew.userFollower}个</a></h2>
+			<h2><label>他关注的人:</label><a href="ShowFollow?userID=${userNew.userID }">${userNew.userFollowing}个</a></h2>
 			<h2><a href="ShowAllLetter?receiveUserID=${userNew.userID }">我的私信列表</a></h2>
 			<form action="ModifyUserHide" method="post" >
 				<c:choose>

@@ -22,7 +22,7 @@
 				</c:when>
 				<c:otherwise>
 					<c:forEach items="${requestScope.followingList}" var="following">
-						 <div><a href = "ShowUser?userID=${following.userID }">用户名${following.userName }</a></div>
+						 <div><a href = "ShowUser?userID=${following.userID }">用户名:${following.userName }</a></div>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
